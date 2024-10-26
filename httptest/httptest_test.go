@@ -8,11 +8,12 @@ import (
 	"context"
 	"crypto/tls"
 	"io"
-	"net/http"
 	"net/url"
 	"reflect"
 	"strings"
 	"testing"
+
+	http "github.com/dteh/dhttp"
 )
 
 func TestNewRequest(t *testing.T) {

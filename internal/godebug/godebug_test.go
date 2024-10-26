@@ -6,15 +6,16 @@ package godebug_test
 
 import (
 	"fmt"
-	. "internal/godebug"
-	"internal/race"
-	"internal/testenv"
 	"os"
 	"os/exec"
 	"runtime/metrics"
 	"slices"
 	"strings"
 	"testing"
+
+	. "github.com/dteh/dhttp/internal/godebug"
+	"github.com/dteh/dhttp/internal/race"
+	"github.com/dteh/dhttp/internal/testenv"
 )
 
 func TestGet(t *testing.T) {

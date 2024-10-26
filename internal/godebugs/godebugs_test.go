@@ -5,8 +5,6 @@
 package godebugs_test
 
 import (
-	"internal/godebugs"
-	"internal/testenv"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -14,6 +12,9 @@ import (
 	"runtime"
 	"strings"
 	"testing"
+
+	"github.com/dteh/dhttp/internal/godebugs"
+	"github.com/dteh/dhttp/internal/testenv"
 )
 
 func TestAll(t *testing.T) {

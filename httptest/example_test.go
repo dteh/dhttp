@@ -8,8 +8,10 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"net/http"
-	"net/http/httptest"
+
+	http "github.com/dteh/dhttp"
+
+	"github.com/dteh/dhttp/httptest"
 )
 
 func ExampleResponseRecorder() {

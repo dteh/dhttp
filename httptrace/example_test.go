@@ -7,8 +7,10 @@ package httptrace_test
 import (
 	"fmt"
 	"log"
-	"net/http"
-	"net/http/httptrace"
+
+	http "github.com/dteh/dhttp"
+
+	"github.com/dteh/dhttp/httptrace"
 )
 
 func Example() {

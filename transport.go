@@ -17,13 +17,10 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
-	"internal/godebug"
 	"io"
 	"log"
 	"maps"
 	"net"
-	"net/http/httptrace"
-	"net/http/internal/ascii"
 	"net/textproto"
 	"net/url"
 	"reflect"
@@ -32,6 +29,11 @@ import (
 	"sync/atomic"
 	"time"
 	_ "unsafe"
+
+	"github.com/dteh/dhttp/httptrace"
+	"github.com/dteh/dhttp/internal/ascii"
+
+	"github.com/dteh/dhttp/internal/godebug"
 
 	"golang.org/x/net/http/httpguts"
 	"golang.org/x/net/http/httpproxy"

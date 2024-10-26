@@ -8,10 +8,11 @@ import (
 	"bytes"
 	"fmt"
 	"io"
-	"net/http"
 	"net/textproto"
 	"strconv"
 	"strings"
+
+	http "github.com/dteh/dhttp"
 
 	"golang.org/x/net/http/httpguts"
 )

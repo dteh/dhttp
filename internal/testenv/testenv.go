@@ -15,9 +15,6 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"internal/cfg"
-	"internal/goarch"
-	"internal/platform"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -26,6 +23,10 @@ import (
 	"strings"
 	"sync"
 	"testing"
+
+	"github.com/dteh/dhttp/internal/cfg"
+	"github.com/dteh/dhttp/internal/goarch"
+	"github.com/dteh/dhttp/internal/platform"
 )
 
 // Save the original environment during init for use in checks. A test

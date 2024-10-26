@@ -8,10 +8,11 @@ import (
 	"bytes"
 	"errors"
 	"io"
-	"net/http"
 	"strings"
 	"testing"
 	"time"
+
+	http "github.com/dteh/dhttp"
 )
 
 var sizeTests = []struct {

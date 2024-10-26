@@ -19,10 +19,6 @@ import (
 	"log"
 	"maps"
 	"net"
-	. "net/http"
-	"net/http/httptest"
-	"net/http/httptrace"
-	"net/http/httputil"
 	"net/textproto"
 	"net/url"
 	"os"
@@ -34,6 +30,11 @@ import (
 	"sync/atomic"
 	"testing"
 	"time"
+
+	. "github.com/dteh/dhttp"
+	"github.com/dteh/dhttp/httptest"
+	"github.com/dteh/dhttp/httptrace"
+	"github.com/dteh/dhttp/httputil"
 )
 
 type testMode string

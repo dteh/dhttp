@@ -8,7 +8,6 @@ package http
 
 import (
 	"bytes"
-	"internal/testenv"
 	"io/fs"
 	"net/url"
 	"os"
@@ -16,6 +15,8 @@ import (
 	"slices"
 	"strings"
 	"testing"
+
+	"github.com/dteh/dhttp/internal/testenv"
 )
 
 func TestForeachHeaderElement(t *testing.T) {

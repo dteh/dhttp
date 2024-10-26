@@ -8,11 +8,7 @@ import (
 	"bytes"
 	"encoding/base64"
 	"fmt"
-	"internal/profile"
-	"internal/testenv"
 	"io"
-	"net/http"
-	"net/http/httptest"
 	"path/filepath"
 	"runtime"
 	"runtime/pprof"
@@ -21,6 +17,13 @@ import (
 	"sync/atomic"
 	"testing"
 	"time"
+
+	http "github.com/dteh/dhttp"
+
+	"github.com/dteh/dhttp/httptest"
+
+	"github.com/dteh/dhttp/internal/profile"
+	"github.com/dteh/dhttp/internal/testenv"
 )
 
 // TestDescriptions checks that the profile names under runtime/pprof package

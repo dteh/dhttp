@@ -39,7 +39,7 @@ import (
 	"math/bits"
 	mathrand "math/rand"
 	"net"
-	"net/http/httptrace"
+	"github.com/dteh/dhttp/httptrace"
 	"net/textproto"
 	"net/url"
 	"os"

@@ -13,12 +13,14 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"net/http"
-	"net/http/internal/testcert"
 	"os"
 	"strings"
 	"sync"
 	"time"
+
+	http "github.com/dteh/dhttp"
+
+	"github.com/dteh/dhttp/internal/testcert"
 )
 
 // A Server is an HTTP server listening on a system-chosen port on the

@@ -8,11 +8,12 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	. "net/http"
 	"os"
 	"sync"
 	"testing"
 	"time"
+
+	. "github.com/dteh/dhttp"
 )
 
 func TestResponseControllerFlush(t *testing.T) { run(t, testResponseControllerFlush) }

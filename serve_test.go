@@ -16,18 +16,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"internal/testenv"
 	"io"
 	"log"
 	"math/rand"
 	"mime/multipart"
 	"net"
-	. "net/http"
-	"net/http/httptest"
-	"net/http/httptrace"
-	"net/http/httputil"
-	"net/http/internal"
-	"net/http/internal/testcert"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -42,6 +35,15 @@ import (
 	"syscall"
 	"testing"
 	"time"
+
+	. "github.com/dteh/dhttp"
+	"github.com/dteh/dhttp/httptest"
+	"github.com/dteh/dhttp/httptrace"
+	"github.com/dteh/dhttp/httputil"
+	"github.com/dteh/dhttp/internal"
+	"github.com/dteh/dhttp/internal/testcert"
+
+	"github.com/dteh/dhttp/internal/testenv"
 )
 
 type dummyAddr string

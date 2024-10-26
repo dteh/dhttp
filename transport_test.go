@@ -21,16 +21,10 @@ import (
 	"errors"
 	"fmt"
 	"go/token"
-	"internal/nettrace"
 	"io"
 	"log"
 	mrand "math/rand"
 	"net"
-	. "net/http"
-	"net/http/httptest"
-	"net/http/httptrace"
-	"net/http/httputil"
-	"net/http/internal/testcert"
 	"net/textproto"
 	"net/url"
 	"os"
@@ -44,6 +38,14 @@ import (
 	"testing"
 	"testing/iotest"
 	"time"
+
+	. "github.com/dteh/dhttp"
+	"github.com/dteh/dhttp/httptest"
+	"github.com/dteh/dhttp/httptrace"
+	"github.com/dteh/dhttp/httputil"
+	"github.com/dteh/dhttp/internal/testcert"
+
+	"github.com/dteh/dhttp/internal/nettrace"
 
 	"golang.org/x/net/http/httpguts"
 )

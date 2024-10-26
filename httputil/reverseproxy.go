@@ -14,14 +14,16 @@ import (
 	"log"
 	"mime"
 	"net"
-	"net/http"
-	"net/http/httptrace"
-	"net/http/internal/ascii"
 	"net/textproto"
 	"net/url"
 	"strings"
 	"sync"
 	"time"
+
+	http "github.com/dteh/dhttp"
+
+	"github.com/dteh/dhttp/httptrace"
+	"github.com/dteh/dhttp/internal/ascii"
 
 	"golang.org/x/net/http/httpguts"
 )

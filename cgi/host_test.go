@@ -419,7 +419,7 @@ func TestCopyError(t *testing.T) {
 // handlerRunning reports whether any goroutine is currently running
 // [Handler.ServeHTTP].
 func handlerRunning() bool {
-	r := regexp.MustCompile(`net/http/cgi\.\(\*Handler\)\.ServeHTTP`)
+	r := regexp.MustCompile(`http/cgi\.\(\*Handler\)\.ServeHTTP`)
 	buf := make([]byte, 64<<10)
 	for {
 		n := runtime.Stack(buf, true)

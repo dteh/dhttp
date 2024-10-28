@@ -49,9 +49,9 @@ package godebug
 // meaning it cannot introduce a GODEBUG setting of its own.
 // We keep imports to the absolute bare minimum.
 import (
+	"os"
 	"sync"
 	"sync/atomic"
-	"unsafe"
 	_ "unsafe" // go:linkname
 
 	"github.com/dteh/dhttp/internal/bisect"
@@ -128,7 +128,7 @@ func (s *Setting) register() {
 	if s.info == nil || s.info.Opaque {
 		panic("godebug: unexpected IncNonDefault of " + s.name)
 	}
-	registerMetric("/godebug/non-default-behavior/"+s.Name()+":events", s.nonDefault.Load)
+	// registerMetric("/godebug/non-default-behavior/"+s.Name()+":events", s.nonDefault.Load)
 }
 
 // cache is a cache of all the GODEBUG settings,
@@ -192,14 +192,14 @@ func lookup(name string) *setting {
 // again each time the environment variable changes
 // (due to use of os.Setenv, for example).
 //
-//go:linkname setUpdate
-func setUpdate(update func(string, string))
+////go:linkname setUpdate
+// func setUpdate(update func(string, string))
 
 // registerMetric is provided by package runtime.
 // It forwards registrations to runtime/metrics.
 //
-//go:linkname registerMetric
-func registerMetric(name string, read func() uint64)
+////go:linkname registerMetric
+// func registerMetric(name string, read func() uint64)
 
 // setNewIncNonDefault is provided by package runtime.
 // The runtime can do
@@ -212,8 +212,15 @@ func registerMetric(name string, read func() uint64)
 //
 // since it cannot import godebug.
 //
-//go:linkname setNewIncNonDefault
-func setNewIncNonDefault(newIncNonDefault func(string) func())
+// //go:linkname setNewIncNonDefault
+// func setNewIncNonDefault(newIncNonDefault func(string) func())
+var godebugNewIncNonDefault atomic.Pointer[func(string) func()]
+
+func setNewIncNonDefault(newIncNonDefault func(string) func()) {
+	p := new(func(string) func())
+	*p = newIncNonDefault
+	godebugNewIncNonDefault.Store(p)
+}
 
 func init() {
 	setUpdate(update)
@@ -299,7 +306,7 @@ var stderr runtimeStderr
 
 func (*runtimeStderr) Write(b []byte) (int, error) {
 	if len(b) > 0 {
-		write(2, unsafe.Pointer(&b[0]), int32(len(b)))
+		os.Stderr.Write(b)
 	}
 	return len(b), nil
 }
@@ -307,5 +314,5 @@ func (*runtimeStderr) Write(b []byte) (int, error) {
 // Since we cannot import os or syscall, use the runtime's write function
 // to print to standard error.
 //
-//go:linkname write runtime.write
-func write(fd uintptr, p unsafe.Pointer, n int32) int32
+//// go:linkname write runtime.write
+// func write(fd uintptr, p unsafe.Pointer, n int32) int32

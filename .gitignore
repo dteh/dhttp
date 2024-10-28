@@ -53,3 +53,4 @@ _testmain.go
 
 # Ignore temp directory for upstream pulls
 /upstream/
+/upstream-netx/

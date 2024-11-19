@@ -14,10 +14,6 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"net/http"
-	"net/http/httptest"
-	"net/http/httptrace"
-	"net/http/internal/ascii"
 	"net/textproto"
 	"net/url"
 	"os"
@@ -28,6 +24,12 @@ import (
 	"sync"
 	"testing"
 	"time"
+
+	http "github.com/dteh/dhttp"
+
+	"github.com/dteh/dhttp/httptest"
+	"github.com/dteh/dhttp/httptrace"
+	"github.com/dteh/dhttp/internal/ascii"
 )
 
 const fakeHopHeader = "X-Fake-Hop-Header-For-Test"

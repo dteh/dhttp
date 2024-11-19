@@ -16,10 +16,12 @@ import (
 	"bytes"
 	"fmt"
 	"log"
-	"net/http"
-	"net/http/pprof"
-	"net/http/httptest"
 	"runtime"
+
+	http "github.com/dteh/dhttp"
+
+	"github.com/dteh/dhttp/httptest"
+	"github.com/dteh/dhttp/pprof"
 )
 
 func main() {

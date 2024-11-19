@@ -10,15 +10,11 @@ import (
 	"compress/gzip"
 	"errors"
 	"fmt"
-	"internal/testenv"
 	"io"
 	"io/fs"
 	"mime"
 	"mime/multipart"
 	"net"
-	"net/http"
-	. "net/http"
-	"net/http/httptest"
 	"net/url"
 	"os"
 	"os/exec"
@@ -32,6 +28,13 @@ import (
 	"testing"
 	"testing/fstest"
 	"time"
+
+	http "github.com/dteh/dhttp"
+
+	. "github.com/dteh/dhttp"
+	"github.com/dteh/dhttp/httptest"
+
+	"github.com/dteh/dhttp/internal/testenv"
 )
 
 const (

@@ -16,9 +16,6 @@ import (
 	"io"
 	"math"
 	"mime/multipart"
-	"net/http"
-	. "net/http"
-	"net/http/httptest"
 	"net/url"
 	"os"
 	"reflect"
@@ -26,6 +23,10 @@ import (
 	"slices"
 	"strings"
 	"testing"
+
+	. "github.com/dteh/dhttp"
+	http "github.com/dteh/dhttp"
+	"github.com/dteh/dhttp/httptest"
 )
 
 func TestQuery(t *testing.T) {

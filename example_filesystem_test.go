@@ -8,8 +8,9 @@ import (
 	"io"
 	"io/fs"
 	"log"
-	"net/http"
 	"strings"
+
+	http "github.com/dteh/dhttp"
 )
 
 // containsDotFile reports whether name contains a path element starting with a period.

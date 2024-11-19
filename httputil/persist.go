@@ -9,9 +9,10 @@ import (
 	"errors"
 	"io"
 	"net"
-	"net/http"
 	"net/textproto"
 	"sync"
+
+	http "github.com/dteh/dhttp"
 )
 
 var (

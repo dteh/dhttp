@@ -13,13 +13,9 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
-	"internal/testenv"
 	"io"
 	"log"
 	"net"
-	. "net/http"
-	"net/http/cookiejar"
-	"net/http/httptest"
 	"net/url"
 	"reflect"
 	"runtime"
@@ -29,6 +25,12 @@ import (
 	"sync/atomic"
 	"testing"
 	"time"
+
+	. "github.com/dteh/dhttp"
+	"github.com/dteh/dhttp/cookiejar"
+	"github.com/dteh/dhttp/httptest"
+
+	"github.com/dteh/dhttp/internal/testenv"
 )
 
 var robotsTxtHandler = HandlerFunc(func(w ResponseWriter, r *Request) {

@@ -13,9 +13,10 @@ import (
 	"errors"
 	"io"
 	"net"
-	"net/http/internal/testcert"
 	"strings"
 	"testing"
+
+	"github.com/dteh/dhttp/internal/testcert"
 )
 
 // Issue 15446: incorrect wrapping of errors when server closes an idle connection.

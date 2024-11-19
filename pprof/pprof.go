@@ -12,7 +12,7 @@
 //
 // To use pprof, link this package into your program:
 //
-//	import _ "net/http/pprof"
+//	import _ "github.com/dteh/dhttp/pprof"
 //
 // If your application is not already running an http server, you
 // need to start one. Add "net/http" and "log" to your imports and
@@ -76,11 +76,8 @@ import (
 	"context"
 	"fmt"
 	"html"
-	"internal/godebug"
-	"internal/profile"
 	"io"
 	"log"
-	"net/http"
 	"net/url"
 	"os"
 	"runtime"
@@ -90,6 +87,11 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	http "github.com/dteh/dhttp"
+
+	"github.com/dteh/dhttp/internal/godebug"
+	"github.com/dteh/dhttp/internal/profile"
 )
 
 func init() {

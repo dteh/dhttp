@@ -8,9 +8,11 @@ import (
 	"context"
 	"io"
 	"net"
-	"net/http"
-	"net/http/httptrace"
 	"testing"
+
+	http "github.com/dteh/dhttp"
+
+	"github.com/dteh/dhttp/httptrace"
 )
 
 func TestTransportPoolConnReusePriorConnection(t *testing.T) {

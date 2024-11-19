@@ -5,13 +5,14 @@
 package testenv_test
 
 import (
-	"internal/platform"
-	"internal/testenv"
 	"os"
 	"path/filepath"
 	"runtime"
 	"strings"
 	"testing"
+
+	"github.com/dteh/dhttp/internal/platform"
+	"github.com/dteh/dhttp/internal/testenv"
 )
 
 func TestGoToolLocation(t *testing.T) {

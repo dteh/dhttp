@@ -7,7 +7,6 @@
 package race
 
 import (
-	"internal/abi"
 	"unsafe"
 )
 
@@ -34,8 +33,8 @@ func Read(addr unsafe.Pointer) {
 func ReadPC(addr unsafe.Pointer, callerpc, pc uintptr) {
 }
 
-func ReadObjectPC(t *abi.Type, addr unsafe.Pointer, callerpc, pc uintptr) {
-}
+// func ReadObjectPC(t *abi.Type, addr unsafe.Pointer, callerpc, pc uintptr) {
+// }
 
 func Write(addr unsafe.Pointer) {
 }
@@ -43,8 +42,8 @@ func Write(addr unsafe.Pointer) {
 func WritePC(addr unsafe.Pointer, callerpc, pc uintptr) {
 }
 
-func WriteObjectPC(t *abi.Type, addr unsafe.Pointer, callerpc, pc uintptr) {
-}
+// func WriteObjectPC(t *abi.Type, addr unsafe.Pointer, callerpc, pc uintptr) {
+// }
 
 func ReadRange(addr unsafe.Pointer, len int) {
 }

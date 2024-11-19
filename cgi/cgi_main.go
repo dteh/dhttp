@@ -8,12 +8,13 @@ import (
 	"fmt"
 	"io"
 	"maps"
-	"net/http"
 	"os"
 	"path"
 	"slices"
 	"strings"
 	"time"
+
+	http "github.com/dteh/dhttp"
 )
 
 func cgiMain() {

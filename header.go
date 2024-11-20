@@ -24,6 +24,25 @@ import (
 // [CanonicalHeaderKey].
 type Header map[string][]string
 
+// HeaderOrderKey is a magic Key for ResponseWriter.Header map keys
+// that, if present, defines a header order that will be used to
+// write the headers onto wire. The order of the slice defined how the headers
+// will be sorted. A defined Key goes before an undefined Key.
+//
+// This is the only way to specify some order, because maps don't
+// have a a stable iteration order. If no order is given, headers will
+// be sorted lexicographically.
+//
+// According to RFC2616 it is good practice to send general-header fields
+// first, followed by request-header or response-header fields and ending
+// with entity-header fields.
+const HeaderOrderKey = "Header-Order:"
+
+// PHeaderOrderKey is a magic Key for setting http2 pseudo header order.
+// If the header is nil it will use regular GoLang header order.
+// Valid fields are :authority, :method, :path, :scheme
+const PHeaderOrderKey = "PHeader-Order:"
+
 // Add adds the key, value pair to the header.
 // It appends to any existing values associated with key.
 // The key is case insensitive; it is canonicalized by

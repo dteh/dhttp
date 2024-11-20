@@ -9226,7 +9226,7 @@ func (cc *http2ClientConn) encodeHeaders(req *Request, addGzipHeader bool, trail
 			f("content-length", strconv.FormatInt(contentLength, 10))
 		}
 		if addGzipHeader {
-			f("accept-encoding", "gzip")
+			f("accept-encoding", "gzip, deflate, br, zstd")
 		}
 		if !didUA {
 			f("user-agent", http2defaultUserAgent)

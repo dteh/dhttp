@@ -56,3 +56,46 @@ func TestReadBody(t *testing.T) {
 		}
 	}
 }
+
+// Test that the "Accept-Encoding" header is set to
+// "gzip, deflate, br, zstd" by default in both http1 and http2
+func TestDefaultAcceptEncodingHeader(t *testing.T) {
+	for _, proto := range []string{"h1", "h2"} {
+		t.Run("Accept-Encoding_"+proto, func(t *testing.T) {
+			var cl Client
+			if proto == "h1" {
+				cl = Client{Transport: &Transport{
+					TLSClientConfig: &tls.Config{},
+					TLSNextProto:    make(map[string]func(authority string, c *tls.Conn) RoundTripper), // Disable HTTP/2
+				}}
+			} else {
+				cl = Client{
+					Transport: &Transport{},
+				}
+			}
+
+			resp, err := cl.Get("https://httpbin.dev/headers")
+			if err != nil {
+				t.Fatalf("Get failed: %v", err)
+			}
+
+			body := struct {
+				Headers map[string][]string `json:"headers"`
+			}{}
+
+			err = json.NewDecoder(resp.Body).Decode(&body)
+			if err != nil {
+				t.Fatalf("Decode failed: %v", err)
+			}
+
+			aeHeader := body.Headers["Accept-Encoding"]
+			if len(aeHeader) != 1 {
+				t.Fatalf("Expected 1 Accept-Encoding header, got %d", len(aeHeader))
+			}
+			expected := "gzip, deflate, br, zstd"
+			if aeHeader[0] != expected {
+				t.Errorf("Expected Accept-Encoding header to be %q, got %q", expected, aeHeader[0])
+			}
+		})
+	}
+}

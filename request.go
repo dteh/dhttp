@@ -677,29 +677,36 @@ func (r *Request) write(w io.Writer, usingProxy bool, extraHeaders Header, waitF
 	}
 
 	// Header lines
-	_, err = fmt.Fprintf(w, "Host: %s\r\n", host)
-	if err != nil {
-		return err
-	}
-	if trace != nil && trace.WroteHeaderField != nil {
-		trace.WroteHeaderField("Host", []string{host})
-	}
-
-	// Use the defaultUserAgent unless the Header contains one, which
-	// may be blank to not send the header.
-	userAgent := defaultUserAgent
-	if r.Header.has("User-Agent") {
-		userAgent = r.Header.Get("User-Agent")
-	}
-	if userAgent != "" {
-		userAgent = headerNewlineToSpace.Replace(userAgent)
-		userAgent = textproto.TrimString(userAgent)
-		_, err = fmt.Fprintf(w, "User-Agent: %s\r\n", userAgent)
+	if !r.Header.headerOrderContains("Host") {
+		// If headers contain a 'Host' field, use that instead
+		if r.Header.contains("Host") {
+			host = r.Header.get("Host")
+			delete(r.Header, "Host")
+		}
+		_, err = fmt.Fprintf(w, "Host: %s\r\n", host)
 		if err != nil {
 			return err
 		}
 		if trace != nil && trace.WroteHeaderField != nil {
-			trace.WroteHeaderField("User-Agent", []string{userAgent})
+			trace.WroteHeaderField("Host", []string{host})
+		}
+	}
+
+	// Use the defaultUserAgent unless the Header contains one, which
+	// may be blank to not send the header.
+	if !r.Header.headerOrderContains("User-Agent") {
+		userAgent := defaultUserAgent
+		if r.Header.has("User-Agent") {
+			userAgent = r.Header.Get("User-Agent")
+		}
+		if userAgent != "" {
+			_, err = fmt.Fprintf(w, "User-Agent: %s\r\n", userAgent)
+			if err != nil {
+				return err
+			}
+			if trace != nil && trace.WroteHeaderField != nil {
+				trace.WroteHeaderField("User-Agent", []string{userAgent})
+			}
 		}
 	}
 
@@ -713,17 +720,24 @@ func (r *Request) write(w io.Writer, usingProxy bool, extraHeaders Header, waitF
 		return err
 	}
 
+	// Merge headers and extraHeaders to allow ordering
+	for k, v := range extraHeaders {
+		if _, ok := r.Header[k]; !ok {
+			r.Header[k] = v
+		}
+	}
+
 	err = r.Header.writeSubset(w, reqWriteExcludeHeader, trace)
 	if err != nil {
 		return err
 	}
 
-	if extraHeaders != nil {
-		err = extraHeaders.write(w, trace)
-		if err != nil {
-			return err
-		}
-	}
+	// if extraHeaders != nil {
+	// 	err = extraHeaders.write(w, trace)
+	// 	if err != nil {
+	// 		return err
+	// 	}
+	// }
 
 	_, err = io.WriteString(w, "\r\n")
 	if err != nil {

@@ -104,6 +104,21 @@ var headerWriteTests = []struct {
 		"Content-Type: text/html; charset=UTF-8\r\n" +
 			"NewlineInValue: 1  Bar: 2\r\n",
 	},
+	// Test header order
+	{
+		Header{
+			"A":            {"a"},
+			"B":            {"b"},
+			"C":            {"c"},
+			"D":            {"d"},
+			"Z":            {"z"},
+			"E":            {"e"},
+			"X":            {"x"},
+			HeaderOrderKey: {"D", "C", "B", "A"},
+		},
+		map[string]bool{"A": true, "B": false, "C": true},
+		"D: d\r\nB: b\r\nE: e\r\nX: x\r\nZ: z\r\n",
+	},
 }
 
 func TestHeaderWrite(t *testing.T) {

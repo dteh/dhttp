@@ -17,7 +17,6 @@ import (
 	"compress/zlib"
 	"container/list"
 	"context"
-	"crypto/tls"
 	"errors"
 	"fmt"
 	"io"
@@ -32,6 +31,8 @@ import (
 	"sync/atomic"
 	"time"
 	_ "unsafe"
+
+	tls "github.com/refraction-networking/utls"
 
 	cbrotli "github.com/andybalholm/brotli"
 	"github.com/dteh/dhttp/httptrace"

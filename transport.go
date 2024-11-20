@@ -563,6 +563,10 @@ func (t *Transport) alternateRoundTripper(req *Request) RoundTripper {
 
 func validateHeaders(hdrs Header) string {
 	for k, vv := range hdrs {
+		// Skip magic headers
+		if k == HeaderOrderKey || k == PHeaderOrderKey {
+			continue
+		}
 		if !httpguts.ValidHeaderFieldName(k) {
 			return fmt.Sprintf("field name %q", k)
 		}

@@ -9083,6 +9083,9 @@ func (cs *http2clientStream) awaitFlowControl(maxBytes int) (taken int32, err er
 
 func http2validateHeaders(hdrs Header) string {
 	for k, vv := range hdrs {
+		if k == PHeaderOrderKey || k == HeaderOrderKey {
+			continue
+		}
 		if !httpguts.ValidHeaderFieldName(k) {
 			return fmt.Sprintf("name %q", k)
 		}
@@ -9150,15 +9153,39 @@ func (cc *http2ClientConn) encodeHeaders(req *Request, addGzipHeader bool, trail
 		// target URI (the path-absolute production and optionally a '?' character
 		// followed by the query production, see Sections 3.3 and 3.4 of
 		// [RFC3986]).
-		f(":authority", host)
+
+		pHeaderOrder, ok := req.Header[PHeaderOrderKey]
 		m := req.Method
 		if m == "" {
 			m = MethodGet
 		}
-		f(":method", m)
-		if req.Method != "CONNECT" {
-			f(":path", path)
-			f(":scheme", req.URL.Scheme)
+		if ok {
+			for _, p := range pHeaderOrder {
+				switch p {
+				case ":authority":
+					f(":authority", host)
+				case ":method":
+					f(":method", req.Method)
+				case ":path":
+					if req.Method != "CONNECT" {
+						f(":path", path)
+					}
+				case ":scheme":
+					if req.Method != "CONNECT" {
+						f(":scheme", req.URL.Scheme)
+					}
+				default:
+					// Skip unknown pseudo-headers
+					continue
+				}
+			}
+		} else {
+			f(":authority", host)
+			f(":method", m)
+			if req.Method != "CONNECT" {
+				f(":path", path)
+				f(":scheme", req.URL.Scheme)
+			}
 		}
 		if trailers != "" {
 			f("trailer", trailers)
@@ -9215,6 +9242,9 @@ func (cc *http2ClientConn) encodeHeaders(req *Request, addGzipHeader bool, trail
 						f("cookie", v)
 					}
 				}
+				continue
+			} else if k == PHeaderOrderKey || k == HeaderOrderKey {
+				// Don't send magic values as headers
 				continue
 			}
 

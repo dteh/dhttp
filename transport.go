@@ -2357,7 +2357,7 @@ func (pc *persistConn) readLoop() {
 
 		resp.Body = body
 		if rc.addedGzip {
-			resp.Body = setBodyReader(resp, body.body)
+			resp.Body = setBodyReader(resp)
 			resp.Header.Del("Content-Encoding")
 			resp.Header.Del("Content-Length")
 			resp.ContentLength = -1
@@ -2395,7 +2395,7 @@ func (pc *persistConn) readLoop() {
 	}
 }
 
-func setBodyReader(res *Response, rawBody io.ReadCloser) io.ReadCloser {
+func setBodyReader(res *Response) io.ReadCloser {
 	ce := res.Header.Get("Content-Encoding")
 	res.ContentLength = -1
 	res.Uncompressed = true
@@ -2410,9 +2410,8 @@ func setBodyReader(res *Response, rawBody io.ReadCloser) io.ReadCloser {
 			body: res.Body,
 		}
 	case "deflate":
-		return identifyDeflate(rawBody)
+		return &deferredDeflateReader{body: res.Body}
 	case "zstd":
-		// TODO(dteh): Implement this
 		return &zstdReader{
 			body: res.Body,
 		}
@@ -3158,24 +3157,38 @@ const (
 	zlibLevelBest     = 0xDA
 )
 
-func identifyDeflate(body io.ReadCloser) io.ReadCloser {
-	var header [2]byte
-	_, err := io.ReadFull(body, header[:])
-	if err != nil {
-		return body
-	}
+type deferredDeflateReader struct {
+	body io.ReadCloser
+	dz   io.ReadCloser
+}
 
-	if header[0] == zlibMethodDeflate &&
-		(header[1] == zlibLevelDefault || header[1] == zlibLevelLow || header[1] == zlibLevelMedium || header[1] == zlibLevelBest) {
-		return &zlibDeflateReader{
-			body: prependBytesToReadCloser(header[:], body),
+func (d *deferredDeflateReader) Read(p []byte) (n int, err error) {
+	if d.dz == nil {
+		// Lazily identify the deflate reader
+		var header [2]byte
+		_, err := io.ReadFull(d.body, header[:])
+		if err != nil {
+			return 0, err
 		}
-	} else if header[0] == zlibMethodDeflate {
-		return &deflateReader{
-			body: prependBytesToReadCloser(header[:], body),
+		if header[0] == zlibMethodDeflate &&
+			(header[1] == zlibLevelDefault || header[1] == zlibLevelLow || header[1] == zlibLevelMedium || header[1] == zlibLevelBest) {
+			d.dz = &zlibDeflateReader{
+				body: prependBytesToReadCloser(header[:], d.body),
+			}
+		} else if header[0] == zlibMethodDeflate {
+			d.dz = &deflateReader{
+				body: prependBytesToReadCloser(header[:], d.body),
+			}
 		}
 	}
-	return body
+	return d.dz.Read(p)
+}
+
+func (d *deferredDeflateReader) Close() error {
+	if d.dz == nil {
+		return d.body.Close()
+	}
+	return d.dz.Close()
 }
 
 func prependBytesToReadCloser(b []byte, r io.ReadCloser) io.ReadCloser {

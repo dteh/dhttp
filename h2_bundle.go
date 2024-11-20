@@ -9721,14 +9721,42 @@ func (rl *http2clientConnReadLoop) handleResponse(cs *http2clientStream, f *http
 	cs.bytesRemain = res.ContentLength
 	res.Body = http2transportResponseBody{cs}
 
-	if cs.requestedGzip && http2asciiEqualFold(res.Header.Get("Content-Encoding"), "gzip") {
+	if cs.requestedGzip  {
+		res.Body = setHttp2BodyReader(res)
 		res.Header.Del("Content-Encoding")
 		res.Header.Del("Content-Length")
 		res.ContentLength = -1
-		res.Body = &http2gzipReader{body: res.Body}
 		res.Uncompressed = true
 	}
+
 	return res, nil
+}
+
+func setHttp2BodyReader(res *Response) io.ReadCloser {
+	ce := res.Header.Get("Content-Encoding")
+	res.ContentLength = -1
+	res.Uncompressed = true
+
+	switch ce {
+	case "gzip":
+		return &http2gzipReader{
+			body: res.Body,
+		}
+	case "br":
+		return &brReader{
+			body: res.Body,
+		}
+	case "deflate":
+		return &deferredDeflateReader{
+			body:res.Body,
+		}
+	case "zstd":
+		return &zstdReader{
+			body: res.Body,
+		}
+	default:
+		return res.Body
+	}
 }
 
 func (rl *http2clientConnReadLoop) processTrailers(cs *http2clientStream, f *http2MetaHeadersFrame) error {

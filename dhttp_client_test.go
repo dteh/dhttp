@@ -4,8 +4,6 @@ package http
 
 import (
 	"crypto/tls"
-	"io"
-	"log"
 	"testing"
 
 	"encoding/json"
@@ -26,6 +24,7 @@ func TestReadBody(t *testing.T) {
 	for name, c := range cases {
 		for _, proto := range []string{"h1", "h2"} {
 			t.Run(name+"_"+proto, func(t *testing.T) {
+				t.Parallel()
 				var cl Client
 				if proto == "h1" {
 					cl = Client{Transport: &Transport{
@@ -33,7 +32,9 @@ func TestReadBody(t *testing.T) {
 						TLSNextProto:    make(map[string]func(authority string, c *tls.Conn) RoundTripper), // Disable HTTP/2
 					}}
 				} else {
-					cl = Client{}
+					cl = Client{
+						Transport: &Transport{},
+					}
 				}
 
 				resp, err := cl.Get(c.url)
@@ -42,8 +43,6 @@ func TestReadBody(t *testing.T) {
 				}
 				defer resp.Body.Close()
 
-				// t.Log(resp.Header.Get("Content-Encoding"))
-				// t.Log(reflect.TypeOf(resp.Body))
 				response := map[string]any{}
 				err = json.NewDecoder(resp.Body).Decode(&response)
 				if err != nil {
@@ -56,22 +55,4 @@ func TestReadBody(t *testing.T) {
 			})
 		}
 	}
-}
-
-func TestDeflate(t *testing.T) {
-	cl := Client{Transport: &Transport{
-		TLSClientConfig: &tls.Config{},
-		TLSNextProto:    make(map[string]func(authority string, c *tls.Conn) RoundTripper), // Disable HTTP/2
-	}}
-
-	r, _ := NewRequest("GET", "https://httpbin.dev/deflate", nil)
-
-	resp, err := cl.Do(r)
-	if err != nil {
-		t.Fatalf("Get failed: %v", err)
-	}
-	defer resp.Body.Close()
-	b, err := io.ReadAll(resp.Body)
-	log.Println("Got b", string(b))
-	t.Fail()
 }

@@ -6,12 +6,13 @@ package httptest
 
 import (
 	"context"
-	"crypto/tls"
 	"io"
 	"net/url"
 	"reflect"
 	"strings"
 	"testing"
+
+	tls "github.com/refraction-networking/utls"
 
 	http "github.com/dteh/dhttp"
 )

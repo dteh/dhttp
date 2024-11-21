@@ -3,8 +3,13 @@ package http
 // Tests relating to changes made by dhttp
 
 import (
-	"crypto/tls"
+	"context"
+	"fmt"
+	"net/url"
 	"testing"
+
+	"github.com/dteh/dhttp/httptrace"
+	tls "github.com/refraction-networking/utls"
 
 	"encoding/json"
 )
@@ -29,7 +34,7 @@ func TestReadBody(t *testing.T) {
 				if proto == "h1" {
 					cl = Client{Transport: &Transport{
 						TLSClientConfig: &tls.Config{},
-						TLSNextProto:    make(map[string]func(authority string, c *tls.Conn) RoundTripper), // Disable HTTP/2
+						TLSNextProto:    make(map[string]func(authority string, c *tls.UConn) RoundTripper), // Disable HTTP/2
 					}}
 				} else {
 					cl = Client{
@@ -62,11 +67,13 @@ func TestReadBody(t *testing.T) {
 func TestDefaultAcceptEncodingHeader(t *testing.T) {
 	for _, proto := range []string{"h1", "h2"} {
 		t.Run("Accept-Encoding_"+proto, func(t *testing.T) {
+			t.Parallel()
+
 			var cl Client
 			if proto == "h1" {
 				cl = Client{Transport: &Transport{
 					TLSClientConfig: &tls.Config{},
-					TLSNextProto:    make(map[string]func(authority string, c *tls.Conn) RoundTripper), // Disable HTTP/2
+					TLSNextProto:    make(map[string]func(authority string, c *tls.UConn) RoundTripper), // Disable HTTP/2
 				}}
 			} else {
 				cl = Client{
@@ -97,5 +104,141 @@ func TestDefaultAcceptEncodingHeader(t *testing.T) {
 				t.Errorf("Expected Accept-Encoding header to be %q, got %q", expected, aeHeader[0])
 			}
 		})
+	}
+}
+
+type Ja3Response struct {
+	Ja3              string `json:"ja3"`
+	Ja3N             string `json:"ja3n"`
+	Ja3Digest        string `json:"ja3_digest"`
+	Ja3NDigest       string `json:"ja3n_digest"`
+	ScrapflyFp       string `json:"scrapfly_fp"`
+	ScrapflyFpDigest string `json:"scrapfly_fp_digest"`
+	TLS              TLS    `json:"tls"`
+}
+type TLS struct {
+	Version                    string   `json:"version"`
+	Ciphers                    []string `json:"ciphers"`
+	Curves                     []string `json:"curves"`
+	Extensions                 []string `json:"extensions"`
+	Points                     []string `json:"points"`
+	Protocols                  []string `json:"protocols"`
+	Versions                   []string `json:"versions"`
+	HandshakeDuration          string   `json:"handshake_duration"`
+	IsSessionResumption        bool     `json:"is_session_resumption"`
+	SessionTicketSupported     bool     `json:"session_ticket_supported"`
+	SupportSecureRenegotiation bool     `json:"support_secure_renegotiation"`
+	SupportedTLSVersions       []int    `json:"supported_tls_versions"`
+	SupportedProtocols         []string `json:"supported_protocols"`
+	SignatureAlgorithms        []int    `json:"signature_algorithms"`
+	PskKeyExchangeMode         string   `json:"psk_key_exchange_mode"`
+	CertCompressionAlgorithms  string   `json:"cert_compression_algorithms"`
+	EarlyData                  bool     `json:"early_data"`
+	UsingPsk                   bool     `json:"using_psk"`
+	SelectedProtocol           string   `json:"selected_protocol"`
+	SelectedCurveGroup         int      `json:"selected_curve_group"`
+	SelectedCipherSuite        int      `json:"selected_cipher_suite"`
+	KeyShares                  []int    `json:"key_shares"`
+}
+
+func getja3(ctx context.Context, cl *Client, apiURL string) (TLS, error) {
+	req, _ := NewRequest("GET", apiURL, nil)
+	req = req.WithContext(ctx)
+
+	resp, err := cl.Do(req)
+	if err != nil {
+		return TLS{}, err
+	}
+	defer resp.Body.Close()
+	r := Ja3Response{}
+	err = json.NewDecoder(resp.Body).Decode(&r)
+	if err != nil {
+		return TLS{}, err
+	}
+	return r.TLS, nil
+}
+
+func newTransportWithHelloAndProxy(proto string, hello tls.ClientHelloID, proxy ...string) *Transport {
+	var proxyfn func(*Request) (*url.URL, error)
+	if len(proxy) > 0 {
+		p, _ := url.Parse(proxy[0])
+		proxyfn = ProxyURL(p)
+	}
+	if proto == "http/1.1" { // Disable HTTP/2
+		return &Transport{
+			TLSClientConfig: &tls.Config{},
+			TLSNextProto:    nil,
+			Proxy:           proxyfn,
+			ClientHelloSettings: ClientHelloSettings{
+				HelloID: hello,
+			},
+		}
+	}
+	return &Transport{
+		Proxy: proxyfn,
+		ClientHelloSettings: ClientHelloSettings{
+			HelloID: hello,
+		},
+	}
+}
+
+// Test that UTLS parrots are being correctly applied for h1/h2 with/without a proxy
+func TestClientHelloID(t *testing.T) {
+	ja3API := "https://tools.scrapfly.io/api/fp/ja3"
+
+	hellos := map[string]tls.ClientHelloID{
+		"chrome":  tls.HelloChrome_Auto,
+		"firefox": tls.HelloFirefox_Auto,
+		"edge":    tls.HelloEdge_Auto,
+		"ios":     tls.HelloIOS_Auto,
+	}
+	for _, proto := range []string{"http/1.1", "h2"} {
+		for _, useProxy := range []bool{false, true} {
+			t.Run("ClientHelloID_"+proto+"_Proxy:"+fmt.Sprint(useProxy), func(t *testing.T) {
+				t.Parallel()
+
+				proxy := []string{}
+				if useProxy {
+					// If using an mitm proxy make sure ssl decryption is disabled otherwise
+					// it will hijack the tls negotiation with its own handshake
+					proxy = []string{"http://127.0.0.1:8888"}
+				}
+
+				hk := ""
+				trace := &httptrace.ClientTrace{
+					TLSHandshakeDone: func(cs tls.ConnectionState, err error) {
+						hk += cs.NegotiatedProtocol + " "
+					},
+				}
+				ctx := httptrace.WithClientTrace(context.Background(), trace)
+
+				cl := &Client{}
+				ja3s := map[string]TLS{}
+				for helloName := range hellos {
+					cl = &Client{Transport: newTransportWithHelloAndProxy(proto, hellos[helloName], proxy...)}
+					ja3, err := getja3(ctx, cl, ja3API)
+					if err != nil {
+						t.Fatalf("Get failed: %v", err)
+					}
+					ja3s[helloName] = ja3
+				}
+
+				want := fmt.Sprintf("%v %v %v %v ", proto, proto, proto, proto)
+				if hk != want {
+					t.Errorf("NegotiatedProtocol not in expected order\ngot : %v\nwant: %v", hk, want)
+				}
+
+				for helloID, hello := range hellos {
+					spec, _ := tls.UTLSIdToSpec(hello)
+					if len(ja3s[helloID].Ciphers) != len(spec.CipherSuites) {
+						t.Errorf("Expected %d Ciphers, got %d", len(spec.CipherSuites), len(ja3s[helloID].SignatureAlgorithms))
+					}
+					if len(ja3s[helloID].Extensions) != len(spec.Extensions) {
+						t.Errorf("Expected %d Extensions, got %d", len(spec.Extensions), len(ja3s[helloID].Extensions))
+					}
+
+				}
+			})
+		}
 	}
 }

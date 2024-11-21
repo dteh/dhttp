@@ -7,12 +7,13 @@ package http_test
 import (
 	"bufio"
 	"bytes"
-	"crypto/tls"
 	"crypto/x509"
 	"fmt"
 	"io"
 	"strings"
 	"testing"
+
+	tls "github.com/refraction-networking/utls"
 
 	. "github.com/dteh/dhttp"
 	"github.com/dteh/dhttp/httptest"

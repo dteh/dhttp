@@ -9,9 +9,10 @@ import (
 	"bufio"
 	"bytes"
 	"context"
-	"crypto/tls"
 	"io"
 	"strings"
+
+	tls "github.com/refraction-networking/utls"
 
 	http "github.com/dteh/dhttp"
 )

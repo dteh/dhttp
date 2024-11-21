@@ -10,7 +10,6 @@ import (
 	"bufio"
 	"bytes"
 	"context"
-	"crypto/tls"
 	"encoding/base64"
 	"errors"
 	"fmt"
@@ -25,6 +24,8 @@ import (
 	"strings"
 	"sync"
 	_ "unsafe" // for linkname
+
+	tls "github.com/refraction-networking/utls"
 
 	"github.com/dteh/dhttp/httptrace"
 	"github.com/dteh/dhttp/internal/ascii"

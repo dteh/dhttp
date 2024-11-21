@@ -15,7 +15,6 @@ import (
 	"compress/gzip"
 	"context"
 	"crypto/rand"
-	"crypto/tls"
 	"crypto/x509"
 	"encoding/binary"
 	"errors"
@@ -38,6 +37,8 @@ import (
 	"testing"
 	"testing/iotest"
 	"time"
+
+	tls "github.com/refraction-networking/utls"
 
 	. "github.com/dteh/dhttp"
 	"github.com/dteh/dhttp/httptest"
@@ -4636,7 +4637,7 @@ func TestTransportAutomaticHTTP2_DefaultTransport(t *testing.T) {
 
 func TestTransportAutomaticHTTP2_TLSNextProto(t *testing.T) {
 	testTransportAutoHTTP(t, &Transport{
-		TLSNextProto: make(map[string]func(string, *tls.Conn) RoundTripper),
+		TLSNextProto: make(map[string]func(string, *tls.UConn) RoundTripper),
 	}, false)
 }
 
@@ -4764,8 +4765,8 @@ func TestNoCrashReturningTransportAltConn(t *testing.T) {
 
 	tr := &Transport{
 		DisableKeepAlives: true,
-		TLSNextProto: map[string]func(string, *tls.Conn) RoundTripper{
-			"foo": func(authority string, c *tls.Conn) RoundTripper {
+		TLSNextProto: map[string]func(string, *tls.UConn) RoundTripper{
+			"foo": func(authority string, c *tls.UConn) RoundTripper {
 				madeRoundTripper <- true
 				return funcRoundTripper(func() {
 					t.Error("foo RoundTripper should not be called")
@@ -6365,8 +6366,8 @@ func TestTransportClone(t *testing.T) {
 		ForceAttemptHTTP2:      true,
 		HTTP2:                  &HTTP2Config{MaxConcurrentStreams: 1},
 		Protocols:              &Protocols{},
-		TLSNextProto: map[string]func(authority string, c *tls.Conn) RoundTripper{
-			"foo": func(authority string, c *tls.Conn) RoundTripper { panic("") },
+		TLSNextProto: map[string]func(authority string, c *tls.UConn) RoundTripper{
+			"foo": func(authority string, c *tls.UConn) RoundTripper { panic("") },
 		},
 		ReadBufferSize:  1,
 		WriteBufferSize: 1,
@@ -7245,7 +7246,7 @@ func TestTransportServerProtocols(t *testing.T) {
 			tr.Protocols = &Protocols{}
 			tr.Protocols.SetHTTP1(true)
 			tr.Protocols.SetHTTP2(true)
-			tr.TLSNextProto = map[string]func(string, *tls.Conn) RoundTripper{}
+			tr.TLSNextProto = map[string]func(string, *tls.UConn) RoundTripper{}
 		},
 		want: "HTTP/2.0",
 	}, {

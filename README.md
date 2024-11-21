@@ -1,14 +1,31 @@
 # DHTTP
 A fork of github.com/golang/go/src/net/http
 
-### Drop in compatible
+- For http/1.1 and http/2.0
+- Includes arbitrary header and pseudo header ordering
+- UTLS parroting supported
+- hopefully kept up to date with net/http
+
+## API
+### Drop in compatible (mostly)
 ```
 import (
     http "github.com/dteh/dhttp"
 )
 ```
+### Changes
+To allow for a parrot to be set, `Transport` has been modified to accept `ClientHelloSettings`
 
-### Reproduce this repository
+```
+type ClientHelloSettings struct {
+	HelloID  tls.ClientHelloID
+	Override tls.ClientHelloSpec
+}
+```
+Users should set their desired parrot as `HelloID`. If a custom spec is required, set `HelloID` to `utls.HelloCustom` and `Override` to the custom spec.
+
+
+## Reproduce this repository
 ```
 git clone git@github.com:golang/go ./dhttp
 cd dhttp
@@ -45,6 +62,7 @@ git remote add origin git@github.com:dteh/dhttp
 
 ### pulling upstream changes
 ```
+rm -rf ./upstream/
 git clone git@github.com:golang/go ./upstream
 cd upstream
 git filter-repo \

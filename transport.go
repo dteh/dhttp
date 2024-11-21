@@ -17,7 +17,6 @@ import (
 	"compress/zlib"
 	"container/list"
 	"context"
-	"crypto/tls"
 	"errors"
 	"fmt"
 	"io"
@@ -32,6 +31,8 @@ import (
 	"sync/atomic"
 	"time"
 	_ "unsafe"
+
+	tls "github.com/refraction-networking/utls"
 
 	cbrotli "github.com/andybalholm/brotli"
 	"github.com/dteh/dhttp/httptrace"
@@ -254,7 +255,7 @@ type Transport struct {
 	// must return a RoundTripper that then handles the request.
 	// If TLSNextProto is not nil, HTTP/2 support is not enabled
 	// automatically.
-	TLSNextProto map[string]func(authority string, c *tls.Conn) RoundTripper
+	TLSNextProto map[string]func(authority string, c *tls.UConn) RoundTripper
 
 	// ProxyConnectHeader optionally specifies headers to send to
 	// proxies during CONNECT requests.
@@ -312,6 +313,10 @@ type Transport struct {
 	// If ForceAttemptHTTP2 is true, or if TLSNextProto contains an "h2" entry,
 	// the default is HTTP/1 and HTTP/2.
 	Protocols *Protocols
+
+	// [dhttp] ClientHelloID is the UTLS ClientHelloID to use for parroting handshakes.
+	// If this is unset, the default ClientHelloID will be used (HelloChrome_Auto).
+	ClientHelloSettings ClientHelloSettings
 }
 
 func (t *Transport) writeBufferSize() int {
@@ -368,7 +373,7 @@ func (t *Transport) Clone() *Transport {
 	if !t.tlsNextProtoWasNil {
 		npm := maps.Clone(t.TLSNextProto)
 		if npm == nil {
-			npm = make(map[string]func(authority string, c *tls.Conn) RoundTripper)
+			npm = make(map[string]func(authority string, c *tls.UConn) RoundTripper)
 		}
 		t2.TLSNextProto = npm
 	}
@@ -1687,11 +1692,36 @@ func (pconn *persistConn) addTLS(ctx context.Context, name string, trace *httptr
 	if cfg.ServerName == "" {
 		cfg.ServerName = name
 	}
+
 	if pconn.cacheKey.onlyH1 {
 		cfg.NextProtos = nil
 	}
 	plainConn := pconn.conn
-	tlsConn := tls.Client(plainConn, cfg)
+
+	// [dhttp] UTLS parroting
+	// If no HelloID is provided, Chrome_Auto is used
+	// If HelloCustom is used, the override is applied
+	chs := pconn.clientHelloSettings
+	if chs.HelloID.Client == "" {
+		chs.HelloID = tls.HelloChrome_Auto
+	}
+
+	// If transport.TLSNextProto is nil (ie, h2 is disabled) then we use a custom spec
+	// to disable ALPN and NPN negotiation as the client will interpret h2 as h1
+	if len(pconn.t.TLSNextProto) == 0 {
+		chs.Override, _ = tls.UTLSIdToSpec(chs.HelloID)
+		chs.HelloID = tls.HelloCustom
+		removeH2FromParrotSpec(&chs.Override)
+	}
+
+	tlsConn := tls.UClient(plainConn, cfg, chs.HelloID)
+	if chs.HelloID == tls.HelloCustom {
+		if err := tlsConn.ApplyPreset(&chs.Override); err != nil {
+			return err
+		}
+	}
+	// [/dhttp]
+
 	errc := make(chan error, 2)
 	var timer *time.Timer // for canceling TLS handshake
 	if d := pconn.t.TLSHandshakeTimeout; d != 0 {
@@ -1730,6 +1760,25 @@ func (pconn *persistConn) addTLS(ctx context.Context, name string, trace *httptr
 	return nil
 }
 
+// [dhttp] Accurate parrots include both h2 and h1 in the ALPN list
+// If the client has specifically disabled h2 support, we need to modify the spec
+// or the client will crash
+func removeH2FromParrotSpec(spec *tls.ClientHelloSpec) {
+	idx := -1
+	for i := range spec.Extensions {
+		if _, ok := spec.Extensions[i].(*tls.ALPNExtension); ok {
+			idx = i
+			break
+		}
+	}
+	// set it to http1 only or add the spec if missing
+	if idx == -1 {
+		spec.Extensions = append(spec.Extensions, &tls.ALPNExtension{AlpnProtocols: []string{"http/1.1"}})
+	} else {
+		spec.Extensions[idx].(*tls.ALPNExtension).AlpnProtocols = []string{"http/1.1"}
+	}
+}
+
 type erringRoundTripper interface {
 	RoundTripErr() error
 }
@@ -1738,13 +1787,14 @@ var testHookProxyConnectTimeout = context.WithTimeout
 
 func (t *Transport) dialConn(ctx context.Context, cm connectMethod) (pconn *persistConn, err error) {
 	pconn = &persistConn{
-		t:             t,
-		cacheKey:      cm.key(),
-		reqch:         make(chan requestAndChan, 1),
-		writech:       make(chan writeRequest, 1),
-		closech:       make(chan struct{}),
-		writeErrCh:    make(chan error, 1),
-		writeLoopDone: make(chan struct{}),
+		t:                   t,
+		cacheKey:            cm.key(),
+		reqch:               make(chan requestAndChan, 1),
+		writech:             make(chan writeRequest, 1),
+		closech:             make(chan struct{}),
+		writeErrCh:          make(chan error, 1),
+		writeLoopDone:       make(chan struct{}),
+		clientHelloSettings: t.ClientHelloSettings,
 	}
 	trace := httptrace.ContextClientTrace(ctx)
 	wrapErr := func(err error) error {
@@ -1914,7 +1964,7 @@ func (t *Transport) dialConn(ctx context.Context, cm connectMethod) (pconn *pers
 
 	if s := pconn.tlsState; s != nil && s.NegotiatedProtocolIsMutual && s.NegotiatedProtocol != "" {
 		if next, ok := t.TLSNextProto[s.NegotiatedProtocol]; ok {
-			alt := next(cm.targetAddr, pconn.conn.(*tls.Conn))
+			alt := next(cm.targetAddr, pconn.conn.(*tls.UConn))
 			if e, ok := alt.(erringRoundTripper); ok {
 				// pconn.conn was closed by next (http2configureTransports.upgradeFn).
 				return nil, e.RoundTripErr()
@@ -2088,6 +2138,16 @@ type persistConn struct {
 	// headers on each outbound request before it's written. (the
 	// original Request given to RoundTrip is not modified)
 	mutateHeaderFunc func(Header)
+
+	// [dhttp] clientHelloSettings - if helloID is tls.HelloCustom, then override will be used instead
+	// of the default settings
+	clientHelloSettings ClientHelloSettings
+}
+
+// [dhttp] type ClientHelloSettings struct
+type ClientHelloSettings struct {
+	HelloID  tls.ClientHelloID
+	Override tls.ClientHelloSpec
 }
 
 func (pc *persistConn) maxHeaderResponseSize() int64 {

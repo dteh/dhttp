@@ -26,6 +26,8 @@ var respExcludeHeader = map[string]bool{
 	"Content-Length":    true,
 	"Transfer-Encoding": true,
 	"Trailer":           true,
+	HeaderOrderKey:      true,
+	PHeaderOrderKey:     true,
 }
 
 // Response represents the response from an HTTP request.

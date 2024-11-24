@@ -5,7 +5,9 @@ package http
 import (
 	"context"
 	"fmt"
+	"io"
 	"net/url"
+	"sync"
 	"testing"
 
 	"github.com/dteh/dhttp/httptrace"
@@ -241,4 +243,21 @@ func TestClientHelloID(t *testing.T) {
 			})
 		}
 	}
+}
+
+// Concurrent map read/write crash issue #3
+func TestWriteSubsetConcurrentHeaderWrite(t *testing.T) {
+	wg := sync.WaitGroup{}
+	wg.Add(100)
+	for i := 0; i < 100; i++ {
+		go func() {
+			h := Header{
+				"User-Agent":   {"dhttp"},
+				HeaderOrderKey: {"User-Agent"},
+			}
+			h.WriteSubset(io.Discard, respExcludeHeader)
+			wg.Done()
+		}()
+	}
+	wg.Wait()
 }

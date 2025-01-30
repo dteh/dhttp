@@ -4870,7 +4870,7 @@ func TestNoCrashReturningTransportAltConn(t *testing.T) {
 			t.Error(err)
 			return
 		}
-		if err := sc.(*tls.Conn).Handshake(); err != nil {
+		if err := sc.(*tls.UConn).Handshake(); err != nil {
 			t.Error(err)
 			return
 		}
@@ -7381,7 +7381,7 @@ func TestTransportServerProtocols(t *testing.T) {
 		server: func(srv *Server) {
 			// Disable HTTP/2 on the server with TLSNextProto,
 			// use default Protocols value.
-			srv.TLSNextProto = map[string]func(*Server, *tls.UConn, Handler){}
+			srv.TLSNextProto = map[string]func(*Server, *tls.Conn, Handler){}
 		},
 		want: "HTTP/1.1",
 	}, {
@@ -7393,7 +7393,7 @@ func TestTransportServerProtocols(t *testing.T) {
 			srv.Protocols = &Protocols{}
 			srv.Protocols.SetHTTP1(true)
 			srv.Protocols.SetHTTP2(true)
-			srv.TLSNextProto = map[string]func(*Server, *tls.UConn, Handler){}
+			srv.TLSNextProto = map[string]func(*Server, *tls.Conn, Handler){}
 		},
 		want: "HTTP/2.0",
 	}, {

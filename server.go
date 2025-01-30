@@ -1963,7 +1963,7 @@ func (c *conn) serve(ctx context.Context) {
 		}
 	}()
 
-	if tlsConn, ok := c.rwc.(*tls.UConn); ok {
+	if tlsConn, ok := c.rwc.(*tls.Conn); ok {
 		tlsTO := c.server.tlsHandshakeTimeout()
 		if tlsTO > 0 {
 			dl := time.Now().Add(tlsTO)
@@ -2177,7 +2177,12 @@ func (c unencryptedNetConnInTLSConn) UnencryptedNetConn() net.Conn {
 	return c.conn
 }
 
-func unencryptedTLSConn(c net.Conn) *tls.UConn {
+func unencryptedTLSConn(c net.Conn) *tls.Conn {
+	return tls.Client(unencryptedNetConnInTLSConn{conn: c}, nil)
+}
+
+// dhttp: UTLS version for the client transport
+func unencryptedUTLSConn(c net.Conn) *tls.UConn {
 	return tls.UClient(unencryptedNetConnInTLSConn{conn: c}, nil, tls.ClientHelloID{})
 }
 
@@ -3022,7 +3027,7 @@ type Server struct {
 	// automatically closed when the function returns.
 	// If TLSNextProto is not nil, HTTP/2 support is not enabled
 	// automatically.
-	TLSNextProto map[string]func(*Server, *tls.UConn, Handler)
+	TLSNextProto map[string]func(*Server, *tls.Conn, Handler)
 
 	// ConnState specifies an optional callback function that is
 	// called when a client connection changes state. See the
@@ -3946,7 +3951,7 @@ func (globalOptionsHandler) ServeHTTP(w ResponseWriter, r *Request) {
 // Requests come from ALPN protocol handlers.
 type initALPNRequest struct {
 	ctx context.Context
-	c   *tls.UConn
+	c   *tls.Conn
 	h   serverHandler
 }
 

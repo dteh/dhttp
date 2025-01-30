@@ -218,7 +218,7 @@ func TestTransportBodyAltRewind(t *testing.T) {
 				t.Error(err)
 				return
 			}
-			if err := sc.(*tls.Conn).Handshake(); err != nil {
+			if err := sc.(*tls.UConn).Handshake(); err != nil {
 				t.Error(err)
 				return
 			}

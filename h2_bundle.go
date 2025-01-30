@@ -4344,7 +4344,7 @@ func http2ConfigureServer(s *Server, conf *http2Server) error {
 	}
 
 	if s.TLSNextProto == nil {
-		s.TLSNextProto = map[string]func(*Server, *tls.UConn, Handler){}
+		s.TLSNextProto = map[string]func(*Server, *tls.Conn, Handler){}
 	}
 	protoHandler := func(hs *Server, c net.Conn, h Handler, sawClientPreface bool) {
 		if http2testHookOnConn != nil {
@@ -4369,13 +4369,13 @@ func http2ConfigureServer(s *Server, conf *http2Server) error {
 			SawClientPreface: sawClientPreface,
 		})
 	}
-	s.TLSNextProto[http2NextProtoTLS] = func(hs *Server, c *tls.UConn, h Handler) {
+	s.TLSNextProto[http2NextProtoTLS] = func(hs *Server, c *tls.Conn, h Handler) {
 		protoHandler(hs, c, h, false)
 	}
 	// The "unencrypted_http2" TLSNextProto key is used to pass off non-TLS HTTP/2 conns.
 	//
 	// A connection passed in this method has already had the HTTP/2 preface read from it.
-	s.TLSNextProto[http2nextProtoUnencryptedHTTP2] = func(hs *Server, c *tls.UConn, h Handler) {
+	s.TLSNextProto[http2nextProtoUnencryptedHTTP2] = func(hs *Server, c *tls.Conn, h Handler) {
 		nc, err := http2unencryptedNetConnFromTLSConn(c)
 		if err != nil {
 			if lg := hs.ErrorLog; lg != nil {
@@ -7734,7 +7734,7 @@ func http2configureTransports(t1 *Transport) (*http2Transport, error) {
 	}
 	// The "unencrypted_http2" TLSNextProto key is used to pass off non-TLS HTTP/2 conns.
 	t1.TLSNextProto[http2nextProtoUnencryptedHTTP2] = func(authority string, c *tls.UConn) RoundTripper {
-		nc, err := http2unencryptedNetConnFromTLSConn(c)
+		nc, err := http2unencryptedNetConnFromUTLSConn(c)
 		if err != nil {
 			go c.Close()
 			return http2erringRoundTripper{err}
@@ -8554,7 +8554,7 @@ func (cc *http2ClientConn) closeConn() {
 // A tls.Conn.Close can hang for a long time if the peer is unresponsive.
 // Try to shut it down more aggressively.
 func (cc *http2ClientConn) forceCloseConn() {
-	tc, ok := cc.tconn.(*tls.Conn)
+	tc, ok := cc.tconn.(*tls.UConn)
 	if !ok {
 		return
 	}
@@ -11021,7 +11021,7 @@ func http2traceGot1xxResponseFunc(trace *httptrace.ClientTrace) func(int, textpr
 
 // dialTLSWithContext uses tls.Dialer, added in Go 1.15, to open a TLS
 // connection.
-func (t *http2Transport) dialTLSWithContext(ctx context.Context, network, addr string, cfg *tls.Config) (*tls.Conn, error) {
+func (t *http2Transport) dialTLSWithContext(ctx context.Context, network, addr string, cfg *tls.Config) (*tls.UConn, error) {
 	dialer := &tls.Dialer{
 		Config: cfg,
 	}
@@ -11029,7 +11029,7 @@ func (t *http2Transport) dialTLSWithContext(ctx context.Context, network, addr s
 	if err != nil {
 		return nil, err
 	}
-	tlsCn := cn.(*tls.Conn) // DialContext comment promises this will always succeed
+	tlsCn := cn.(*tls.UConn) // DialContext comment promises this will always succeed
 	return tlsCn, nil
 }
 
@@ -11044,7 +11044,18 @@ const http2nextProtoUnencryptedHTTP2 = "unencrypted_http2"
 // To be extra careful about mistakes (accidentally dropping TLS encryption in a place
 // where we want it), the tls.Conn contains a net.Conn with an UnencryptedNetConn method
 // that returns the actual connection we want to use.
-func http2unencryptedNetConnFromTLSConn(tc *tls.UConn) (net.Conn, error) {
+func http2unencryptedNetConnFromTLSConn(tc *tls.Conn) (net.Conn, error) {
+	conner, ok := tc.NetConn().(interface {
+		UnencryptedNetConn() net.Conn
+	})
+	if !ok {
+		return nil, errors.New("http2: TLS conn unexpectedly found in unencrypted handoff")
+	}
+	return conner.UnencryptedNetConn(), nil
+}
+
+// dhttp: We need a separate function for UTLS connections
+func http2unencryptedNetConnFromUTLSConn(tc *tls.UConn) (net.Conn, error) {
 	conner, ok := tc.NetConn().(interface {
 		UnencryptedNetConn() net.Conn
 	})

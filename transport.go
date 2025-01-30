@@ -1817,7 +1817,7 @@ func (t *Transport) dialConn(ctx context.Context, cm connectMethod) (pconn *pers
 		if err != nil {
 			return nil, wrapErr(err)
 		}
-		if tc, ok := pconn.conn.(*tls.Conn); ok {
+		if tc, ok := pconn.conn.(*tls.UConn); ok {
 			// Handshake here, in case DialTLS didn't. TLSNextProto below
 			// depends on it for knowing the connection state.
 			if trace != nil && trace.TLSHandshakeStart != nil {
@@ -1979,7 +1979,7 @@ func (t *Transport) dialConn(ctx context.Context, cm connectMethod) (pconn *pers
 		if !ok {
 			return nil, errors.New("http: Transport does not support unencrypted HTTP/2")
 		}
-		alt := next(cm.targetAddr, unencryptedTLSConn(pconn.conn))
+		alt := next(cm.targetAddr, unencryptedUTLSConn(pconn.conn))
 		if e, ok := alt.(erringRoundTripper); ok {
 			// pconn.conn was closed by next (http2configureTransports.upgradeFn).
 			return nil, e.RoundTripErr()

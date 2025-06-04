@@ -363,15 +363,15 @@ func (h Header) headerOrderContains(elem string) bool {
 	return false
 }
 
-func (h Header) contains(elem string) bool {
+func (h Header) contains(elem string) (string, bool) {
 	elem = strings.ToLower(elem)
 	for headerName := range h {
 		if headerName == HeaderOrderKey || headerName == PHeaderOrderKey {
 			continue
 		}
 		if strings.ToLower(headerName) == elem {
-			return true
+			return headerName, true
 		}
 	}
-	return false
+	return "", false
 }

@@ -99,11 +99,7 @@ func badStringError(what, val string) error { return fmt.Errorf("%s %q", what, v
 
 // Headers that Request.Write handles itself and should be skipped.
 var reqWriteExcludeHeader = map[string]bool{
-	"Host":              true, // not in Header map anyway
-	"User-Agent":        true,
-	"Content-Length":    true,
-	"Transfer-Encoding": true,
-	"Trailer":           true,
+	"Host": true, // not in Header map anyway
 }
 
 // A Request represents an HTTP request received by a server
@@ -578,6 +574,27 @@ func (r *Request) WriteProxy(w io.Writer) error {
 // the Request.
 var errMissingHost = errors.New("http: Request.Write on Request with no Host or URL set")
 
+func twHeaders(tw *transferWriter) (map[string][]string, error) {
+	b := bytes.NewBuffer(nil)
+	err := tw.writeHeader(b, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	// Parse the header into a map.
+	twH := map[string][]string{}
+	headers := strings.Split(string(b.Bytes()), "\r\n")
+	for _, h := range headers {
+		if h == "" {
+			continue
+		}
+		sh := strings.SplitN(h, ": ", 2)
+		twH[sh[0]] = []string{sh[1]}
+	}
+
+	return twH, nil
+}
+
 // extraHeaders may be nil
 // waitForContinue may be nil
 // always closes body
@@ -680,9 +697,10 @@ func (r *Request) write(w io.Writer, usingProxy bool, extraHeaders Header, waitF
 	// Header lines
 	if !r.Header.headerOrderContains("Host") {
 		// If headers contain a 'Host' field, use that instead
-		if r.Header.contains("Host") {
-			host = r.Header.get("Host")
-			delete(r.Header, "Host")
+		headerName, ok := r.Header.contains("Host")
+		if ok {
+			host = r.Header.get(headerName)
+			delete(r.Header, headerName)
 		}
 		_, err = fmt.Fprintf(w, "Host: %s\r\n", host)
 		if err != nil {
@@ -695,20 +713,14 @@ func (r *Request) write(w io.Writer, usingProxy bool, extraHeaders Header, waitF
 
 	// Use the defaultUserAgent unless the Header contains one, which
 	// may be blank to not send the header.
-	if !r.Header.headerOrderContains("User-Agent") {
-		userAgent := defaultUserAgent
-		if r.Header.has("User-Agent") {
-			userAgent = r.Header.Get("User-Agent")
-		}
-		if userAgent != "" {
-			_, err = fmt.Fprintf(w, "User-Agent: %s\r\n", userAgent)
-			if err != nil {
-				return err
-			}
-			if trace != nil && trace.WroteHeaderField != nil {
-				trace.WroteHeaderField("User-Agent", []string{userAgent})
-			}
-		}
+	userAgentKey, ok := r.Header.contains("user-agent")
+	writeUserAgent := true
+	if !ok {
+		userAgentKey = "User-Agent"
+		r.Header[userAgentKey] = []string{defaultUserAgent}
+	} else if len(r.Header[userAgentKey]) == 0 {
+		writeUserAgent = false
+		delete(r.Header, userAgentKey)
 	}
 
 	// Process Body,ContentLength,Close,Trailer
@@ -716,14 +728,23 @@ func (r *Request) write(w io.Writer, usingProxy bool, extraHeaders Header, waitF
 	if err != nil {
 		return err
 	}
-	err = tw.writeHeader(w, trace)
+	twH, err := twHeaders(tw)
 	if err != nil {
 		return err
 	}
 
 	// Merge headers and extraHeaders to allow ordering
 	for k, v := range extraHeaders {
-		if _, ok := r.Header[k]; !ok {
+		if _, ok := r.Header.contains(k); !ok {
+			r.Header[k] = v
+		}
+	}
+
+	// Merge the transfer writer headers into the request header.
+	// If the request header already contains a value for the
+	// transfer writer header, it is not overwritten.
+	for k, v := range twH {
+		if _, ok := r.Header.contains(k); !ok {
 			r.Header[k] = v
 		}
 	}
@@ -731,6 +752,9 @@ func (r *Request) write(w io.Writer, usingProxy bool, extraHeaders Header, waitF
 	err = r.Header.writeSubset(w, reqWriteExcludeHeader, trace)
 	if err != nil {
 		return err
+	}
+	if trace != nil && writeUserAgent {
+		trace.WroteHeaderField("User-Agent", r.Header[userAgentKey])
 	}
 
 	// if extraHeaders != nil {

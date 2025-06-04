@@ -3,6 +3,7 @@ package http
 // Tests relating to changes made by dhttp
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -260,4 +261,77 @@ func TestWriteSubsetConcurrentHeaderWrite(t *testing.T) {
 		}()
 	}
 	wg.Wait()
+}
+
+func TestUserAgentMissingHeader(t *testing.T) {
+	for _, proto := range []string{"h1", "h2"} {
+		t.Run("Missing-UserAgent-Proto_"+proto, func(t *testing.T) {
+			t.Parallel()
+
+			var cl Client
+			if proto == "h1" {
+				cl = Client{Transport: &Transport{
+					TLSClientConfig: &tls.Config{},
+					TLSNextProto:    make(map[string]func(authority string, c *tls.UConn) RoundTripper), // Disable HTTP/2
+				}}
+			} else {
+				cl = Client{
+					Transport: &Transport{},
+				}
+			}
+
+			req, _ := NewRequest("GET", "https://httpbin.dev/headers", nil)
+			req.Header = Header{
+				"User-Agent": {"xyz"},
+				HeaderOrderKey: {
+					"User-Agent",
+				},
+			}
+			resp, err := cl.Do(req)
+			if err != nil {
+				t.Fatalf("Get failed: %v", err)
+			}
+
+			body := struct {
+				Headers map[string][]string `json:"headers"`
+			}{}
+
+			err = json.NewDecoder(resp.Body).Decode(&body)
+			if err != nil {
+				t.Fatalf("Decode failed: %v", err)
+			}
+
+			ua := body.Headers["User-Agent"]
+			if len(ua) != 1 {
+				t.Fatalf("Expected 1 User-Agent header, got %d", len(ua))
+			}
+			expected := "xyz"
+			if ua[0] != expected {
+				t.Errorf("Expected User-Agent header to be %q, got %q", expected, ua[0])
+			}
+
+		})
+	}
+}
+
+func TestTransferWriterHeaderShim(t *testing.T) {
+	cl := Client{
+		Transport: &Transport{
+			TLSClientConfig: &tls.Config{},
+			TLSNextProto:    make(map[string]func(authority string, c *tls.UConn) RoundTripper), // Disable HTTP/2
+		},
+	}
+	req, _ := NewRequest("POST", "https://httpbin.dev/post", bytes.NewBufferString("sdfs"))
+	resp, err := cl.Do(req)
+	if err != nil {
+		t.Fatalf("Post failed: %v", err)
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != 200 {
+		t.Errorf("Expected status code 200, got %d", resp.StatusCode)
+		t.Logf("Response: %s", resp.Status)
+		return
+	}
+	io.ReadAll(resp.Body) // Read the body to ensure no errors occur
+	t.Fail()
 }

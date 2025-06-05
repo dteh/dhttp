@@ -741,11 +741,12 @@ func (r *Request) write(w io.Writer, usingProxy bool, extraHeaders Header, waitF
 	}
 
 	// Merge the transfer writer headers into the request header.
-	// If the request header already contains a value for the
-	// transfer writer header, it is not overwritten.
+	// We always overwrite the request header with the transfer writer header
 	for k, v := range twH {
-		if _, ok := r.Header.contains(k); !ok {
+		if headerName, ok := r.Header.contains(k); !ok {
 			r.Header[k] = v
+		} else {
+			r.Header[headerName] = v
 		}
 	}
 

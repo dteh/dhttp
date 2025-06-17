@@ -9553,9 +9553,16 @@ func (cc *http2ClientConn) encodeHeaders(req *Request, addGzipHeader bool, trail
 	}
 
 	// We need to add the accept-encoding header to the request to allow
-	// ordering of this header
+	// ordering of this header. Only set it if we haven't already set it.
 	if addGzipHeader { 
-		req.Header.Set("accept-encoding", "gzip, deflate, br, zstd")
+		if _, ok := req.Header["accept-encoding"]; !ok {
+			req.Header["accept-encoding"] = []string{"gzip, deflate, br, zstd"}
+		}
+	}
+
+	// DT: Set the content-length header before ordering
+	if http2shouldSendReqContentLength(req.Method, contentLength) {
+		req.Header.Set("content-length", strconv.FormatInt(contentLength, 10))
 	}
 
 	enumerateHeaders := func(f func(name, value string)) {
@@ -9617,8 +9624,9 @@ func (cc *http2ClientConn) encodeHeaders(req *Request, addGzipHeader bool, trail
 
 		var didUA bool
 		for _, k := range kvs {
-			if http2asciiEqualFold(k.key, "host") || http2asciiEqualFold(k.key, "content-length") {
+			if http2asciiEqualFold(k.key, "host") {
 				// Host is :authority, already sent.
+				// DT: Content-Length check removed to allow it to be ordered
 				// Content-Length is automatic, set below.
 				continue
 			} else if http2asciiEqualFold(k.key, "connection") ||
@@ -9675,9 +9683,6 @@ func (cc *http2ClientConn) encodeHeaders(req *Request, addGzipHeader bool, trail
 			for _, v := range k.values {
 				f(k.key, v)
 			}
-		}
-		if http2shouldSendReqContentLength(req.Method, contentLength) {
-			f("content-length", strconv.FormatInt(contentLength, 10))
 		}
 		if !didUA {
 			f("user-agent", http2defaultUserAgent)

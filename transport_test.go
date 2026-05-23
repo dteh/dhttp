@@ -2040,7 +2040,7 @@ func (d *countingDialer) DialContext(ctx context.Context, network, address strin
 	d.total++
 	d.live++
 
-	runtime.SetFinalizer(counted, d.decrement)
+	runtime.AddCleanup(counted, func(dd *countingDialer) { dd.decrement(nil) }, d)
 	return counted, nil
 }
 
@@ -2112,7 +2112,7 @@ func (cc *contextCounter) Track(ctx context.Context) context.Context {
 	cc.mu.Lock()
 	defer cc.mu.Unlock()
 	cc.live++
-	runtime.SetFinalizer(counted, cc.decrement)
+	runtime.AddCleanup(counted, func(c *contextCounter) { cc.decrement(nil) }, cc)
 	return counted
 }
 
@@ -4256,6 +4256,10 @@ func testTransportIdleConnRacesRequest(t testing.TB, mode testMode) {
 	cst.li.onDial = func() {
 		<-dialc
 	}
+	closec := make(chan struct{})
+	cst.li.onClose = func(*fakeNetConn) {
+		<-closec
+	}
 	ctx, cancel := context.WithCancel(context.Background())
 	req1c := make(chan error)
 	go func() {
@@ -4285,10 +4289,6 @@ func testTransportIdleConnRacesRequest(t testing.TB, mode testMode) {
 	//
 	// First: Wait for IdleConnTimeout. The net.Conn.Close blocks.
 	synctest.Wait()
-	closec := make(chan struct{})
-	cst.li.conns[0].peer.onClose = func() {
-		<-closec
-	}
 	time.Sleep(timeout)
 	synctest.Wait()
 	// Make a request, which will use a new connection (since the existing one is closing).
@@ -7586,8 +7586,7 @@ func testIssue61474(t *testing.T, mode testMode) {
 	var wg sync.WaitGroup
 	defer wg.Wait()
 	for range 100000 {
-		wg.Add(1)
-		go func() {
+		wg.Go(func() {
 			ctx, cancel := context.WithTimeout(t.Context(), 1*time.Millisecond)
 			defer cancel()
 			req, _ := NewRequestWithContext(ctx, "GET", cst.ts.URL, nil)
@@ -7595,7 +7594,6 @@ func testIssue61474(t *testing.T, mode testMode) {
 			if err == nil {
 				resp.Body.Close()
 			}
-			wg.Done()
-		}()
+		})
 	}
 }

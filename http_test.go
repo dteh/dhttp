@@ -167,7 +167,9 @@ func TestNoUnicodeStrings(t *testing.T) {
 		}
 		if !strings.HasSuffix(path, ".go") ||
 			strings.HasSuffix(path, "_test.go") ||
-			path == "h2_bundle.go" || d.IsDir() {
+			path == "h2_bundle.go" ||
+			path == "internal/httpcommon/httpcommon.go" ||
+			d.IsDir() {
 			return nil
 		}
 

@@ -1,5 +1,5 @@
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/alpn_test.go b/alpn_test.go
---- a/alpn_test.go	2026-05-23 16:14:41
+--- a/alpn_test.go	2026-05-23 16:23:10
 +++ b/alpn_test.go	2026-05-23 15:55:26
 @@ -7,14 +7,16 @@
  import (
@@ -22,7 +22,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestNextProtoUpgrade(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/async_test.go b/async_test.go
---- a/async_test.go	2026-05-23 16:14:41
+--- a/async_test.go	2026-05-23 16:23:10
 +++ b/async_test.go	2025-01-30 14:03:54
 @@ -4,49 +4,44 @@
  
@@ -112,7 +112,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +// 	}
 +// }
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/cgi/cgi_main.go b/cgi/cgi_main.go
---- a/cgi/cgi_main.go	2026-05-23 16:14:41
+--- a/cgi/cgi_main.go	2026-05-23 16:23:10
 +++ b/cgi/cgi_main.go	2026-05-23 15:55:26
 @@ -8,12 +8,13 @@
  	"fmt"
@@ -130,7 +130,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func cgiMain() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/cgi/child.go b/cgi/child.go
---- a/cgi/child.go	2026-05-23 16:14:41
+--- a/cgi/child.go	2026-05-23 16:23:10
 +++ b/cgi/child.go	2026-05-23 15:55:26
 @@ -9,16 +9,18 @@
  
@@ -154,7 +154,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // Request returns the HTTP request as represented in the current
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/cgi/child_test.go b/cgi/child_test.go
---- a/cgi/child_test.go	2026-05-23 16:14:41
+--- a/cgi/child_test.go	2026-05-23 16:23:10
 +++ b/cgi/child_test.go	2026-05-23 15:55:26
 @@ -9,10 +9,12 @@
  import (
@@ -172,7 +172,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestRequest(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/cgi/host.go b/cgi/host.go
---- a/cgi/host.go	2026-05-23 16:14:41
+--- a/cgi/host.go	2026-05-23 16:23:10
 +++ b/cgi/host.go	2026-05-23 15:55:26
 @@ -20,7 +20,6 @@
  	"io"
@@ -192,7 +192,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"golang.org/x/net/http/httpguts"
  )
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/cgi/host_test.go b/cgi/host_test.go
---- a/cgi/host_test.go	2026-05-23 16:14:41
+--- a/cgi/host_test.go	2026-05-23 16:23:10
 +++ b/cgi/host_test.go	2026-05-23 15:55:26
 @@ -9,11 +9,8 @@
  import (
@@ -220,7 +220,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // TestMain executes the test binary as the cgi server if
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/cgi/integration_test.go b/cgi/integration_test.go
---- a/cgi/integration_test.go	2026-05-23 16:14:41
+--- a/cgi/integration_test.go	2026-05-23 16:23:10
 +++ b/cgi/integration_test.go	2026-05-23 15:55:26
 @@ -12,14 +12,17 @@
  	"bytes"
@@ -244,8 +244,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // This test is a CGI host (testing host.go) that runs its own binary
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/client.go b/client.go
---- a/client.go	2026-05-23 16:14:41
-+++ b/client.go	2026-05-23 16:16:51
+--- a/client.go	2026-05-23 16:23:10
++++ b/client.go	2026-05-23 17:16:31
 @@ -11,13 +11,11 @@
  
  import (
@@ -272,8 +272,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // A Client is an HTTP client. Its zero value ([DefaultClient]) is a
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/client_test.go b/client_test.go
---- a/client_test.go	2026-05-23 16:14:41
-+++ b/client_test.go	2026-05-23 16:16:51
+--- a/client_test.go	2026-05-23 16:23:10
++++ b/client_test.go	2026-05-23 17:16:31
 @@ -9,17 +9,12 @@
  import (
  	"bytes"
@@ -308,16 +308,15 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var robotsTxtHandler = HandlerFunc(func(w ResponseWriter, r *Request) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/clientserver_test.go b/clientserver_test.go
---- a/clientserver_test.go	2026-05-23 16:14:41
-+++ b/clientserver_test.go	2026-05-23 15:55:26
-@@ -12,18 +12,12 @@
+--- a/clientserver_test.go	2026-05-23 16:23:10
++++ b/clientserver_test.go	2026-05-23 17:29:18
+@@ -12,17 +12,12 @@
  	"context"
  	"crypto/rand"
  	"crypto/sha1"
 -	"crypto/tls"
  	"fmt"
  	"hash"
--	"internal/synctest"
  	"io"
  	"log"
  	"maps"
@@ -329,9 +328,11 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"net/textproto"
  	"net/url"
  	"os"
-@@ -35,6 +29,15 @@
+@@ -33,8 +28,16 @@
+ 	"sync"
  	"sync/atomic"
  	"testing"
+-	"testing/synctest"
  	"time"
 +
 +	"internal/synctest"
@@ -345,9 +346,70 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  )
  
  type testMode string
+@@ -95,13 +98,33 @@
+ 	}
+ }
+ 
++// cleanupT wraps a testing.T and adds its own Cleanup method.
++// Used to execute cleanup functions within a synctest bubble.
++type cleanupT struct {
++	*testing.T
++	cleanups []func()
++}
++
++// Cleanup replaces T.Cleanup.
++func (t *cleanupT) Cleanup(f func()) {
++	t.cleanups = append(t.cleanups, f)
++}
++
++func (t *cleanupT) done() {
++	for _, f := range slices.Backward(t.cleanups) {
++		f()
++	}
++}
++
+ // runSynctest is run combined with synctest.Run.
+ //
+ // The TB passed to f arranges for cleanup functions to be run in the synctest bubble.
+-func runSynctest(t *testing.T, f func(t *testing.T, mode testMode), opts ...any) {
++func runSynctest(t *testing.T, f func(t testing.TB, mode testMode), opts ...any) {
+ 	run(t, func(t *testing.T, mode testMode) {
+-		synctest.Test(t, func(t *testing.T) {
+-			f(t, mode)
++		synctest.Run(func() {
++			ct := &cleanupT{T: t}
++			defer ct.done()
++			f(ct, mode)
+ 		})
+ 	}, opts...)
+ }
+@@ -272,12 +295,12 @@
+ 		}, modes)
+ 	})
+ 	t.Run("synctest", func(t *testing.T) {
+-		runSynctest(t, func(t *testing.T, mode testMode) {
++		runSynctest(t, func(t testing.TB, mode testMode) {
+ 			testNewClientServerTest(t, mode, optFakeNet)
+ 		}, modes)
+ 	})
+ }
+-func testNewClientServerTest(t *testing.T, mode testMode, opts ...any) {
++func testNewClientServerTest(t testing.TB, mode testMode, opts ...any) {
+ 	var got struct {
+ 		sync.Mutex
+ 		proto  string
+@@ -1233,7 +1256,7 @@
+ 	(func() {
+ 		body := strings.NewReader("some body")
+ 		req, _ := NewRequest("POST", cst.ts.URL, body)
+-		runtime.AddCleanup(req, func(ch chan struct{}) { close(ch) }, didGC)
++		runtime.SetFinalizer(req, func(*Request) { close(didGC) })
+ 		res, err := cst.c.Do(req)
+ 		if err != nil {
+ 			t.Fatal(err)
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/cookie.go b/cookie.go
---- a/cookie.go	2026-05-23 16:14:41
-+++ b/cookie.go	2026-05-23 16:16:51
+--- a/cookie.go	2026-05-23 16:23:10
++++ b/cookie.go	2026-05-23 17:16:31
 @@ -10,11 +10,12 @@
  	"internal/godebug"
  	"log"
@@ -363,7 +425,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var httpcookiemaxnum = godebug.New("httpcookiemaxnum")
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/cookiejar/example_test.go b/cookiejar/example_test.go
---- a/cookiejar/example_test.go	2026-05-23 16:14:41
+--- a/cookiejar/example_test.go	2026-05-23 16:23:10
 +++ b/cookiejar/example_test.go	2026-05-23 15:55:26
 @@ -7,10 +7,12 @@
  import (
@@ -380,7 +442,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func ExampleNew() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/cookiejar/jar.go b/cookiejar/jar.go
---- a/cookiejar/jar.go	2026-05-23 16:14:41
+--- a/cookiejar/jar.go	2026-05-23 16:23:10
 +++ b/cookiejar/jar.go	2026-05-23 15:55:26
 @@ -10,13 +10,15 @@
  	"errors"
@@ -401,7 +463,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // PublicSuffixList provides the public suffix of a domain. For example:
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/cookiejar/jar_test.go b/cookiejar/jar_test.go
---- a/cookiejar/jar_test.go	2026-05-23 16:14:41
+--- a/cookiejar/jar_test.go	2026-05-23 16:23:10
 +++ b/cookiejar/jar_test.go	2026-05-23 15:55:26
 @@ -6,12 +6,13 @@
  
@@ -419,7 +481,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // tNow is the synthetic current time used as now during testing.
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/cookiejar/punycode.go b/cookiejar/punycode.go
---- a/cookiejar/punycode.go	2026-05-23 16:14:41
+--- a/cookiejar/punycode.go	2026-05-23 16:23:10
 +++ b/cookiejar/punycode.go	2026-05-23 15:55:26
 @@ -8,9 +8,10 @@
  
@@ -434,8 +496,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // These parameter values are specified in section 5.
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/example_filesystem_test.go b/example_filesystem_test.go
---- a/example_filesystem_test.go	2026-05-23 16:14:41
-+++ b/example_filesystem_test.go	2026-05-23 15:55:26
+--- a/example_filesystem_test.go	2026-05-23 16:23:10
++++ b/example_filesystem_test.go	2026-05-23 17:16:31
 @@ -8,8 +8,9 @@
  	"io"
  	"io/fs"
@@ -448,7 +510,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // containsDotFile reports whether name contains a path element starting with a period.
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/example_handle_test.go b/example_handle_test.go
---- a/example_handle_test.go	2026-05-23 16:14:41
+--- a/example_handle_test.go	2026-05-23 16:23:10
 +++ b/example_handle_test.go	2026-05-23 15:55:26
 @@ -7,8 +7,9 @@
  import (
@@ -462,7 +524,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  type countHandler struct {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/example_test.go b/example_test.go
---- a/example_test.go	2026-05-23 16:14:41
+--- a/example_test.go	2026-05-23 16:23:10
 +++ b/example_test.go	2026-05-23 15:55:26
 @@ -9,9 +9,10 @@
  	"fmt"
@@ -477,7 +539,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func ExampleHijacker() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/fcgi/child.go b/fcgi/child.go
---- a/fcgi/child.go	2026-05-23 16:14:41
+--- a/fcgi/child.go	2026-05-23 16:23:10
 +++ b/fcgi/child.go	2026-05-23 15:55:26
 @@ -12,11 +12,13 @@
  	"fmt"
@@ -496,7 +558,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // request holds the state for an in-progress request. As soon as it's complete,
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/fcgi/fcgi_test.go b/fcgi/fcgi_test.go
---- a/fcgi/fcgi_test.go	2026-05-23 16:14:41
+--- a/fcgi/fcgi_test.go	2026-05-23 16:23:10
 +++ b/fcgi/fcgi_test.go	2026-05-23 15:55:26
 @@ -8,10 +8,11 @@
  	"bytes"
@@ -512,8 +574,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var sizeTests = []struct {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/fs.go b/fs.go
---- a/fs.go	2026-05-23 16:14:41
-+++ b/fs.go	2026-05-23 15:55:26
+--- a/fs.go	2026-05-23 16:23:10
++++ b/fs.go	2026-05-23 17:16:31
 @@ -9,7 +9,6 @@
  import (
  	"errors"
@@ -532,8 +594,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // A Dir implements [FileSystem] using the native file system restricted to a
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/fs_test.go b/fs_test.go
---- a/fs_test.go	2026-05-23 16:14:41
-+++ b/fs_test.go	2026-05-23 15:55:26
+--- a/fs_test.go	2026-05-23 16:23:10
++++ b/fs_test.go	2026-05-23 17:16:31
 @@ -10,15 +10,11 @@
  	"compress/gzip"
  	"errors"
@@ -565,8 +627,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  const (
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/h2_bundle.go b/h2_bundle.go
---- a/h2_bundle.go	2026-05-23 16:14:41
-+++ b/h2_bundle.go	2026-05-23 16:59:07
+--- a/h2_bundle.go	2026-05-23 16:23:10
++++ b/h2_bundle.go	2026-05-23 17:27:16
 @@ -28,7 +28,7 @@
  	"compress/gzip"
  	"context"
@@ -576,7 +638,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"encoding/binary"
  	"errors"
  	"fmt"
-@@ -7735,14 +7735,14 @@
+@@ -7592,14 +7592,14 @@
  		return t2
  	}
  	if t1.TLSNextProto == nil {
@@ -595,7 +657,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  		if err != nil {
  			go c.Close()
  			return http2erringRoundTripper{err}
-@@ -8562,7 +8562,7 @@
+@@ -8422,7 +8422,7 @@
  // A tls.Conn.Close can hang for a long time if the peer is unresponsive.
  // Try to shut it down more aggressively.
  func (cc *http2ClientConn) forceCloseConn() {
@@ -604,204 +666,37 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	if !ok {
  		return
  	}
-@@ -9492,7 +9492,10 @@
- 
- func http2validateHeaders(hdrs Header) string {
- 	for k, vv := range hdrs {
--		if !httpguts.ValidHeaderFieldName(k) && k != ":protocol" {
-+		if k == PHeaderOrderKey || k == HeaderOrderKey {
-+			continue
-+		}
-+		if !httpguts.ValidHeaderFieldName(k) && k != ":protocol"{
- 			return fmt.Sprintf("name %q", k)
- 		}
- 		for _, v := range vv {
-@@ -9562,63 +9565,131 @@
- 		return nil, fmt.Errorf("invalid HTTP trailer %s", err)
+@@ -9309,6 +9309,29 @@
  	}
+ }
  
-+	// We need to add the accept-encoding header to the request to allow
-+	// ordering of this header. Only set it if we haven't already set it.
-+	if addGzipHeader { 
-+		if _, ok := req.Header["accept-encoding"]; !ok {
-+			req.Header["accept-encoding"] = []string{"gzip, deflate, br, zstd"}
-+		}
++
++// shouldSendReqContentLength reports whether the http2.Transport should send
++// a "content-length" request header. This logic is basically a copy of the net/http
++// transferWriter.shouldSendContentLength.
++// The contentLength is the corrected contentLength (so 0 means actually 0, not unknown).
++// -1 means unknown.
++func http2shouldSendReqContentLength(method string, contentLength int64) bool {
++	if contentLength > 0 {
++		return true
 +	}
-+
-+	// DT: Set the content-length header before ordering
-+	if http2shouldSendReqContentLength(req.Method, contentLength) {
-+		req.Header.Set("content-length", strconv.FormatInt(contentLength, 10))
++	if contentLength < 0 {
++		return false
 +	}
++	// For zero bodies, whether we send a content-length depends on the method.
++	// It also kinda doesn't matter for http2 either way, with END_STREAM.
++	switch method {
++	case "POST", "PUT", "PATCH":
++		return true
++	default:
++		return false
++	}
++}
 +
- 	enumerateHeaders := func(f func(name, value string)) {
- 		// 8.1.2.3 Request Pseudo-Header Fields
- 		// The :path pseudo-header field includes the path and query parts of the
- 		// target URI (the path-absolute production and optionally a '?' character
- 		// followed by the query production, see Sections 3.3 and 3.4 of
- 		// [RFC3986]).
--		f(":authority", host)
-+
-+		pHeaderOrder, ok := req.Header[PHeaderOrderKey]
- 		m := req.Method
- 		if m == "" {
- 			m = MethodGet
- 		}
--		f(":method", m)
--		if !isNormalConnect {
--			f(":path", path)
--			f(":scheme", req.URL.Scheme)
-+		if ok {
-+			for _, p := range pHeaderOrder {
-+				switch p {
-+				case ":authority":
-+					f(":authority", host)
-+				case ":method":
-+					f(":method", req.Method)
-+				case ":path":
-+					if !isNormalConnect {
-+						f(":path", path)
-+					}
-+				case ":scheme":
-+					if !isNormalConnect {
-+						f(":scheme", req.URL.Scheme)
-+					}
-+				case ":protocol":
-+					if protocol != "" {
-+						f(":protocol", protocol)
-+					}
-+				default:
-+					// Skip unknown pseudo-headers
-+					continue
-+				}
-+			}
-+			// :protocol if extended-CONNECT and not already in the order.
-+			if protocol != "" {
-+				found := false
-+				for _, p := range pHeaderOrder {
-+					if p == ":protocol" {
-+						found = true
-+						break
-+					}
-+				}
-+				if !found {
-+					f(":protocol", protocol)
-+				}
-+			}
-+		} else {
-+			f(":authority", host)
-+			f(":method", m)
-+			if !isNormalConnect {
-+				f(":path", path)
-+				f(":scheme", req.URL.Scheme)
-+			}
-+			if protocol != "" {
-+				f(":protocol", protocol)
-+			}
- 		}
--		if protocol != "" {
--			f(":protocol", protocol)
--		}
- 		if trailers != "" {
- 			f("trailer", trailers)
- 		}
- 
-+		var kvs []keyValues
-+		var sorter *headerSorter
-+
-+		if headerOrder, ok := req.Header[HeaderOrderKey]; ok {
-+			order := make(map[string]int)
-+			for i, v := range headerOrder {
-+				order[strings.ToLower(v)] = i
-+			}
-+			kvs, sorter = req.Header.sortedKeyValuesBy(order, nil)
-+		} else {
-+			kvs, sorter = req.Header.sortedKeyValues(nil)
-+		}
-+
- 		var didUA bool
--		for k, vv := range req.Header {
--			if http2asciiEqualFold(k, "host") || http2asciiEqualFold(k, "content-length") {
-+		for _, k := range kvs {
-+			if http2asciiEqualFold(k.key, "host") {
- 				// Host is :authority, already sent.
-+				// DT: Content-Length check removed to allow it to be ordered
- 				// Content-Length is automatic, set below.
- 				continue
--			} else if http2asciiEqualFold(k, "connection") ||
--				http2asciiEqualFold(k, "proxy-connection") ||
--				http2asciiEqualFold(k, "transfer-encoding") ||
--				http2asciiEqualFold(k, "upgrade") ||
--				http2asciiEqualFold(k, "keep-alive") {
-+			} else if http2asciiEqualFold(k.key, "connection") ||
-+				http2asciiEqualFold(k.key, "proxy-connection") ||
-+				http2asciiEqualFold(k.key, "transfer-encoding") ||
-+				http2asciiEqualFold(k.key, "upgrade") ||
-+				http2asciiEqualFold(k.key, "keep-alive") {
- 				// Per 8.1.2.2 Connection-Specific Header
- 				// Fields, don't send connection-specific
- 				// fields. We have already checked if any
- 				// are error-worthy so just ignore the rest.
- 				continue
--			} else if http2asciiEqualFold(k, "user-agent") {
-+			} else if http2asciiEqualFold(k.key, "user-agent") {
- 				// Match Go's http1 behavior: at most one
- 				// User-Agent. If set to nil or empty string,
- 				// then omit it. Otherwise if not mentioned,
- 				// include the default (below).
- 				didUA = true
--				if len(vv) < 1 {
-+				if len(k.values) < 1 {
- 					continue
- 				}
--				vv = vv[:1]
--				if vv[0] == "" {
-+				k.values = k.values[:1]
-+				if k.values[0] == "" {
- 					continue
- 				}
--			} else if http2asciiEqualFold(k, "cookie") {
-+			} else if http2asciiEqualFold(k.key, "cookie") {
- 				// Per 8.1.2.5 To allow for better compression efficiency, the
- 				// Cookie header field MAY be split into separate header fields,
- 				// each with one or more cookie-pairs.
--				for _, v := range vv {
-+				for _, v := range k.values {
- 					for {
- 						p := strings.IndexByte(v, ';')
- 						if p < 0 {
-@@ -9637,24 +9708,22 @@
- 					}
- 				}
- 				continue
--			} else if k == ":protocol" {
-+			} else if k.key == ":protocol" {
- 				// :protocol pseudo-header was already sent above.
- 				continue
-+			} else if k.key == PHeaderOrderKey || k.key == HeaderOrderKey {
-+				// Don't send magic values as headers
-+				continue
- 			}
- 
--			for _, v := range vv {
--				f(k, v)
-+			for _, v := range k.values {
-+				f(k.key, v)
- 			}
- 		}
--		if http2shouldSendReqContentLength(req.Method, contentLength) {
--			f("content-length", strconv.FormatInt(contentLength, 10))
--		}
--		if addGzipHeader {
--			f("accept-encoding", "gzip")
--		}
- 		if !didUA {
- 			f("user-agent", http2defaultUserAgent)
- 		}
-+		headerSorterPool.Put(sorter)
- 	}
- 
- 	// Do a first pass over the headers counting bytes to ensure
-@@ -10184,16 +10253,47 @@
+ // requires cc.wmu be held.
+ func (cc *http2ClientConn) encodeTrailers(trailer Header) ([]byte, error) {
+ 	cc.hbuf.Reset()
+@@ -9787,16 +9810,47 @@
  	cs.bytesRemain = res.ContentLength
  	res.Body = http2transportResponseBody{cs}
  
@@ -855,7 +750,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  func (rl *http2clientConnReadLoop) processTrailers(cs *http2clientStream, f *http2MetaHeadersFrame) error {
  	if cs.pastTrailers {
  		// Too many HEADERS frames for this stream.
-@@ -10965,7 +11065,7 @@
+@@ -10558,7 +10612,7 @@
  
  // dialTLSWithContext uses tls.Dialer, added in Go 1.15, to open a TLS
  // connection.
@@ -864,7 +759,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	dialer := &tls.Dialer{
  		Config: cfg,
  	}
-@@ -10973,7 +11073,7 @@
+@@ -10566,7 +10620,7 @@
  	if err != nil {
  		return nil, err
  	}
@@ -873,7 +768,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	return tlsCn, nil
  }
  
-@@ -10989,6 +11089,17 @@
+@@ -10582,6 +10636,17 @@
  // where we want it), the tls.Conn contains a net.Conn with an UnencryptedNetConn method
  // that returns the actual connection we want to use.
  func http2unencryptedNetConnFromTLSConn(tc *tls.Conn) (net.Conn, error) {
@@ -892,7 +787,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  		UnencryptedNetConn() net.Conn
  	})
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/header.go b/header.go
---- a/header.go	2026-05-23 16:14:41
+--- a/header.go	2026-05-23 16:23:10
 +++ b/header.go	2026-05-23 15:55:26
 @@ -6,14 +6,16 @@
  
@@ -1054,7 +949,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +	return "", false
  }
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/header_test.go b/header_test.go
---- a/header_test.go	2026-05-23 16:14:41
+--- a/header_test.go	2026-05-23 16:23:10
 +++ b/header_test.go	2026-05-23 15:55:26
 @@ -6,12 +6,13 @@
  
@@ -1094,8 +989,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  }
  
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/http_test.go b/http_test.go
---- a/http_test.go	2026-05-23 16:14:41
-+++ b/http_test.go	2026-05-23 15:55:26
+--- a/http_test.go	2026-05-23 16:23:10
++++ b/http_test.go	2026-05-23 17:16:31
 @@ -8,7 +8,6 @@
  
  import (
@@ -1114,7 +1009,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestForeachHeaderElement(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httptest/example_test.go b/httptest/example_test.go
---- a/httptest/example_test.go	2026-05-23 16:14:41
+--- a/httptest/example_test.go	2026-05-23 16:23:10
 +++ b/httptest/example_test.go	2026-05-23 15:55:26
 @@ -8,7 +8,9 @@
  	"fmt"
@@ -1127,8 +1022,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  )
  
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httptest/httptest.go b/httptest/httptest.go
---- a/httptest/httptest.go	2026-05-23 16:14:41
-+++ b/httptest/httptest.go	2026-05-23 15:55:26
+--- a/httptest/httptest.go	2026-05-23 16:23:10
++++ b/httptest/httptest.go	2026-05-23 17:16:31
 @@ -9,10 +9,12 @@
  	"bufio"
  	"bytes"
@@ -1145,8 +1040,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // NewRequest wraps NewRequestWithContext using context.Background.
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httptest/httptest_test.go b/httptest/httptest_test.go
---- a/httptest/httptest_test.go	2026-05-23 16:14:41
-+++ b/httptest/httptest_test.go	2026-05-23 15:55:26
+--- a/httptest/httptest_test.go	2026-05-23 16:23:10
++++ b/httptest/httptest_test.go	2026-05-23 17:16:31
 @@ -6,13 +6,15 @@
  
  import (
@@ -1166,8 +1061,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestNewRequest(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httptest/recorder.go b/httptest/recorder.go
---- a/httptest/recorder.go	2026-05-23 16:14:41
-+++ b/httptest/recorder.go	2026-05-23 15:55:26
+--- a/httptest/recorder.go	2026-05-23 16:23:10
++++ b/httptest/recorder.go	2026-05-23 17:16:31
 @@ -8,10 +8,11 @@
  	"bytes"
  	"fmt"
@@ -1182,7 +1077,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"golang.org/x/net/http/httpguts"
  )
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httptest/recorder_test.go b/httptest/recorder_test.go
---- a/httptest/recorder_test.go	2026-05-23 16:14:41
+--- a/httptest/recorder_test.go	2026-05-23 16:23:10
 +++ b/httptest/recorder_test.go	2026-05-23 15:55:26
 @@ -7,8 +7,9 @@
  import (
@@ -1196,7 +1091,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestRecorder(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httptest/server.go b/httptest/server.go
---- a/httptest/server.go	2026-05-23 16:14:41
+--- a/httptest/server.go	2026-05-23 16:23:10
 +++ b/httptest/server.go	2026-05-23 15:55:26
 @@ -7,18 +7,21 @@
  package httptest
@@ -1224,7 +1119,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // A Server is an HTTP server listening on a system-chosen port on the
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httptest/server_test.go b/httptest/server_test.go
---- a/httptest/server_test.go	2026-05-23 16:14:41
+--- a/httptest/server_test.go	2026-05-23 16:23:10
 +++ b/httptest/server_test.go	2026-05-23 15:55:26
 @@ -8,9 +8,10 @@
  	"bufio"
@@ -1239,7 +1134,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  type newServerFunc func(http.Handler) *Server
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httptrace/example_test.go b/httptrace/example_test.go
---- a/httptrace/example_test.go	2026-05-23 16:14:41
+--- a/httptrace/example_test.go	2026-05-23 16:23:10
 +++ b/httptrace/example_test.go	2026-05-23 15:55:26
 @@ -7,7 +7,9 @@
  import (
@@ -1252,7 +1147,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  )
  
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httptrace/trace.go b/httptrace/trace.go
---- a/httptrace/trace.go	2026-05-23 16:14:41
+--- a/httptrace/trace.go	2026-05-23 16:23:10
 +++ b/httptrace/trace.go	2026-05-23 15:55:26
 @@ -8,12 +8,14 @@
  
@@ -1272,7 +1167,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // unique type to prevent assignment.
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httputil/dump.go b/httputil/dump.go
---- a/httputil/dump.go	2026-05-23 16:14:41
+--- a/httputil/dump.go	2026-05-23 16:23:10
 +++ b/httputil/dump.go	2026-05-23 15:55:26
 @@ -11,10 +11,11 @@
  	"fmt"
@@ -1288,7 +1183,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // drainBody reads all of b to memory and then returns two equivalent
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httputil/dump_test.go b/httputil/dump_test.go
---- a/httputil/dump_test.go	2026-05-23 16:14:41
+--- a/httputil/dump_test.go	2026-05-23 16:23:10
 +++ b/httputil/dump_test.go	2026-05-23 15:55:26
 @@ -11,13 +11,14 @@
  	"fmt"
@@ -1307,7 +1202,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  type eofReader struct{}
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httputil/example_test.go b/httputil/example_test.go
---- a/httputil/example_test.go	2026-05-23 16:14:41
+--- a/httputil/example_test.go	2026-05-23 16:23:10
 +++ b/httputil/example_test.go	2026-05-23 15:55:26
 @@ -8,11 +8,13 @@
  	"fmt"
@@ -1326,7 +1221,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func ExampleDumpRequest() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httputil/httputil.go b/httputil/httputil.go
---- a/httputil/httputil.go	2026-05-23 16:14:41
+--- a/httputil/httputil.go	2026-05-23 16:23:10
 +++ b/httputil/httputil.go	2026-05-23 15:55:26
 @@ -8,6 +8,7 @@
  
@@ -1337,7 +1232,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  )
  
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httputil/persist.go b/httputil/persist.go
---- a/httputil/persist.go	2026-05-23 16:14:41
+--- a/httputil/persist.go	2026-05-23 16:23:10
 +++ b/httputil/persist.go	2026-05-23 15:55:26
 @@ -9,9 +9,10 @@
  	"errors"
@@ -1352,9 +1247,9 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var (
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httputil/reverseproxy.go b/httputil/reverseproxy.go
---- a/httputil/reverseproxy.go	2026-05-23 16:14:41
-+++ b/httputil/reverseproxy.go	2026-05-23 15:55:26
-@@ -14,14 +14,16 @@
+--- a/httputil/reverseproxy.go	2026-05-23 16:23:10
++++ b/httputil/reverseproxy.go	2026-05-23 17:16:31
+@@ -15,14 +15,16 @@
  	"log"
  	"mime"
  	"net"
@@ -1375,12 +1270,12 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"golang.org/x/net/http/httpguts"
  )
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/httputil/reverseproxy_test.go b/httputil/reverseproxy_test.go
---- a/httputil/reverseproxy_test.go	2026-05-23 16:14:41
-+++ b/httputil/reverseproxy_test.go	2026-05-23 15:55:26
-@@ -14,10 +14,6 @@
- 	"fmt"
+--- a/httputil/reverseproxy_test.go	2026-05-23 16:23:10
++++ b/httputil/reverseproxy_test.go	2026-05-23 17:17:28
+@@ -15,10 +15,6 @@
  	"io"
  	"log"
+ 	"net"
 -	"net/http"
 -	"net/http/httptest"
 -	"net/http/httptrace"
@@ -1388,7 +1283,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"net/textproto"
  	"net/url"
  	"os"
-@@ -28,6 +24,12 @@
+@@ -30,6 +26,12 @@
  	"sync"
  	"testing"
  	"time"
@@ -1402,7 +1297,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  const fakeHopHeader = "X-Fake-Hop-Header-For-Test"
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/internal/diff/diff_test.go b/internal/diff/diff_test.go
---- a/internal/diff/diff_test.go	2026-05-23 16:14:41
+--- a/internal/diff/diff_test.go	2026-05-23 16:23:10
 +++ b/internal/diff/diff_test.go	2026-05-23 15:55:26
 @@ -6,9 +6,10 @@
  
@@ -1417,8 +1312,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func clean(text []byte) []byte {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/internal/godebug/godebug.go b/internal/godebug/godebug.go
---- a/internal/godebug/godebug.go	2026-05-23 16:14:41
-+++ b/internal/godebug/godebug.go	2026-05-23 15:55:26
+--- a/internal/godebug/godebug.go	2026-05-23 16:23:10
++++ b/internal/godebug/godebug.go	2026-05-23 17:16:31
 @@ -49,12 +49,13 @@
  // meaning it cannot introduce a GODEBUG setting of its own.
  // We keep imports to the absolute bare minimum.
@@ -1481,8 +1376,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func newIncNonDefault(name string) func() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/internal/godebug/godebug_test.go b/internal/godebug/godebug_test.go
---- a/internal/godebug/godebug_test.go	2026-05-23 16:14:41
-+++ b/internal/godebug/godebug_test.go	2026-05-23 16:16:51
+--- a/internal/godebug/godebug_test.go	2026-05-23 16:23:10
++++ b/internal/godebug/godebug_test.go	2026-05-23 17:16:31
 @@ -6,15 +6,16 @@
  
  import (
@@ -1504,7 +1399,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestGet(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/internal/godebugs/godebugs_test.go b/internal/godebugs/godebugs_test.go
---- a/internal/godebugs/godebugs_test.go	2026-05-23 16:14:41
+--- a/internal/godebugs/godebugs_test.go	2026-05-23 16:23:10
 +++ b/internal/godebugs/godebugs_test.go	2026-05-23 16:16:51
 @@ -5,8 +5,6 @@
  package godebugs_test
@@ -1525,8 +1420,205 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  )
  
  func TestAll(t *testing.T) {
+diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/internal/httpcommon/httpcommon.go b/internal/httpcommon/httpcommon.go
+--- a/internal/httpcommon/httpcommon.go	2026-05-23 16:23:10
++++ b/internal/httpcommon/httpcommon.go	2026-05-23 17:30:42
+@@ -19,6 +19,14 @@
+ 	"golang.org/x/net/http2/hpack"
+ )
+ 
++// dhttp: magic header keys for arbitrary header ordering, copied from net/http
++// to avoid an import cycle. Must stay in sync with net/http.HeaderOrderKey and
++// net/http.PHeaderOrderKey.
++const (
++	HeaderOrderKey  = "Header-Order:"
++	PHeaderOrderKey = "PHeader-Order:"
++)
++
+ // The HTTP protocols are defined in terms of ASCII, not Unicode. This file
+ // contains helper functions which may use Unicode-aware functions which would
+ // otherwise be unsafe and could introduce vulnerabilities if used improperly.
+@@ -280,35 +288,127 @@
+ 		return res, err
+ 	}
+ 
++	// dhttp: multi-codec auto-decompression default. We can't easily ask the
++	// caller to do this because AddGzipHeader is a plain bool; instead, when
++	// AddGzipHeader is true we emit the multi-codec list. Also honor an
++	// existing Accept-Encoding so it can be ordered via HeaderOrderKey.
++	const defaultAcceptEncoding = "gzip, deflate, br, zstd"
++	if param.AddGzipHeader {
++		hasAE := false
++		for k := range req.Header {
++			if asciiEqualFold(k, "accept-encoding") {
++				hasAE = true
++				break
++			}
++		}
++		if !hasAE {
++			if req.Header == nil {
++				req.Header = make(map[string][]string)
++			}
++			req.Header["Accept-Encoding"] = []string{defaultAcceptEncoding}
++		}
++	}
++
++	// dhttp: pull the magic ordering keys so they don't get emitted on the wire.
++	pHeaderOrder := req.Header[PHeaderOrderKey]
++	headerOrder := req.Header[HeaderOrderKey]
++
+ 	enumerateHeaders := func(f func(name, value string)) {
+ 		// 8.1.2.3 Request Pseudo-Header Fields
+ 		// The :path pseudo-header field includes the path and query parts of the
+ 		// target URI (the path-absolute production and optionally a '?' character
+ 		// followed by the query production, see Sections 3.3 and 3.4 of
+ 		// [RFC3986]).
+-		f(":authority", host)
+ 		m := req.Method
+ 		if m == "" {
+ 			m = "GET"
+ 		}
+-		f(":method", m)
+-		if !isNormalConnect {
+-			f(":path", path)
+-			f(":scheme", req.URL.Scheme)
++		// dhttp: honour PHeaderOrderKey if set.
++		if len(pHeaderOrder) > 0 {
++			emitProtocolSeen := false
++			for _, p := range pHeaderOrder {
++				switch p {
++				case ":authority":
++					f(":authority", host)
++				case ":method":
++					f(":method", m)
++				case ":path":
++					if !isNormalConnect {
++						f(":path", path)
++					}
++				case ":scheme":
++					if !isNormalConnect {
++						f(":scheme", req.URL.Scheme)
++					}
++				case ":protocol":
++					if protocol != "" {
++						f(":protocol", protocol)
++					}
++					emitProtocolSeen = true
++				}
++			}
++			if !emitProtocolSeen && protocol != "" {
++				f(":protocol", protocol)
++			}
++		} else {
++			f(":authority", host)
++			f(":method", m)
++			if !isNormalConnect {
++				f(":path", path)
++				f(":scheme", req.URL.Scheme)
++			}
++			if protocol != "" {
++				f(":protocol", protocol)
++			}
+ 		}
+-		if protocol != "" {
+-			f(":protocol", protocol)
+-		}
+ 		if trailers != "" {
+ 			f("trailer", trailers)
+ 		}
+ 
++		// dhttp: sort keys (either by HeaderOrderKey or lexicographically) so
++		// the wire order is deterministic and configurable.
++		keys := make([]string, 0, len(req.Header))
++		for k := range req.Header {
++			if k == HeaderOrderKey || k == PHeaderOrderKey {
++				continue
++			}
++			keys = append(keys, k)
++		}
++		if len(headerOrder) > 0 {
++			rank := make(map[string]int, len(headerOrder))
++			for i, k := range headerOrder {
++				rank[strings.ToLower(k)] = i
++			}
++			sort.SliceStable(keys, func(i, j int) bool {
++				ri, oi := rank[strings.ToLower(keys[i])]
++				rj, oj := rank[strings.ToLower(keys[j])]
++				switch {
++				case oi && oj:
++					return ri < rj
++				case oi:
++					return true
++				case oj:
++					return false
++				}
++				return keys[i] < keys[j]
++			})
++		} else {
++			sort.Strings(keys)
++		}
++
+ 		var didUA bool
+-		for k, vv := range req.Header {
+-			if asciiEqualFold(k, "host") || asciiEqualFold(k, "content-length") {
++		for _, k := range keys {
++			vv := req.Header[k]
++			if asciiEqualFold(k, "host") {
+ 				// Host is :authority, already sent.
+-				// Content-Length is automatic, set below.
+ 				continue
++			} else if asciiEqualFold(k, "content-length") {
++				// dhttp: content-length is normally automatic, but if the
++				// caller put it in HeaderOrderKey we let it flow through.
++				if len(headerOrder) == 0 {
++					continue
++				}
++				// fall through to emit at this position
+ 			} else if asciiEqualFold(k, "connection") ||
+ 				asciiEqualFold(k, "proxy-connection") ||
+ 				asciiEqualFold(k, "transfer-encoding") ||
+@@ -364,12 +464,24 @@
+ 				f(k, v)
+ 			}
+ 		}
+-		if shouldSendReqContentLength(req.Method, req.ActualContentLength) {
++		// dhttp: content-length is emitted at its ordered position (above) when
++		// it appears in HeaderOrderKey; otherwise emit it here as a trailing
++		// automatic header.
++		clEmittedInOrder := false
++		if len(headerOrder) > 0 {
++			for _, k := range headerOrder {
++				if asciiEqualFold(k, "content-length") {
++					clEmittedInOrder = true
++					break
++				}
++			}
++		}
++		if !clEmittedInOrder && shouldSendReqContentLength(req.Method, req.ActualContentLength) {
+ 			f("content-length", strconv.FormatInt(req.ActualContentLength, 10))
+ 		}
+-		if param.AddGzipHeader {
+-			f("accept-encoding", "gzip")
+-		}
++		// dhttp: Accept-Encoding has already been pushed into req.Header above
++		// when AddGzipHeader was true. Skip the auto-emit here; the value is
++		// emitted with the rest of the headers.
+ 		if !didUA {
+ 			f("user-agent", param.DefaultUserAgent)
+ 		}
+@@ -495,6 +607,10 @@
+ 
+ func validateHeaders(hdrs map[string][]string) string {
+ 	for k, vv := range hdrs {
++		// dhttp: skip the magic ordering keys; they never reach the wire.
++		if k == HeaderOrderKey || k == PHeaderOrderKey {
++			continue
++		}
+ 		if !httpguts.ValidHeaderFieldName(k) && k != ":protocol" {
+ 			return fmt.Sprintf("name %q", k)
+ 		}
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/internal/platform/zosarch_test.go b/internal/platform/zosarch_test.go
---- a/internal/platform/zosarch_test.go	2026-05-23 16:14:41
+--- a/internal/platform/zosarch_test.go	2026-05-23 16:23:10
 +++ b/internal/platform/zosarch_test.go	2026-05-23 15:55:26
 @@ -8,12 +8,13 @@
  	"bytes"
@@ -1545,7 +1637,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var flagFix = flag.Bool("fix", false, "if true, fix out-of-date generated files")
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/internal/race/norace.go b/internal/race/norace.go
---- a/internal/race/norace.go	2026-05-23 16:14:41
+--- a/internal/race/norace.go	2026-05-23 16:23:10
 +++ b/internal/race/norace.go	2024-11-19 15:44:17
 @@ -7,7 +7,6 @@
  package race
@@ -1578,7 +1670,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  func ReadRange(addr unsafe.Pointer, len int) {
  }
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/internal/race/race.go b/internal/race/race.go
---- a/internal/race/race.go	2026-05-23 16:14:41
+--- a/internal/race/race.go	2026-05-23 16:23:10
 +++ b/internal/race/race.go	2024-11-19 15:45:05
 @@ -7,7 +7,6 @@
  package race
@@ -1607,9 +1699,14 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  //go:linkname ReadRange
  func ReadRange(addr unsafe.Pointer, len int)
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/internal/synctest/synctest.go b/internal/synctest/synctest.go
---- a/internal/synctest/synctest.go	2026-05-23 16:14:41
-+++ b/internal/synctest/synctest.go	2025-01-30 14:03:54
-@@ -12,19 +12,24 @@
+--- a/internal/synctest/synctest.go	2026-05-23 16:23:10
++++ b/internal/synctest/synctest.go	2026-05-23 17:20:04
+@@ -8,21 +8,23 @@
+ package synctest
+ 
+ import (
+-	"internal/abi"
+ 	"unsafe"
  )
  
  //go:linkname Run
@@ -1621,6 +1718,51 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 -func Wait()
  
 +func Wait() {}
++
+ // IsInBubble reports whether the current goroutine is in a bubble.
+ //
+ //go:linkname IsInBubble
+-func IsInBubble() bool
+ 
++func IsInBubble() bool { return false }
++
+ // Association is the state of a pointer's bubble association.
+ type Association int
+ 
+@@ -35,38 +37,42 @@
+ // Associate attempts to associate p with the current bubble.
+ // It returns the new association status of p.
+ func Associate[T any](p *T) Association {
+-	// Ensure p escapes to permit us to attach a special to it.
+-	escapedP := abi.Escape(p)
+-	return Association(associate(unsafe.Pointer(escapedP)))
++	return Association(associate(unsafe.Pointer(p)))
+ }
+ 
+ //go:linkname associate
+-func associate(p unsafe.Pointer) int
+ 
++func associate(p unsafe.Pointer) int { return 0 }
++
+ // Disassociate disassociates p from any bubble.
+ func Disassociate[T any](p *T) {
+ 	disassociate(unsafe.Pointer(p))
+ }
+ 
+ //go:linkname disassociate
+-func disassociate(b unsafe.Pointer)
+ 
++func disassociate(b unsafe.Pointer) {}
++
+ // IsAssociated reports whether p is associated with the current bubble.
+ func IsAssociated[T any](p *T) bool {
+ 	return isAssociated(unsafe.Pointer(p))
+ }
+ 
+ //go:linkname isAssociated
+-func isAssociated(p unsafe.Pointer) bool
+ 
++func isAssociated(p unsafe.Pointer) bool { return false }
 +
  //go:linkname acquire
 -func acquire() any
@@ -1640,22 +1782,28 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  // A Bubble is a synctest bubble.
  //
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/internal/synctest/synctest_test.go b/internal/synctest/synctest_test.go
---- a/internal/synctest/synctest_test.go	2026-05-23 16:14:41
-+++ b/internal/synctest/synctest_test.go	2025-01-30 14:03:54
-@@ -4,441 +4,429 @@
+--- a/internal/synctest/synctest_test.go	2026-05-23 16:23:10
++++ b/internal/synctest/synctest_test.go	2026-05-23 17:16:31
+@@ -4,927 +4,429 @@
  
  package synctest_test
  
 -import (
 -	"fmt"
 -	"internal/synctest"
+-	"internal/testenv"
 -	"iter"
+-	"os"
 -	"reflect"
+-	"runtime"
 -	"slices"
 -	"strconv"
+-	"strings"
 -	"sync"
+-	"sync/atomic"
 -	"testing"
 -	"time"
+-	"weak"
 -)
 +// func TestNow(t *testing.T) {
 +// 	start := time.Date(2000, 1, 1, 0, 0, 0, 0, time.UTC).In(time.Local)
@@ -1703,19 +1851,29 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +// 	})
 +// }
  
--func TestRunEmpty(t *testing.T) {
+-// TestMonotonicClock exercises comparing times from within a bubble
+-// with ones from outside the bubble.
+-func TestMonotonicClock(t *testing.T) {
+-	start := time.Now()
 -	synctest.Run(func() {
--	})
--}
+-		time.Sleep(time.Until(start.Round(0)))
+-		if got, want := time.Now().In(time.UTC), start.In(time.UTC); !got.Equal(want) {
+-			t.Fatalf("time.Now() = %v, want %v", got, want)
+-		}
 +// func TestSimpleWait(t *testing.T) {
 +// 	synctest.Run(func() {
 +// 		synctest.Wait()
 +// 	})
 +// }
  
--func TestSimpleWait(t *testing.T) {
--	synctest.Run(func() {
--		synctest.Wait()
+-		wait := 1 * time.Second
+-		time.Sleep(wait)
+-		if got := time.Since(start); got != wait {
+-			t.Fatalf("time.Since(start) = %v, want %v", got, wait)
+-		}
+-		if got := time.Now().Sub(start); got != wait {
+-			t.Fatalf("time.Now().Sub(start) = %v, want %v", got, wait)
+-		}
 -	})
 -}
 +// func TestGoroutineWait(t *testing.T) {
@@ -1725,10 +1883,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +// 	})
 +// }
  
--func TestGoroutineWait(t *testing.T) {
+-func TestRunEmpty(t *testing.T) {
 -	synctest.Run(func() {
--		go func() {}()
--		synctest.Wait()
 -	})
 -}
 +// // TestWait starts a collection of goroutines.
@@ -1752,6 +1908,53 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +// 		synctest.Wait()
 +// 		if !done {
 +// 			t.Fatalf("done = false, want true")
++// 		}
++// 	})
++// }
+ 
+-func TestSimpleWait(t *testing.T) {
+-	synctest.Run(func() {
+-		synctest.Wait()
+-	})
+-}
++// func TestMallocs(t *testing.T) {
++// 	for i := 0; i < 100; i++ {
++// 		synctest.Run(func() {
++// 			done := false
++// 			ch := make(chan []byte)
++// 			var f func()
++// 			f = func() {
++// 				b := <-ch
++// 				if len(b) == 0 {
++// 					done = true
++// 				} else {
++// 					go f()
++// 					ch <- make([]byte, len(b)-1)
++// 				}
++// 			}
++// 			go f()
++// 			ch <- make([]byte, 100)
++// 			synctest.Wait()
++// 			if !done {
++// 				t.Fatalf("done = false, want true")
++// 			}
++// 		})
++// 	}
++// }
+ 
+-func TestGoroutineWait(t *testing.T) {
+-	synctest.Run(func() {
+-		go func() {}()
+-		synctest.Wait()
+-	})
+-}
++// func TestTimerReadBeforeDeadline(t *testing.T) {
++// 	synctest.Run(func() {
++// 		start := time.Now()
++// 		tm := time.NewTimer(5 * time.Second)
++// 		<-tm.C
++// 		if got, want := time.Since(start), 5*time.Second; got != want {
++// 			t.Errorf("after sleep: time.Since(start) = %v, want %v", got, want)
 +// 		}
 +// 	})
 +// }
@@ -1780,29 +1983,17 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 -		}
 -	})
 -}
-+// func TestMallocs(t *testing.T) {
-+// 	for i := 0; i < 100; i++ {
-+// 		synctest.Run(func() {
-+// 			done := false
-+// 			ch := make(chan []byte)
-+// 			var f func()
-+// 			f = func() {
-+// 				b := <-ch
-+// 				if len(b) == 0 {
-+// 					done = true
-+// 				} else {
-+// 					go f()
-+// 					ch <- make([]byte, len(b)-1)
-+// 				}
-+// 			}
-+// 			go f()
-+// 			ch <- make([]byte, 100)
-+// 			synctest.Wait()
-+// 			if !done {
-+// 				t.Fatalf("done = false, want true")
-+// 			}
-+// 		})
-+// 	}
++// func TestTimerReadAfterDeadline(t *testing.T) {
++// 	synctest.Run(func() {
++// 		delay := 1 * time.Second
++// 		want := time.Now().Add(delay)
++// 		tm := time.NewTimer(delay)
++// 		time.Sleep(2 * delay)
++// 		got := <-tm.C
++// 		if got != want {
++// 			t.Errorf("<-tm.C = %v, want %v", got, want)
++// 		}
++// 	})
 +// }
  
 -func TestMallocs(t *testing.T) {
@@ -1829,16 +2020,13 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 -		})
 -	}
 -}
-+// func TestTimerReadBeforeDeadline(t *testing.T) {
++// func TestTimerReset(t *testing.T) {
 +// 	synctest.Run(func() {
 +// 		start := time.Now()
-+// 		tm := time.NewTimer(5 * time.Second)
-+// 		<-tm.C
-+// 		if got, want := time.Since(start), 5*time.Second; got != want {
-+// 			t.Errorf("after sleep: time.Since(start) = %v, want %v", got, want)
++// 		tm := time.NewTimer(1 * time.Second)
++// 		if got, want := <-tm.C, start.Add(1*time.Second); got != want {
++// 			t.Errorf("first sleep: <-tm.C = %v, want %v", got, want)
 +// 		}
-+// 	})
-+// }
  
 -func TestTimerReadBeforeDeadline(t *testing.T) {
 -	synctest.Run(func() {
@@ -1850,18 +2038,10 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 -		}
 -	})
 -}
-+// func TestTimerReadAfterDeadline(t *testing.T) {
-+// 	synctest.Run(func() {
-+// 		delay := 1 * time.Second
-+// 		want := time.Now().Add(delay)
-+// 		tm := time.NewTimer(delay)
-+// 		time.Sleep(2 * delay)
-+// 		got := <-tm.C
-+// 		if got != want {
-+// 			t.Errorf("<-tm.C = %v, want %v", got, want)
++// 		tm.Reset(2 * time.Second)
++// 		if got, want := <-tm.C, start.Add((1+2)*time.Second); got != want {
++// 			t.Errorf("second sleep: <-tm.C = %v, want %v", got, want)
 +// 		}
-+// 	})
-+// }
  
 -func TestTimerReadAfterDeadline(t *testing.T) {
 -	synctest.Run(func() {
@@ -1875,30 +2055,6 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 -		}
 -	})
 -}
-+// func TestTimerReset(t *testing.T) {
-+// 	synctest.Run(func() {
-+// 		start := time.Now()
-+// 		tm := time.NewTimer(1 * time.Second)
-+// 		if got, want := <-tm.C, start.Add(1*time.Second); got != want {
-+// 			t.Errorf("first sleep: <-tm.C = %v, want %v", got, want)
-+// 		}
- 
--func TestTimerReset(t *testing.T) {
--	synctest.Run(func() {
--		start := time.Now()
--		tm := time.NewTimer(1 * time.Second)
--		if got, want := <-tm.C, start.Add(1*time.Second); got != want {
--			t.Errorf("first sleep: <-tm.C = %v, want %v", got, want)
--		}
-+// 		tm.Reset(2 * time.Second)
-+// 		if got, want := <-tm.C, start.Add((1+2)*time.Second); got != want {
-+// 			t.Errorf("second sleep: <-tm.C = %v, want %v", got, want)
-+// 		}
- 
--		tm.Reset(2 * time.Second)
--		if got, want := <-tm.C, start.Add((1+2)*time.Second); got != want {
--			t.Errorf("second sleep: <-tm.C = %v, want %v", got, want)
--		}
 +// 		tm.Reset(3 * time.Second)
 +// 		time.Sleep(1 * time.Second)
 +// 		tm.Reset(3 * time.Second)
@@ -1908,14 +2064,13 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +// 	})
 +// }
  
--		tm.Reset(3 * time.Second)
--		time.Sleep(1 * time.Second)
--		tm.Reset(3 * time.Second)
--		if got, want := <-tm.C, start.Add((1+2+4)*time.Second); got != want {
--			t.Errorf("third sleep: <-tm.C = %v, want %v", got, want)
+-func TestTimerReset(t *testing.T) {
+-	synctest.Run(func() {
+-		start := time.Now()
+-		tm := time.NewTimer(1 * time.Second)
+-		if got, want := <-tm.C, start.Add(1*time.Second); got != want {
+-			t.Errorf("first sleep: <-tm.C = %v, want %v", got, want)
 -		}
--	})
--}
 +// func TestTimeAfter(t *testing.T) {
 +// 	synctest.Run(func() {
 +// 		i := 0
@@ -1935,24 +2090,10 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +// 	})
 +// }
  
--func TestTimeAfter(t *testing.T) {
--	synctest.Run(func() {
--		i := 0
--		time.AfterFunc(1*time.Second, func() {
--			// Ensure synctest group membership propagates through the AfterFunc.
--			i++ // 1
--			go func() {
--				time.Sleep(1 * time.Second)
--				i++ // 2
--			}()
--		})
--		time.Sleep(3 * time.Second)
--		synctest.Wait()
--		if got, want := i, 2; got != want {
--			t.Errorf("after sleep and wait: i = %v, want %v", got, want)
+-		tm.Reset(2 * time.Second)
+-		if got, want := <-tm.C, start.Add((1+2)*time.Second); got != want {
+-			t.Errorf("second sleep: <-tm.C = %v, want %v", got, want)
 -		}
--	})
--}
 +// func TestTimerFromOutsideBubble(t *testing.T) {
 +// 	tm := time.NewTimer(10 * time.Millisecond)
 +// 	synctest.Run(func() {
@@ -1963,14 +2104,13 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +// 	}
 +// }
  
--func TestTimerFromOutsideBubble(t *testing.T) {
--	tm := time.NewTimer(10 * time.Millisecond)
--	synctest.Run(func() {
--		<-tm.C
+-		tm.Reset(3 * time.Second)
+-		time.Sleep(1 * time.Second)
+-		tm.Reset(3 * time.Second)
+-		if got, want := <-tm.C, start.Add((1+2+4)*time.Second); got != want {
+-			t.Errorf("third sleep: <-tm.C = %v, want %v", got, want)
+-		}
 -	})
--	if tm.Stop() {
--		t.Errorf("synctest.Run unexpectedly returned before timer fired")
--	}
 -}
 +// func TestChannelFromOutsideBubble(t *testing.T) {
 +// 	choutside := make(chan struct{})
@@ -2022,6 +2162,256 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +// 	}
 +// }
  
+-func TestTimeAfter(t *testing.T) {
+-	synctest.Run(func() {
+-		i := 0
+-		time.AfterFunc(1*time.Second, func() {
+-			// Ensure synctest group membership propagates through the AfterFunc.
+-			i++ // 1
+-			go func() {
+-				time.Sleep(1 * time.Second)
+-				i++ // 2
+-			}()
+-		})
+-		time.Sleep(3 * time.Second)
+-		synctest.Wait()
+-		if got, want := i, 2; got != want {
+-			t.Errorf("after sleep and wait: i = %v, want %v", got, want)
+-		}
+-	})
+-}
++// func TestTimerFromInsideBubble(t *testing.T) {
++// 	for _, test := range []struct {
++// 		desc      string
++// 		f         func(tm *time.Timer)
++// 		wantPanic string
++// 	}{{
++// 		desc: "read channel",
++// 		f: func(tm *time.Timer) {
++// 			<-tm.C
++// 		},
++// 		wantPanic: "receive on synctest channel from outside bubble",
++// 	}, {
++// 		desc: "Reset",
++// 		f: func(tm *time.Timer) {
++// 			tm.Reset(1 * time.Second)
++// 		},
++// 		wantPanic: "reset of synctest timer from outside bubble",
++// 	}, {
++// 		desc: "Stop",
++// 		f: func(tm *time.Timer) {
++// 			tm.Stop()
++// 		},
++// 		wantPanic: "stop of synctest timer from outside bubble",
++// 	}} {
++// 		t.Run(test.desc, func(t *testing.T) {
++// 			donec := make(chan struct{})
++// 			ch := make(chan *time.Timer)
++// 			go func() {
++// 				defer close(donec)
++// 				defer wantPanic(t, test.wantPanic)
++// 				test.f(<-ch)
++// 			}()
++// 			synctest.Run(func() {
++// 				tm := time.NewTimer(1 * time.Second)
++// 				ch <- tm
++// 			})
++// 			<-donec
++// 		})
++// 	}
++// }
+ 
+-func TestTimerAfterBubbleExit(t *testing.T) {
+-	run := false
+-	synctest.Run(func() {
+-		time.AfterFunc(1*time.Second, func() {
+-			run = true
+-		})
+-	})
+-	if run {
+-		t.Errorf("timer ran before bubble exit")
+-	}
+-}
++// func TestDeadlockRoot(t *testing.T) {
++// 	defer wantPanic(t, "deadlock: all goroutines in bubble are blocked")
++// 	synctest.Run(func() {
++// 		select {}
++// 	})
++// }
+ 
+-func TestTimerFromOutsideBubble(t *testing.T) {
+-	tm := time.NewTimer(10 * time.Millisecond)
+-	synctest.Run(func() {
+-		<-tm.C
+-	})
+-	if tm.Stop() {
+-		t.Errorf("synctest.Run unexpectedly returned before timer fired")
+-	}
+-}
++// func TestDeadlockChild(t *testing.T) {
++// 	defer wantPanic(t, "deadlock: all goroutines in bubble are blocked")
++// 	synctest.Run(func() {
++// 		go func() {
++// 			select {}
++// 		}()
++// 	})
++// }
+ 
+-// TestTimerNondeterminism verifies that timers firing at the same instant
+-// don't always fire in exactly the same order.
+-func TestTimerNondeterminism(t *testing.T) {
+-	synctest.Run(func() {
+-		const iterations = 1000
+-		var seen1, seen2 bool
+-		for range iterations {
+-			tm1 := time.NewTimer(1)
+-			tm2 := time.NewTimer(1)
+-			select {
+-			case <-tm1.C:
+-				seen1 = true
+-			case <-tm2.C:
+-				seen2 = true
+-			}
+-			if seen1 && seen2 {
+-				return
+-			}
+-			synctest.Wait()
+-		}
+-		t.Errorf("after %v iterations, seen timer1:%v, timer2:%v; want both", iterations, seen1, seen2)
+-	})
+-}
++// func TestCond(t *testing.T) {
++// 	synctest.Run(func() {
++// 		var mu sync.Mutex
++// 		cond := sync.NewCond(&mu)
++// 		start := time.Now()
++// 		const waitTime = 1 * time.Millisecond
+ 
+-// TestSleepNondeterminism verifies that goroutines sleeping to the same instant
+-// don't always schedule in exactly the same order.
+-func TestSleepNondeterminism(t *testing.T) {
+-	synctest.Run(func() {
+-		const iterations = 1000
+-		var seen1, seen2 bool
+-		for range iterations {
+-			var first atomic.Int32
+-			go func() {
+-				time.Sleep(1)
+-				first.CompareAndSwap(0, 1)
+-			}()
+-			go func() {
+-				time.Sleep(1)
+-				first.CompareAndSwap(0, 2)
+-			}()
+-			time.Sleep(1)
+-			synctest.Wait()
+-			switch v := first.Load(); v {
+-			case 1:
+-				seen1 = true
+-			case 2:
+-				seen2 = true
+-			default:
+-				t.Fatalf("first = %v, want 1 or 2", v)
+-			}
+-			if seen1 && seen2 {
+-				return
+-			}
+-			synctest.Wait()
+-		}
+-		t.Errorf("after %v iterations, seen goroutine 1:%v, 2:%v; want both", iterations, seen1, seen2)
+-	})
+-}
++// 		go func() {
++// 			// Signal the cond.
++// 			time.Sleep(waitTime)
++// 			mu.Lock()
++// 			cond.Signal()
++// 			mu.Unlock()
+ 
+-// TestTimerRunsImmediately verifies that a 0-duration timer sends on its channel
+-// without waiting for the bubble to block.
+-func TestTimerRunsImmediately(t *testing.T) {
+-	synctest.Run(func() {
+-		start := time.Now()
+-		tm := time.NewTimer(0)
+-		select {
+-		case got := <-tm.C:
+-			if !got.Equal(start) {
+-				t.Errorf("<-tm.C = %v, want %v", got, start)
+-			}
+-		default:
+-			t.Errorf("0-duration timer channel is not readable; want it to be")
+-		}
+-	})
+-}
++// 			// Broadcast to the cond.
++// 			time.Sleep(waitTime)
++// 			mu.Lock()
++// 			cond.Broadcast()
++// 			mu.Unlock()
++// 		}()
+ 
+-// TestTimerRunsLater verifies that reading from a timer's channel receives the
+-// timer fired, even when that time is in reading from a timer's channel receives the
+-// time the timer fired, even when that time is in the past.
+-func TestTimerRanInPast(t *testing.T) {
+-	synctest.Run(func() {
+-		delay := 1 * time.Second
+-		want := time.Now().Add(delay)
+-		tm := time.NewTimer(delay)
+-		time.Sleep(2 * delay)
+-		select {
+-		case got := <-tm.C:
+-			if !got.Equal(want) {
+-				t.Errorf("<-tm.C = %v, want %v", got, want)
+-			}
+-		default:
+-			t.Errorf("0-duration timer channel is not readable; want it to be")
+-		}
+-	})
+-}
++// 		// Wait for cond.Signal.
++// 		mu.Lock()
++// 		cond.Wait()
++// 		mu.Unlock()
++// 		if got, want := time.Since(start), waitTime; got != want {
++// 			t.Errorf("after cond.Signal: time elapsed = %v, want %v", got, want)
++// 		}
+ 
+-// TestAfterFuncRunsImmediately verifies that a 0-duration AfterFunc is scheduled
+-// without waiting for the bubble to block.
+-func TestAfterFuncRunsImmediately(t *testing.T) {
+-	synctest.Run(func() {
+-		var b atomic.Bool
+-		time.AfterFunc(0, func() {
+-			b.Store(true)
+-		})
+-		for !b.Load() {
+-			runtime.Gosched()
+-		}
+-	})
+-}
++// 		// Wait for cond.Broadcast in two goroutines.
++// 		waiterDone := false
++// 		go func() {
++// 			mu.Lock()
++// 			cond.Wait()
++// 			mu.Unlock()
++// 			waiterDone = true
++// 		}()
++// 		mu.Lock()
++// 		cond.Wait()
++// 		mu.Unlock()
++// 		synctest.Wait()
++// 		if !waiterDone {
++// 			t.Errorf("after cond.Broadcast: waiter not done")
++// 		}
++// 		if got, want := time.Since(start), 2*waitTime; got != want {
++// 			t.Errorf("after cond.Broadcast: time elapsed = %v, want %v", got, want)
++// 		}
++// 	})
++// }
+ 
 -func TestChannelFromOutsideBubble(t *testing.T) {
 -	choutside := make(chan struct{})
 -	for _, test := range []struct {
@@ -2071,212 +2461,6 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 -		})
 -	}
 -}
-+// func TestTimerFromInsideBubble(t *testing.T) {
-+// 	for _, test := range []struct {
-+// 		desc      string
-+// 		f         func(tm *time.Timer)
-+// 		wantPanic string
-+// 	}{{
-+// 		desc: "read channel",
-+// 		f: func(tm *time.Timer) {
-+// 			<-tm.C
-+// 		},
-+// 		wantPanic: "receive on synctest channel from outside bubble",
-+// 	}, {
-+// 		desc: "Reset",
-+// 		f: func(tm *time.Timer) {
-+// 			tm.Reset(1 * time.Second)
-+// 		},
-+// 		wantPanic: "reset of synctest timer from outside bubble",
-+// 	}, {
-+// 		desc: "Stop",
-+// 		f: func(tm *time.Timer) {
-+// 			tm.Stop()
-+// 		},
-+// 		wantPanic: "stop of synctest timer from outside bubble",
-+// 	}} {
-+// 		t.Run(test.desc, func(t *testing.T) {
-+// 			donec := make(chan struct{})
-+// 			ch := make(chan *time.Timer)
-+// 			go func() {
-+// 				defer close(donec)
-+// 				defer wantPanic(t, test.wantPanic)
-+// 				test.f(<-ch)
-+// 			}()
-+// 			synctest.Run(func() {
-+// 				tm := time.NewTimer(1 * time.Second)
-+// 				ch <- tm
-+// 			})
-+// 			<-donec
-+// 		})
-+// 	}
-+// }
- 
--func TestTimerFromInsideBubble(t *testing.T) {
--	for _, test := range []struct {
--		desc      string
--		f         func(tm *time.Timer)
--		wantPanic string
--	}{{
--		desc: "read channel",
--		f: func(tm *time.Timer) {
--			<-tm.C
--		},
--		wantPanic: "receive on synctest channel from outside bubble",
--	}, {
--		desc: "Reset",
--		f: func(tm *time.Timer) {
--			tm.Reset(1 * time.Second)
--		},
--		wantPanic: "reset of synctest timer from outside bubble",
--	}, {
--		desc: "Stop",
--		f: func(tm *time.Timer) {
--			tm.Stop()
--		},
--		wantPanic: "stop of synctest timer from outside bubble",
--	}} {
--		t.Run(test.desc, func(t *testing.T) {
--			donec := make(chan struct{})
--			ch := make(chan *time.Timer)
--			go func() {
--				defer close(donec)
--				defer wantPanic(t, test.wantPanic)
--				test.f(<-ch)
--			}()
--			synctest.Run(func() {
--				tm := time.NewTimer(1 * time.Second)
--				ch <- tm
--			})
--			<-donec
--		})
--	}
--}
-+// func TestDeadlockRoot(t *testing.T) {
-+// 	defer wantPanic(t, "deadlock: all goroutines in bubble are blocked")
-+// 	synctest.Run(func() {
-+// 		select {}
-+// 	})
-+// }
- 
--func TestDeadlockRoot(t *testing.T) {
--	defer wantPanic(t, "deadlock: all goroutines in bubble are blocked")
--	synctest.Run(func() {
--		select {}
--	})
--}
-+// func TestDeadlockChild(t *testing.T) {
-+// 	defer wantPanic(t, "deadlock: all goroutines in bubble are blocked")
-+// 	synctest.Run(func() {
-+// 		go func() {
-+// 			select {}
-+// 		}()
-+// 	})
-+// }
- 
--func TestDeadlockChild(t *testing.T) {
--	defer wantPanic(t, "deadlock: all goroutines in bubble are blocked")
--	synctest.Run(func() {
--		go func() {
--			select {}
--		}()
--	})
--}
-+// func TestCond(t *testing.T) {
-+// 	synctest.Run(func() {
-+// 		var mu sync.Mutex
-+// 		cond := sync.NewCond(&mu)
-+// 		start := time.Now()
-+// 		const waitTime = 1 * time.Millisecond
- 
--func TestCond(t *testing.T) {
--	synctest.Run(func() {
--		var mu sync.Mutex
--		cond := sync.NewCond(&mu)
--		start := time.Now()
--		const waitTime = 1 * time.Millisecond
-+// 		go func() {
-+// 			// Signal the cond.
-+// 			time.Sleep(waitTime)
-+// 			mu.Lock()
-+// 			cond.Signal()
-+// 			mu.Unlock()
- 
--		go func() {
--			// Signal the cond.
--			time.Sleep(waitTime)
--			mu.Lock()
--			cond.Signal()
--			mu.Unlock()
-+// 			// Broadcast to the cond.
-+// 			time.Sleep(waitTime)
-+// 			mu.Lock()
-+// 			cond.Broadcast()
-+// 			mu.Unlock()
-+// 		}()
- 
--			// Broadcast to the cond.
--			time.Sleep(waitTime)
--			mu.Lock()
--			cond.Broadcast()
--			mu.Unlock()
--		}()
-+// 		// Wait for cond.Signal.
-+// 		mu.Lock()
-+// 		cond.Wait()
-+// 		mu.Unlock()
-+// 		if got, want := time.Since(start), waitTime; got != want {
-+// 			t.Errorf("after cond.Signal: time elapsed = %v, want %v", got, want)
-+// 		}
- 
--		// Wait for cond.Signal.
--		mu.Lock()
--		cond.Wait()
--		mu.Unlock()
--		if got, want := time.Since(start), waitTime; got != want {
--			t.Errorf("after cond.Signal: time elapsed = %v, want %v", got, want)
--		}
-+// 		// Wait for cond.Broadcast in two goroutines.
-+// 		waiterDone := false
-+// 		go func() {
-+// 			mu.Lock()
-+// 			cond.Wait()
-+// 			mu.Unlock()
-+// 			waiterDone = true
-+// 		}()
-+// 		mu.Lock()
-+// 		cond.Wait()
-+// 		mu.Unlock()
-+// 		synctest.Wait()
-+// 		if !waiterDone {
-+// 			t.Errorf("after cond.Broadcast: waiter not done")
-+// 		}
-+// 		if got, want := time.Since(start), 2*waitTime; got != want {
-+// 			t.Errorf("after cond.Broadcast: time elapsed = %v, want %v", got, want)
-+// 		}
-+// 	})
-+// }
- 
--		// Wait for cond.Broadcast in two goroutines.
--		waiterDone := false
--		go func() {
--			mu.Lock()
--			cond.Wait()
--			mu.Unlock()
--			waiterDone = true
--		}()
--		mu.Lock()
--		cond.Wait()
--		mu.Unlock()
--		synctest.Wait()
--		if !waiterDone {
--			t.Errorf("after cond.Broadcast: waiter not done")
--		}
--		if got, want := time.Since(start), 2*waitTime; got != want {
--			t.Errorf("after cond.Broadcast: time elapsed = %v, want %v", got, want)
--		}
--	})
--}
 +// func TestIteratorPush(t *testing.T) {
 +// 	synctest.Run(func() {
 +// 		seq := func(yield func(time.Time) bool) {
@@ -2306,33 +2490,66 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +// 	})
 +// }
  
--func TestIteratorPush(t *testing.T) {
--	synctest.Run(func() {
--		seq := func(yield func(time.Time) bool) {
--			for yield(time.Now()) {
--				time.Sleep(1 * time.Second)
--			}
--		}
--		var got []time.Time
--		go func() {
--			for now := range seq {
--				got = append(got, now)
--				if len(got) >= 3 {
--					break
--				}
--			}
--		}()
--		want := []time.Time{
--			time.Now(),
--			time.Now().Add(1 * time.Second),
--			time.Now().Add(2 * time.Second),
--		}
--		time.Sleep(5 * time.Second)
--		synctest.Wait()
--		if !slices.Equal(got, want) {
--			t.Errorf("got: %v; want: %v", got, want)
--		}
--	})
+-func TestChannelMovedOutOfBubble(t *testing.T) {
+-	for _, test := range []struct {
+-		desc      string
+-		f         func(chan struct{})
+-		wantFatal string
+-	}{{
+-		desc: "receive",
+-		f: func(ch chan struct{}) {
+-			<-ch
+-		},
+-		wantFatal: "receive on synctest channel from outside bubble",
+-	}, {
+-		desc: "send",
+-		f: func(ch chan struct{}) {
+-			ch <- struct{}{}
+-		},
+-		wantFatal: "send on synctest channel from outside bubble",
+-	}, {
+-		desc: "close",
+-		f: func(ch chan struct{}) {
+-			close(ch)
+-		},
+-		wantFatal: "close of synctest channel from outside bubble",
+-	}} {
+-		t.Run(test.desc, func(t *testing.T) {
+-			// Bubbled channel accessed from outside any bubble.
+-			t.Run("outside_bubble", func(t *testing.T) {
+-				wantFatal(t, test.wantFatal, func() {
+-					donec := make(chan struct{})
+-					ch := make(chan chan struct{})
+-					go func() {
+-						defer close(donec)
+-						test.f(<-ch)
+-					}()
+-					synctest.Run(func() {
+-						ch <- make(chan struct{})
+-					})
+-					<-donec
+-				})
+-			})
+-			// Bubbled channel accessed from a different bubble.
+-			t.Run("different_bubble", func(t *testing.T) {
+-				wantFatal(t, test.wantFatal, func() {
+-					donec := make(chan struct{})
+-					ch := make(chan chan struct{})
+-					go func() {
+-						defer close(donec)
+-						c := <-ch
+-						synctest.Run(func() {
+-							test.f(c)
+-						})
+-					}()
+-					synctest.Run(func() {
+-						ch <- make(chan struct{})
+-					})
+-					<-donec
+-				})
+-			})
+-		})
+-	}
 -}
 +// func TestIteratorPull(t *testing.T) {
 +// 	synctest.Run(func() {
@@ -2363,6 +2580,191 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +// 	})
 +// }
  
+-func TestTimerFromInsideBubble(t *testing.T) {
+-	for _, test := range []struct {
+-		desc      string
+-		f         func(tm *time.Timer)
+-		wantFatal string
+-	}{{
+-		desc: "read channel",
+-		f: func(tm *time.Timer) {
+-			<-tm.C
+-		},
+-		wantFatal: "receive on synctest channel from outside bubble",
+-	}, {
+-		desc: "Reset",
+-		f: func(tm *time.Timer) {
+-			tm.Reset(1 * time.Second)
+-		},
+-		wantFatal: "reset of synctest timer from outside bubble",
+-	}, {
+-		desc: "Stop",
+-		f: func(tm *time.Timer) {
+-			tm.Stop()
+-		},
+-		wantFatal: "stop of synctest timer from outside bubble",
+-	}} {
+-		t.Run(test.desc, func(t *testing.T) {
+-			wantFatal(t, test.wantFatal, func() {
+-				donec := make(chan struct{})
+-				ch := make(chan *time.Timer)
+-				go func() {
+-					defer close(donec)
+-					test.f(<-ch)
+-				}()
+-				synctest.Run(func() {
+-					tm := time.NewTimer(1 * time.Second)
+-					ch <- tm
+-				})
+-				<-donec
+-			})
+-		})
+-	}
+-}
++// func TestReflectFuncOf(t *testing.T) {
++// 	mkfunc := func(name string, i int) {
++// 		reflect.FuncOf([]reflect.Type{
++// 			reflect.StructOf([]reflect.StructField{{
++// 				Name: name + strconv.Itoa(i),
++// 				Type: reflect.TypeOf(0),
++// 			}}),
++// 		}, nil, false)
++// 	}
++// 	go func() {
++// 		for i := 0; i < 100000; i++ {
++// 			mkfunc("A", i)
++// 		}
++// 	}()
++// 	synctest.Run(func() {
++// 		for i := 0; i < 100000; i++ {
++// 			mkfunc("A", i)
++// 		}
++// 	})
++// }
+ 
+-func TestDeadlockRoot(t *testing.T) {
+-	defer wantPanic(t, "deadlock: all goroutines in bubble are blocked")
+-	synctest.Run(func() {
+-		select {}
+-	})
+-}
++// func TestWaitGroup(t *testing.T) {
++// 	synctest.Run(func() {
++// 		var wg sync.WaitGroup
++// 		wg.Add(1)
++// 		const delay = 1 * time.Second
++// 		go func() {
++// 			time.Sleep(delay)
++// 			wg.Done()
++// 		}()
++// 		start := time.Now()
++// 		wg.Wait()
++// 		if got := time.Since(start); got != delay {
++// 			t.Fatalf("WaitGroup.Wait() took %v, want %v", got, delay)
++// 		}
++// 	})
++// }
+ 
+-func TestDeadlockChild(t *testing.T) {
+-	defer wantPanic(t, "deadlock: main bubble goroutine has exited but blocked goroutines remain")
+-	synctest.Run(func() {
+-		go func() {
+-			select {}
+-		}()
+-	})
+-}
+-
+-func TestDeadlockTicker(t *testing.T) {
+-	defer wantPanic(t, "deadlock: main bubble goroutine has exited but blocked goroutines remain")
+-	synctest.Run(func() {
+-		go func() {
+-			for range time.Tick(1 * time.Second) {
+-				t.Errorf("ticker unexpectedly ran")
+-				return
+-			}
+-		}()
+-	})
+-}
+-
+-func TestCond(t *testing.T) {
+-	synctest.Run(func() {
+-		var mu sync.Mutex
+-		cond := sync.NewCond(&mu)
+-		start := time.Now()
+-		const waitTime = 1 * time.Millisecond
+-
+-		go func() {
+-			// Signal the cond.
+-			time.Sleep(waitTime)
+-			mu.Lock()
+-			cond.Signal()
+-			mu.Unlock()
+-
+-			// Broadcast to the cond.
+-			time.Sleep(waitTime)
+-			mu.Lock()
+-			cond.Broadcast()
+-			mu.Unlock()
+-		}()
+-
+-		// Wait for cond.Signal.
+-		mu.Lock()
+-		cond.Wait()
+-		mu.Unlock()
+-		if got, want := time.Since(start), waitTime; got != want {
+-			t.Errorf("after cond.Signal: time elapsed = %v, want %v", got, want)
+-		}
+-
+-		// Wait for cond.Broadcast in two goroutines.
+-		waiterDone := false
+-		go func() {
+-			mu.Lock()
+-			cond.Wait()
+-			mu.Unlock()
+-			waiterDone = true
+-		}()
+-		mu.Lock()
+-		cond.Wait()
+-		mu.Unlock()
+-		synctest.Wait()
+-		if !waiterDone {
+-			t.Errorf("after cond.Broadcast: waiter not done")
+-		}
+-		if got, want := time.Since(start), 2*waitTime; got != want {
+-			t.Errorf("after cond.Broadcast: time elapsed = %v, want %v", got, want)
+-		}
+-	})
+-}
+-
+-func TestIteratorPush(t *testing.T) {
+-	synctest.Run(func() {
+-		seq := func(yield func(time.Time) bool) {
+-			for yield(time.Now()) {
+-				time.Sleep(1 * time.Second)
+-			}
+-		}
+-		var got []time.Time
+-		go func() {
+-			for now := range seq {
+-				got = append(got, now)
+-				if len(got) >= 3 {
+-					break
+-				}
+-			}
+-		}()
+-		want := []time.Time{
+-			time.Now(),
+-			time.Now().Add(1 * time.Second),
+-			time.Now().Add(2 * time.Second),
+-		}
+-		time.Sleep(5 * time.Second)
+-		synctest.Wait()
+-		if !slices.Equal(got, want) {
+-			t.Errorf("got: %v; want: %v", got, want)
+-		}
+-	})
+-}
+-
 -func TestIteratorPull(t *testing.T) {
 -	synctest.Run(func() {
 -		seq := func(yield func(time.Time) bool) {
@@ -2391,27 +2793,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 -		}
 -	})
 -}
-+// func TestReflectFuncOf(t *testing.T) {
-+// 	mkfunc := func(name string, i int) {
-+// 		reflect.FuncOf([]reflect.Type{
-+// 			reflect.StructOf([]reflect.StructField{{
-+// 				Name: name + strconv.Itoa(i),
-+// 				Type: reflect.TypeOf(0),
-+// 			}}),
-+// 		}, nil, false)
-+// 	}
-+// 	go func() {
-+// 		for i := 0; i < 100000; i++ {
-+// 			mkfunc("A", i)
-+// 		}
-+// 	}()
-+// 	synctest.Run(func() {
-+// 		for i := 0; i < 100000; i++ {
-+// 			mkfunc("A", i)
-+// 		}
-+// 	})
-+// }
- 
+-
 -func TestReflectFuncOf(t *testing.T) {
 -	mkfunc := func(name string, i int) {
 -		reflect.FuncOf([]reflect.Type{
@@ -2432,24 +2814,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 -		}
 -	})
 -}
-+// func TestWaitGroup(t *testing.T) {
-+// 	synctest.Run(func() {
-+// 		var wg sync.WaitGroup
-+// 		wg.Add(1)
-+// 		const delay = 1 * time.Second
-+// 		go func() {
-+// 			time.Sleep(delay)
-+// 			wg.Done()
-+// 		}()
-+// 		start := time.Now()
-+// 		wg.Wait()
-+// 		if got := time.Since(start); got != delay {
-+// 			t.Fatalf("WaitGroup.Wait() took %v, want %v", got, delay)
-+// 		}
-+// 	})
-+// }
- 
--func TestWaitGroup(t *testing.T) {
+-
+-func TestWaitGroupInBubble(t *testing.T) {
 -	synctest.Run(func() {
 -		var wg sync.WaitGroup
 -		wg.Add(1)
@@ -2466,6 +2832,248 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 -	})
 -}
 -
+-// https://go.dev/issue/74386
+-func TestWaitGroupRacingAdds(t *testing.T) {
+-	synctest.Run(func() {
+-		var wg sync.WaitGroup
+-		for range 100 {
+-			wg.Go(func() {})
+-		}
+-		wg.Wait()
+-	})
+-}
+-
+-func TestWaitGroupOutOfBubble(t *testing.T) {
+-	var wg sync.WaitGroup
+-	wg.Add(1)
+-	donec := make(chan struct{})
+-	go synctest.Run(func() {
+-		// Since wg.Add was called outside the bubble, Wait is not durably blocking
+-		// and this waits until wg.Done is called below.
+-		wg.Wait()
+-		close(donec)
+-	})
+-	select {
+-	case <-donec:
+-		t.Fatalf("synctest.Run finished before WaitGroup.Done called")
+-	case <-time.After(1 * time.Millisecond):
+-	}
+-	wg.Done()
+-	<-donec
+-}
+-
+-func TestWaitGroupMovedIntoBubble(t *testing.T) {
+-	wantFatal(t, "fatal error: sync: WaitGroup.Add called from inside and outside synctest bubble", func() {
+-		var wg sync.WaitGroup
+-		wg.Add(1)
+-		synctest.Run(func() {
+-			wg.Add(1)
+-		})
+-	})
+-}
+-
+-func TestWaitGroupMovedOutOfBubble(t *testing.T) {
+-	wantFatal(t, "fatal error: sync: WaitGroup.Add called from inside and outside synctest bubble", func() {
+-		var wg sync.WaitGroup
+-		synctest.Run(func() {
+-			wg.Add(1)
+-		})
+-		wg.Add(1)
+-	})
+-}
+-
+-func TestWaitGroupMovedBetweenBubblesWithNonZeroCount(t *testing.T) {
+-	wantFatal(t, "fatal error: sync: WaitGroup.Add called from multiple synctest bubbles", func() {
+-		var wg sync.WaitGroup
+-		synctest.Run(func() {
+-			wg.Add(1)
+-		})
+-		synctest.Run(func() {
+-			wg.Add(1)
+-		})
+-	})
+-}
+-
+-func TestWaitGroupDisassociateInWait(t *testing.T) {
+-	var wg sync.WaitGroup
+-	synctest.Run(func() {
+-		wg.Add(1)
+-		wg.Done()
+-		// Count and waiters are 0, so Wait disassociates the WaitGroup.
+-		wg.Wait()
+-	})
+-	synctest.Run(func() {
+-		// Reusing the WaitGroup is safe, because it is no longer bubbled.
+-		wg.Add(1)
+-		wg.Done()
+-	})
+-}
+-
+-func TestWaitGroupDisassociateInAdd(t *testing.T) {
+-	var wg sync.WaitGroup
+-	synctest.Run(func() {
+-		wg.Add(1)
+-		go wg.Wait()
+-		synctest.Wait() // wait for Wait to block
+-		// Count is 0 and waiters != 0, so Done wakes the waiters and
+-		// disassociates the WaitGroup.
+-		wg.Done()
+-	})
+-	synctest.Run(func() {
+-		// Reusing the WaitGroup is safe, because it is no longer bubbled.
+-		wg.Add(1)
+-		wg.Done()
+-	})
+-}
+-
+-var testWaitGroupLinkerAllocatedWG sync.WaitGroup
+-
+-func TestWaitGroupLinkerAllocated(t *testing.T) {
+-	synctest.Run(func() {
+-		// This WaitGroup is probably linker-allocated and has no span,
+-		// so we won't be able to add a special to it associating it with
+-		// this bubble.
+-		//
+-		// Operations on it may not be durably blocking,
+-		// but they shouldn't fail.
+-		testWaitGroupLinkerAllocatedWG.Go(func() {})
+-		testWaitGroupLinkerAllocatedWG.Wait()
+-	})
+-}
+-
+-var testWaitGroupHeapAllocatedWG = new(sync.WaitGroup)
+-
+-func TestWaitGroupHeapAllocated(t *testing.T) {
+-	synctest.Run(func() {
+-		// This package-scoped WaitGroup var should have been heap-allocated,
+-		// so we can associate it with a bubble.
+-		testWaitGroupHeapAllocatedWG.Add(1)
+-		go testWaitGroupHeapAllocatedWG.Wait()
+-		synctest.Wait()
+-		testWaitGroupHeapAllocatedWG.Done()
+-	})
+-}
+-
+-// Issue #75134: Many racing bubble associations.
+-func TestWaitGroupManyBubbles(t *testing.T) {
+-	var wg sync.WaitGroup
+-	for range 100 {
+-		wg.Go(func() {
+-			synctest.Run(func() {
+-				cancelc := make(chan struct{})
+-				var wg2 sync.WaitGroup
+-				for range 100 {
+-					wg2.Go(func() {
+-						<-cancelc
+-					})
+-				}
+-				synctest.Wait()
+-				close(cancelc)
+-				wg2.Wait()
+-			})
+-		})
+-	}
+-	wg.Wait()
+-}
+-
+-func TestHappensBefore(t *testing.T) {
+-	// Use two parallel goroutines accessing different vars to ensure that
+-	// we correctly account for multiple goroutines in the bubble.
+-	var v1 int
+-	var v2 int
+-	synctest.Run(func() {
+-		v1++ // 1
+-		v2++ // 1
+-
+-		// Wait returns after these goroutines exit.
+-		go func() {
+-			v1++ // 2
+-		}()
+-		go func() {
+-			v2++ // 2
+-		}()
+-		synctest.Wait()
+-
+-		v1++ // 3
+-		v2++ // 3
+-
+-		// Wait returns after these goroutines block.
+-		ch1 := make(chan struct{})
+-		go func() {
+-			v1++ // 4
+-			<-ch1
+-		}()
+-		go func() {
+-			v2++ // 4
+-			<-ch1
+-		}()
+-		synctest.Wait()
+-
+-		v1++ // 5
+-		v2++ // 5
+-		close(ch1)
+-
+-		// Wait returns after these timers run.
+-		time.AfterFunc(0, func() {
+-			v1++ // 6
+-		})
+-		time.AfterFunc(0, func() {
+-			v2++ // 6
+-		})
+-		synctest.Wait()
+-
+-		v1++ // 7
+-		v2++ // 7
+-
+-		// Wait returns after these timer goroutines block.
+-		ch2 := make(chan struct{})
+-		time.AfterFunc(0, func() {
+-			v1++ // 8
+-			<-ch2
+-		})
+-		time.AfterFunc(0, func() {
+-			v2++ // 8
+-			<-ch2
+-		})
+-		synctest.Wait()
+-
+-		v1++ // 9
+-		v2++ // 9
+-		close(ch2)
+-	})
+-	// This Run happens after the previous Run returns.
+-	synctest.Run(func() {
+-		go func() {
+-			go func() {
+-				v1++ // 10
+-			}()
+-		}()
+-		go func() {
+-			go func() {
+-				v2++ // 10
+-			}()
+-		}()
+-	})
+-	// These tests happen after Run returns.
+-	if got, want := v1, 10; got != want {
+-		t.Errorf("v1 = %v, want %v", got, want)
+-	}
+-	if got, want := v2, 10; got != want {
+-		t.Errorf("v2 = %v, want %v", got, want)
+-	}
+-}
+-
+-// https://go.dev/issue/73817
+-func TestWeak(t *testing.T) {
+-	synctest.Run(func() {
+-		for range 5 {
+-			runtime.GC()
+-			b := make([]byte, 1024)
+-			weak.Make(&b)
+-		}
+-	})
+-}
+-
 -func wantPanic(t *testing.T, want string) {
 -	if e := recover(); e != nil {
 -		if got := fmt.Sprint(e); got != want {
@@ -2473,6 +3081,26 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 -		}
 -	} else {
 -		t.Errorf("got no panic, want one")
+-	}
+-}
+-
+-func wantFatal(t *testing.T, want string, f func()) {
+-	t.Helper()
+-
+-	if os.Getenv("GO_WANT_HELPER_PROCESS") == "1" {
+-		f()
+-		return
+-	}
+-
+-	cmd := testenv.Command(t, testenv.Executable(t), "-test.run=^"+t.Name()+"$")
+-	cmd = testenv.CleanCmdEnv(cmd)
+-	cmd.Env = append(cmd.Env, "GO_WANT_HELPER_PROCESS=1")
+-	out, err := cmd.CombinedOutput()
+-	if err == nil {
+-		t.Errorf("expected test function to panic, but test returned successfully")
+-	}
+-	if !strings.Contains(string(out), want) {
+-		t.Errorf("wanted test output contaiing %q; got %q", want, string(out))
 -	}
 -}
 +// func wantPanic(t *testing.T, want string) {
@@ -2485,8 +3113,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +// 	}
 +// }
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/internal/testenv/testenv.go b/internal/testenv/testenv.go
---- a/internal/testenv/testenv.go	2026-05-23 16:14:41
-+++ b/internal/testenv/testenv.go	2026-05-23 16:16:51
+--- a/internal/testenv/testenv.go	2026-05-23 16:23:10
++++ b/internal/testenv/testenv.go	2026-05-23 17:16:31
 @@ -15,9 +15,6 @@
  	"errors"
  	"flag"
@@ -2509,7 +3137,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // Save the original environment during init for use in checks. A test
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/internal/testenv/testenv_test.go b/internal/testenv/testenv_test.go
---- a/internal/testenv/testenv_test.go	2026-05-23 16:14:41
+--- a/internal/testenv/testenv_test.go	2026-05-23 16:23:10
 +++ b/internal/testenv/testenv_test.go	2026-05-23 15:55:26
 @@ -5,13 +5,14 @@
  package testenv_test
@@ -2529,8 +3157,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestGoToolLocation(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/main_test.go b/main_test.go
---- a/main_test.go	2026-05-23 16:14:41
-+++ b/main_test.go	2026-05-23 15:55:26
+--- a/main_test.go	2026-05-23 16:23:10
++++ b/main_test.go	2026-05-23 17:16:31
 @@ -8,13 +8,14 @@
  	"fmt"
  	"io"
@@ -2548,8 +3176,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var quietLog = log.New(io.Discard, "", 0)
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/netconn_test.go b/netconn_test.go
---- a/netconn_test.go	2026-05-23 16:14:41
-+++ b/netconn_test.go	2026-05-23 15:55:26
+--- a/netconn_test.go	2026-05-23 16:23:10
++++ b/netconn_test.go	2026-05-23 17:16:31
 @@ -7,7 +7,6 @@
  import (
  	"bytes"
@@ -2568,7 +3196,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func fakeNetListen() *fakeNetListener {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/pprof/pprof.go b/pprof/pprof.go
---- a/pprof/pprof.go	2026-05-23 16:14:41
+--- a/pprof/pprof.go	2026-05-23 16:23:10
 +++ b/pprof/pprof.go	2026-05-23 15:55:26
 @@ -12,7 +12,7 @@
  //
@@ -2604,7 +3232,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func init() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/pprof/pprof_test.go b/pprof/pprof_test.go
---- a/pprof/pprof_test.go	2026-05-23 16:14:41
+--- a/pprof/pprof_test.go	2026-05-23 16:23:10
 +++ b/pprof/pprof_test.go	2026-05-23 15:55:26
 @@ -8,11 +8,7 @@
  	"bytes"
@@ -2633,7 +3261,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // TestDescriptions checks that the profile names under runtime/pprof package
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/pprof/testdata/delta_mutex.go b/pprof/testdata/delta_mutex.go
---- a/pprof/testdata/delta_mutex.go	2026-05-23 16:14:41
+--- a/pprof/testdata/delta_mutex.go	2026-05-23 16:23:10
 +++ b/pprof/testdata/delta_mutex.go	2026-05-23 15:55:26
 @@ -16,10 +16,12 @@
  	"bytes"
@@ -2651,8 +3279,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func main() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/request.go b/request.go
---- a/request.go	2026-05-23 16:14:41
-+++ b/request.go	2026-05-23 15:55:26
+--- a/request.go	2026-05-23 16:23:10
++++ b/request.go	2026-05-23 17:16:31
 @@ -10,7 +10,6 @@
  	"bufio"
  	"bytes"
@@ -2814,7 +3442,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  	_, err = io.WriteString(w, "\r\n")
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/request_test.go b/request_test.go
---- a/request_test.go	2026-05-23 16:14:41
+--- a/request_test.go	2026-05-23 16:23:10
 +++ b/request_test.go	2026-05-23 15:55:26
 @@ -16,9 +16,6 @@
  	"io"
@@ -2838,7 +3466,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestQuery(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/response.go b/response.go
---- a/response.go	2026-05-23 16:14:41
+--- a/response.go	2026-05-23 16:23:10
 +++ b/response.go	2024-11-24 10:42:05
 @@ -9,7 +9,6 @@
  import (
@@ -2867,7 +3495,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // Response represents the response from an HTTP request.
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/response_test.go b/response_test.go
---- a/response_test.go	2026-05-23 16:14:41
+--- a/response_test.go	2026-05-23 16:23:10
 +++ b/response_test.go	2026-05-23 15:55:26
 @@ -12,12 +12,13 @@
  	"fmt"
@@ -2885,7 +3513,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  type respTest struct {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/responsecontroller_test.go b/responsecontroller_test.go
---- a/responsecontroller_test.go	2026-05-23 16:14:41
+--- a/responsecontroller_test.go	2026-05-23 16:23:10
 +++ b/responsecontroller_test.go	2026-05-23 15:55:26
 @@ -8,11 +8,12 @@
  	"errors"
@@ -2902,8 +3530,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestResponseControllerFlush(t *testing.T) { run(t, testResponseControllerFlush) }
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/roundtrip_js.go b/roundtrip_js.go
---- a/roundtrip_js.go	2026-05-23 16:14:41
-+++ b/roundtrip_js.go	2026-05-23 15:55:26
+--- a/roundtrip_js.go	2026-05-23 16:23:10
++++ b/roundtrip_js.go	2026-05-23 17:16:31
 @@ -10,10 +10,11 @@
  	"errors"
  	"fmt"
@@ -2918,8 +3546,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var uint8Array = js.Global().Get("Uint8Array")
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/serve_test.go b/serve_test.go
---- a/serve_test.go	2026-05-23 16:14:41
-+++ b/serve_test.go	2026-05-23 16:17:26
+--- a/serve_test.go	2026-05-23 16:23:10
++++ b/serve_test.go	2026-05-23 17:16:31
 @@ -12,24 +12,15 @@
  	"compress/gzip"
  	"compress/zlib"
@@ -2963,12 +3591,12 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  )
  
  type dummyAddr string
-@@ -5807,61 +5809,62 @@
+@@ -5854,61 +5856,62 @@
  	}
  }
  
 -func TestServerShutdownStateNew(t *testing.T) { runSynctest(t, testServerShutdownStateNew) }
--func testServerShutdownStateNew(t testing.TB, mode testMode) {
+-func testServerShutdownStateNew(t *testing.T, mode testMode) {
 -	if testing.Short() {
 -		t.Skip("test takes 5-6 seconds; skipping in short mode")
 -	}
@@ -3075,7 +3703,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  // Issue 17878: tests that we can call Close twice.
  func TestServerCloseDeadlock(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/servemux121.go b/servemux121.go
---- a/servemux121.go	2026-05-23 16:14:41
+--- a/servemux121.go	2026-05-23 16:23:10
 +++ b/servemux121.go	2026-05-23 15:55:26
 @@ -15,11 +15,12 @@
  // Do not modify this file, it should remain frozen.
@@ -3092,8 +3720,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var httpmuxgo121 = godebug.New("httpmuxgo121")
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/server.go b/server.go
---- a/server.go	2026-05-23 16:14:41
-+++ b/server.go	2026-05-23 16:16:51
+--- a/server.go	2026-05-23 16:23:10
++++ b/server.go	2026-05-23 17:16:31
 @@ -10,10 +10,8 @@
  	"bufio"
  	"bytes"
@@ -3117,7 +3745,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"golang.org/x/net/http/httpguts"
  )
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/sniff_test.go b/sniff_test.go
---- a/sniff_test.go	2026-05-23 16:14:41
+--- a/sniff_test.go	2026-05-23 16:23:10
 +++ b/sniff_test.go	2026-05-23 15:55:26
 @@ -9,11 +9,12 @@
  	"fmt"
@@ -3134,7 +3762,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var sniffTests = []struct {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/transfer.go b/transfer.go
---- a/transfer.go	2026-05-23 16:14:41
+--- a/transfer.go	2026-05-23 16:23:10
 +++ b/transfer.go	2026-05-23 15:55:26
 @@ -9,12 +9,8 @@
  	"bytes"
@@ -3163,8 +3791,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"golang.org/x/net/http/httpguts"
  )
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/transport.go b/transport.go
---- a/transport.go	2026-05-23 16:14:41
-+++ b/transport.go	2026-05-23 16:58:49
+--- a/transport.go	2026-05-23 16:23:10
++++ b/transport.go	2026-05-23 17:16:31
 @@ -11,19 +11,18 @@
  
  import (
@@ -3429,7 +4057,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  func (pc *persistConn) readLoopPeekFailLocked(peekErr error) {
  	if pc.closed != nil {
  		return
-@@ -2773,7 +2871,7 @@
+@@ -2780,7 +2878,7 @@
  		// auto-decoding a portion of a gzipped document will just fail
  		// anyway. See https://golang.org/issue/8923
  		requestedGzip = true
@@ -3438,7 +4066,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	}
  
  	var continueCh chan struct{}
-@@ -3053,6 +3151,148 @@
+@@ -3066,6 +3164,148 @@
  
  func (gz *gzipReader) Close() error {
  	return gz.body.Close()
@@ -3588,7 +4216,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  type tlsHandshakeTimeoutError struct{}
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/transport_dial_test.go b/transport_dial_test.go
---- a/transport_dial_test.go	2026-05-23 16:14:41
+--- a/transport_dial_test.go	2026-05-23 16:23:10
 +++ b/transport_dial_test.go	2026-05-23 15:55:26
 @@ -8,9 +8,11 @@
  	"context"
@@ -3604,7 +4232,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestTransportPoolConnReusePriorConnection(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/transport_internal_test.go b/transport_internal_test.go
---- a/transport_internal_test.go	2026-05-23 16:14:41
+--- a/transport_internal_test.go	2026-05-23 16:23:10
 +++ b/transport_internal_test.go	2026-05-23 15:55:26
 @@ -9,13 +9,15 @@
  import (
@@ -3653,8 +4281,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  					n, _ := io.Copy(io.Discard, r.Body)
  					if n == 0 {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/transport_test.go b/transport_test.go
---- a/transport_test.go	2026-05-23 16:14:41
-+++ b/transport_test.go	2026-05-23 16:16:51
+--- a/transport_test.go	2026-05-23 16:23:10
++++ b/transport_test.go	2026-05-23 17:29:56
 @@ -15,23 +15,19 @@
  	"compress/gzip"
  	"context"
@@ -3696,6 +4324,33 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"golang.org/x/net/http/httpguts"
  )
  
+@@ -4230,7 +4234,7 @@
+ 	// block the connection closing.
+ 	runSynctest(t, testTransportIdleConnRacesRequest, []testMode{http1Mode, http2UnencryptedMode})
+ }
+-func testTransportIdleConnRacesRequest(t *testing.T, mode testMode) {
++func testTransportIdleConnRacesRequest(t testing.TB, mode testMode) {
+ 	if mode == http2UnencryptedMode {
+ 		t.Skip("remove skip when #70515 is fixed")
+ 	}
+@@ -4305,7 +4309,7 @@
+ func TestTransportRemovesConnsAfterIdle(t *testing.T) {
+ 	runSynctest(t, testTransportRemovesConnsAfterIdle)
+ }
+-func testTransportRemovesConnsAfterIdle(t *testing.T, mode testMode) {
++func testTransportRemovesConnsAfterIdle(t testing.TB, mode testMode) {
+ 	if testing.Short() {
+ 		t.Skip("skipping in short mode")
+ 	}
+@@ -4351,7 +4355,7 @@
+ func TestTransportRemovesConnsAfterBroken(t *testing.T) {
+ 	runSynctest(t, testTransportRemovesConnsAfterBroken)
+ }
+-func testTransportRemovesConnsAfterBroken(t *testing.T, mode testMode) {
++func testTransportRemovesConnsAfterBroken(t testing.TB, mode testMode) {
+ 	if testing.Short() {
+ 		t.Skip("skipping in short mode")
+ 	}
 @@ -4757,7 +4761,7 @@
  
  func TestTransportAutomaticHTTP2_TLSNextProto(t *testing.T) {
@@ -3746,7 +4401,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  		want: "HTTP/2.0",
  	}, {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md --exclude=*.rej a/triv.go b/triv.go
---- a/triv.go	2026-05-23 16:14:41
+--- a/triv.go	2026-05-23 16:23:10
 +++ b/triv.go	2026-05-23 15:55:26
 @@ -12,12 +12,13 @@
  	"fmt"

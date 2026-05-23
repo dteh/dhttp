@@ -38,7 +38,8 @@ type fakeNetListener struct {
 	addr         netip.AddrPort
 	locPort      uint16
 
-	onDial func() // called when making a new connection
+	onDial  func()             // called when making a new connection
+	onClose func(*fakeNetConn) // called when closing a connection
 
 	trackConns bool // set this to record all created conns
 	conns      []*fakeNetConn
@@ -68,6 +69,8 @@ func (li *fakeNetListener) connect() *fakeNetConn {
 	locAddr := netip.AddrPortFrom(netip.AddrFrom4([4]byte{127, 0, 0, 1}), li.locPort)
 	li.locPort++
 	c0, c1 := fakeNetPipe(li.addr, locAddr)
+	c0.onClose = li.onClose
+	c1.onClose = li.onClose
 	li.queue = append(li.queue, c0)
 	if li.trackConns {
 		li.conns = append(li.conns, c0)
@@ -127,7 +130,7 @@ type fakeNetConn struct {
 	// peer is the other endpoint.
 	peer *fakeNetConn
 
-	onClose func() // called when closing
+	onClose func(*fakeNetConn) // called when closing
 }
 
 // Read reads data from the connection.
@@ -170,7 +173,7 @@ func (c *fakeNetConn) IsClosedByPeer() bool {
 // Close closes the connection.
 func (c *fakeNetConn) Close() error {
 	if c.onClose != nil {
-		c.onClose()
+		c.onClose(c)
 	}
 	// Local half of the conn is now closed.
 	c.loc.lock()

@@ -18,7 +18,7 @@ REWRITES = [
     (re.compile(r'"net/http/(cgi|cookiejar|fcgi|httptest|httptrace|httputil|pprof)"'),
      r'"github.com/dteh/dhttp/\1"'),
     # net/http internal packages (must be matched before the bare "net/http" rewrite).
-    (re.compile(r'"net/http/internal/(ascii|testcert)"'),
+    (re.compile(r'"net/http/internal/(ascii|httpcommon|testcert)"'),
      r'"github.com/dteh/dhttp/internal/\1"'),
     (re.compile(r'"net/http/internal"'),
      r'"github.com/dteh/dhttp/internal"'),

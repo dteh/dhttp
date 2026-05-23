@@ -4,6 +4,7 @@
 # All land at internal/<basename>/ in the dhttp module.
 src/net/http/internal
 src/net/http/internal/ascii
+src/net/http/internal/httpcommon
 src/net/http/internal/testcert
 src/internal/bisect
 src/internal/cfg

@@ -12,6 +12,7 @@ src/internal/diff
 src/internal/goarch
 src/internal/godebug
 src/internal/godebugs
+src/internal/goexperiment
 src/internal/nettrace
 src/internal/platform
 src/internal/profile

@@ -1545,7 +1545,6 @@ func testServeFileRejectsInvalidSuffixLengths(t *testing.T, mode testMode) {
 	}
 
 	for _, tt := range tests {
-		tt := tt
 		t.Run(tt.r, func(t *testing.T) {
 			req, err := NewRequest("GET", cst.URL+"/index.html", nil)
 			if err != nil {

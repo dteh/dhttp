@@ -150,7 +150,6 @@ func DumpRequestOut(req *http.Request, body bool) ([]byte, error) {
 
 	req.Body = save
 	if err != nil {
-		pw.Close()
 		dr.err = err
 		close(quitReadCh)
 		return nil, err

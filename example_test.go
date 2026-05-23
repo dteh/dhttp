@@ -13,6 +13,7 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"time"
 
 	http "github.com/dteh/dhttp"
 )
@@ -223,4 +224,23 @@ func ExampleProtocols_http1or2() {
 		log.Fatal(err)
 	}
 	res.Body.Close()
+}
+
+func ExampleCrossOriginProtection() {
+	mux := http.NewServeMux()
+
+	mux.HandleFunc("/hello", func(w http.ResponseWriter, req *http.Request) {
+		io.WriteString(w, "request allowed\n")
+	})
+
+	srv := http.Server{
+		Addr:         ":8080",
+		ReadTimeout:  15 * time.Second,
+		WriteTimeout: 15 * time.Second,
+		// Use CrossOriginProtection.Handler to block all non-safe cross-origin
+		// browser requests to mux.
+		Handler: http.NewCrossOriginProtection().Handler(mux),
+	}
+
+	log.Fatal(srv.ListenAndServe())
 }

@@ -17,6 +17,7 @@ import (
 	"syscall/js"
 
 	"github.com/dteh/dhttp/internal/ascii"
+	"net/url"
 )
 
 var uint8Array = js.Global().Get("Uint8Array")
@@ -198,6 +199,13 @@ func (t *Transport) RoundTrip(req *Request) (*Response, error) {
 			uncompressed = true
 		}
 
+		if result.Get("redirected").Bool() {
+			u, err := url.Parse(result.Get("url").String())
+			if err == nil {
+				req = req.Clone(req.ctx)
+				req.URL = u
+			}
+		}
 		respCh <- &Response{
 			Status:        fmt.Sprintf("%d %s", code, StatusText(code)),
 			StatusCode:    code,

@@ -23,7 +23,7 @@ REWRITES = [
     (re.compile(r'"net/http/internal"'),
      r'"github.com/dteh/dhttp/internal"'),
     # src/internal/* packages — they live under dhttp/internal/.
-    (re.compile(r'"internal/(bisect|cfg|diff|goarch|godebug|godebugs|nettrace|platform|profile|race|synctest|testenv|txtar)"'),
+    (re.compile(r'"internal/(bisect|cfg|diff|goarch|godebug|godebugs|goexperiment|nettrace|platform|profile|race|synctest|testenv|txtar)"'),
      r'"github.com/dteh/dhttp/internal/\1"'),
     # Bare "net/http" -> named alias (test files use `. "net/http"` separately).
     (re.compile(r'^(\s*)"net/http"$', re.M),

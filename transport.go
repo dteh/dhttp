@@ -2451,11 +2451,14 @@ func (pc *persistConn) readLoop() {
 
 		resp.Body = body
 		if rc.addedGzip {
-			resp.Body = setBodyReader(resp)
-			resp.Header.Del("Content-Encoding")
-			resp.Header.Del("Content-Length")
-			resp.ContentLength = -1
-			resp.Uncompressed = true
+			ce := resp.Header.Get("Content-Encoding")
+			if ce == "gzip" || ce == "br" || ce == "deflate" || ce == "zstd" {
+				resp.Body = setBodyReader(resp)
+				resp.Header.Del("Content-Encoding")
+				resp.Header.Del("Content-Length")
+				resp.ContentLength = -1
+				resp.Uncompressed = true
+			}
 		}
 
 		select {

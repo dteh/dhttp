@@ -10255,12 +10255,15 @@ func (rl *http2clientConnReadLoop) handleResponse(cs *http2clientStream, f *http
 	cs.bytesRemain = res.ContentLength
 	res.Body = http2transportResponseBody{cs}
 
-	if cs.requestedGzip  {
-		res.Body = setHttp2BodyReader(res)
-		res.Header.Del("Content-Encoding")
-		res.Header.Del("Content-Length")
-		res.ContentLength = -1
-		res.Uncompressed = true
+	if cs.requestedGzip {
+		ce := res.Header.Get("Content-Encoding")
+		if ce == "gzip" || ce == "br" || ce == "deflate" || ce == "zstd" {
+			res.Body = setHttp2BodyReader(res)
+			res.Header.Del("Content-Encoding")
+			res.Header.Del("Content-Length")
+			res.ContentLength = -1
+			res.Uncompressed = true
+		}
 	}
 
 	return res, nil

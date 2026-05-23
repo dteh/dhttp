@@ -23,15 +23,21 @@ TestTransportUserAgent
 TestClientCopyHeadersOnRedirect
 TestH12_AutoGzip
 
-# === Suspected REAL fork bugs — flagged for follow-up, not migration-blocking ===
-# Content-Length missing or zero where vanilla emits it; file-server headers stripped.
-# Likely transferWriter rework regression on the response path. Investigate after
-# Go 1.26.x migration lands; do not let these block the upgrade work.
-TestEarlyHintsRequest
+# === Investigated and fixed (Content-Length stripping bug) ===
+# These previously failed because dhttp's auto-decompression path stripped
+# Content-Length on every response (not just compressed ones). Fixed in
+# transport.go and h2_bundle.go by gating the strip on a matching
+# Content-Encoding value. Tests now pass:
+#   TestEarlyHintsRequest, TestFileServerMethods, TestTrailersServerToClient
+# Removed from skip list — they are canaries again.
+
+# === GODEBUG-runtime-override-dependent tests (godebug-in-fork limitation) ===
+# Same root cause as the cookie tests below: GODEBUG values set via
+# t.Setenv don't propagate through the vendored internal/godebug. The
+# underlying feature (httpservecontentkeepheaders) works with package-level
+# default values; only the per-test runtime override doesn't fire.
 TestFileServerErrorMessages
-TestFileServerMethods
 TestServeContentHeadersWithError
-TestTrailersServerToClient
 
 # === Environment / Google-CI-only ===
 # Bisect tool needs Go source tree layout; godebug tests need GOROOT semantics;

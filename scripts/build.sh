@@ -84,18 +84,21 @@ find "$ROOT" -maxdepth 1 -name '*.go' -delete
 rsync -a "$SCRATCH/dhttp/" "$ROOT/"
 
 # --- Step 6: Overlay (fork-only files override generated) ---
+# The directory is named _overlay so Go tooling ignores it (otherwise the
+# package http files staged there get flagged by go vet / gopls as broken
+# because their directory name doesn't match their package declaration).
 echo "==> Applying overlay"
-rsync -a "$ROOT/overlay/" "$ROOT/" 2>/dev/null || true
+rsync -a "$ROOT/_overlay/" "$ROOT/" 2>/dev/null || true
 
 # --- Step 7: Stamp generated header on .go files (skip overlay-named ones) ---
 echo "==> Stamping generated header"
 OVERLAY_BASENAMES=()
 while IFS= read -r line; do
   OVERLAY_BASENAMES+=("$line")
-done < <(find "$ROOT/overlay" -name '*.go' -exec basename {} \;)
+done < <(find "$ROOT/_overlay" -name '*.go' -exec basename {} \;)
 BANNER="// Code generated from patches/. DO NOT EDIT."
 find "$ROOT" -maxdepth 4 -name '*.go' \
-  -not -path "$ROOT/overlay/*" \
+  -not -path "$ROOT/_overlay/*" \
   -not -path "$ROOT/scripts/*" \
   -not -path "$ROOT/upstream/*" \
   -not -path "$ROOT/.git/*" | while read -r f; do

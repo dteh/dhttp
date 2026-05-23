@@ -1,0 +1,6 @@
+.baseline_failures.txt
+baseline.txt
+baseline_post_build.txt
+.fingerprint-baseline.json
+step.txt
+.step_failures.txt

@@ -1,3 +1,5 @@
+// Code generated from patches/. DO NOT EDIT.
+
 // Copyright 2009 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
@@ -2179,11 +2181,6 @@ func (c unencryptedNetConnInTLSConn) UnencryptedNetConn() net.Conn {
 
 func unencryptedTLSConn(c net.Conn) *tls.Conn {
 	return tls.Client(unencryptedNetConnInTLSConn{conn: c}, nil)
-}
-
-// dhttp: UTLS version for the client transport
-func unencryptedUTLSConn(c net.Conn) *tls.UConn {
-	return tls.UClient(unencryptedNetConnInTLSConn{conn: c}, nil, tls.ClientHelloID{})
 }
 
 // TLSNextProto key to use for unencrypted HTTP/2 connections.

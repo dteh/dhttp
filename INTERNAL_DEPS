@@ -1,0 +1,20 @@
+# One package per line. Paths are relative to the upstream Go source root.
+# src/net/http/internal/* are net/http's own internal helpers.
+# src/internal/* are stdlib-wide internal packages net/http transitively pulls in.
+# All land at internal/<basename>/ in the dhttp module.
+src/net/http/internal
+src/net/http/internal/ascii
+src/net/http/internal/testcert
+src/internal/bisect
+src/internal/cfg
+src/internal/diff
+src/internal/goarch
+src/internal/godebug
+src/internal/godebugs
+src/internal/nettrace
+src/internal/platform
+src/internal/profile
+src/internal/race
+src/internal/synctest
+src/internal/testenv
+src/internal/txtar

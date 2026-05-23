@@ -1,3 +1,5 @@
+// Code generated from patches/. DO NOT EDIT.
+
 // Copyright 2009 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
@@ -714,12 +716,10 @@ func (r *Request) write(w io.Writer, usingProxy bool, extraHeaders Header, waitF
 	// Use the defaultUserAgent unless the Header contains one, which
 	// may be blank to not send the header.
 	userAgentKey, ok := r.Header.contains("user-agent")
-	writeUserAgent := true
 	if !ok {
 		userAgentKey = "User-Agent"
 		r.Header[userAgentKey] = []string{defaultUserAgent}
 	} else if len(r.Header[userAgentKey]) == 0 {
-		writeUserAgent = false
 		delete(r.Header, userAgentKey)
 	}
 
@@ -754,16 +754,6 @@ func (r *Request) write(w io.Writer, usingProxy bool, extraHeaders Header, waitF
 	if err != nil {
 		return err
 	}
-	if trace != nil && writeUserAgent {
-		trace.WroteHeaderField("User-Agent", r.Header[userAgentKey])
-	}
-
-	// if extraHeaders != nil {
-	// 	err = extraHeaders.write(w, trace)
-	// 	if err != nil {
-	// 		return err
-	// 	}
-	// }
 
 	_, err = io.WriteString(w, "\r\n")
 	if err != nil {

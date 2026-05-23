@@ -27,9 +27,11 @@ type Info struct {
 // Note: After adding entries to this table, update the list in doc/godebug.md as well.
 // (Otherwise the test in this package will fail.)
 var All = []Info{
+	{Name: "allowmultiplevcs", Package: "cmd/go"},
 	{Name: "asynctimerchan", Package: "time", Changed: 23, Old: "1"},
 	{Name: "dataindependenttiming", Package: "crypto/subtle", Opaque: true},
 	{Name: "execerrdot", Package: "os/exec"},
+	{Name: "fips140", Package: "crypto/fips140", Opaque: true},
 	{Name: "gocachehash", Package: "cmd/go"},
 	{Name: "gocachetest", Package: "cmd/go"},
 	{Name: "gocacheverify", Package: "cmd/go"},
@@ -38,6 +40,7 @@ var All = []Info{
 	{Name: "http2client", Package: "net/http"},
 	{Name: "http2debug", Package: "net/http", Opaque: true},
 	{Name: "http2server", Package: "net/http"},
+	{Name: "httpcookiemaxnum", Package: "net/http", Changed: 24, Old: "0"},
 	{Name: "httplaxcontentlength", Package: "net/http", Changed: 22, Old: "1"},
 	{Name: "httpmuxgo121", Package: "net/http", Changed: 22, Old: "1"},
 	{Name: "httpservecontentkeepheaders", Package: "net/http", Changed: 23, Old: "1"},
@@ -60,8 +63,9 @@ var All = []Info{
 	{Name: "tlsmlkem", Package: "crypto/tls", Changed: 24, Old: "0", Opaque: true},
 	{Name: "tlsrsakex", Package: "crypto/tls", Changed: 22, Old: "1"},
 	{Name: "tlsunsafeekm", Package: "crypto/tls", Changed: 22, Old: "1"},
-	{Name: "winreadlinkvolume", Package: "os", Changed: 22, Old: "0"},
-	{Name: "winsymlink", Package: "os", Changed: 22, Old: "0"},
+	{Name: "urlmaxqueryparams", Package: "net/url", Changed: 24, Old: "0"},
+	{Name: "winreadlinkvolume", Package: "os", Changed: 23, Old: "0"},
+	{Name: "winsymlink", Package: "os", Changed: 23, Old: "0"},
 	{Name: "x509keypairleaf", Package: "crypto/tls", Changed: 23, Old: "0"},
 	{Name: "x509negativeserial", Package: "crypto/x509", Changed: 23, Old: "1"},
 	{Name: "x509rsacrt", Package: "crypto/x509", Changed: 24, Old: "0"},

@@ -1,5 +1,5 @@
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/alpn_test.go b/alpn_test.go
---- a/alpn_test.go	2026-05-23 15:34:26
+--- a/alpn_test.go	2026-05-23 16:14:41
 +++ b/alpn_test.go	2026-05-23 15:55:26
 @@ -7,14 +7,16 @@
  import (
@@ -22,7 +22,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestNextProtoUpgrade(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/async_test.go b/async_test.go
---- a/async_test.go	2026-05-23 15:34:26
+--- a/async_test.go	2026-05-23 16:14:41
 +++ b/async_test.go	2025-01-30 14:03:54
 @@ -4,49 +4,44 @@
  
@@ -112,7 +112,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +// 	}
 +// }
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/cgi/cgi_main.go b/cgi/cgi_main.go
---- a/cgi/cgi_main.go	2026-05-23 15:34:26
+--- a/cgi/cgi_main.go	2026-05-23 16:14:41
 +++ b/cgi/cgi_main.go	2026-05-23 15:55:26
 @@ -8,12 +8,13 @@
  	"fmt"
@@ -130,7 +130,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func cgiMain() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/cgi/child.go b/cgi/child.go
---- a/cgi/child.go	2026-05-23 15:34:26
+--- a/cgi/child.go	2026-05-23 16:14:41
 +++ b/cgi/child.go	2026-05-23 15:55:26
 @@ -9,16 +9,18 @@
  
@@ -154,7 +154,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // Request returns the HTTP request as represented in the current
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/cgi/child_test.go b/cgi/child_test.go
---- a/cgi/child_test.go	2026-05-23 15:34:26
+--- a/cgi/child_test.go	2026-05-23 16:14:41
 +++ b/cgi/child_test.go	2026-05-23 15:55:26
 @@ -9,10 +9,12 @@
  import (
@@ -172,7 +172,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestRequest(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/cgi/host.go b/cgi/host.go
---- a/cgi/host.go	2026-05-23 15:34:26
+--- a/cgi/host.go	2026-05-23 16:14:41
 +++ b/cgi/host.go	2026-05-23 15:55:26
 @@ -20,7 +20,6 @@
  	"io"
@@ -192,7 +192,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"golang.org/x/net/http/httpguts"
  )
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/cgi/host_test.go b/cgi/host_test.go
---- a/cgi/host_test.go	2026-05-23 15:34:26
+--- a/cgi/host_test.go	2026-05-23 16:14:41
 +++ b/cgi/host_test.go	2026-05-23 15:55:26
 @@ -9,11 +9,8 @@
  import (
@@ -220,7 +220,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // TestMain executes the test binary as the cgi server if
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/cgi/integration_test.go b/cgi/integration_test.go
---- a/cgi/integration_test.go	2026-05-23 15:34:26
+--- a/cgi/integration_test.go	2026-05-23 16:14:41
 +++ b/cgi/integration_test.go	2026-05-23 15:55:26
 @@ -12,14 +12,17 @@
  	"bytes"
@@ -244,8 +244,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // This test is a CGI host (testing host.go) that runs its own binary
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/client.go b/client.go
---- a/client.go	2026-05-23 15:34:26
-+++ b/client.go	2026-05-23 15:55:26
+--- a/client.go	2026-05-23 16:14:41
++++ b/client.go	2026-05-23 16:16:51
 @@ -11,13 +11,11 @@
  
  import (
@@ -272,8 +272,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // A Client is an HTTP client. Its zero value ([DefaultClient]) is a
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/client_test.go b/client_test.go
---- a/client_test.go	2026-05-23 15:34:26
-+++ b/client_test.go	2026-05-23 15:55:26
+--- a/client_test.go	2026-05-23 16:14:41
++++ b/client_test.go	2026-05-23 16:16:51
 @@ -9,17 +9,12 @@
  import (
  	"bytes"
@@ -308,7 +308,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var robotsTxtHandler = HandlerFunc(func(w ResponseWriter, r *Request) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/clientserver_test.go b/clientserver_test.go
---- a/clientserver_test.go	2026-05-23 15:34:26
+--- a/clientserver_test.go	2026-05-23 16:14:41
 +++ b/clientserver_test.go	2026-05-23 15:55:26
 @@ -12,18 +12,12 @@
  	"context"
@@ -346,10 +346,10 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  type testMode string
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/cookie.go b/cookie.go
---- a/cookie.go	2026-05-23 15:34:26
-+++ b/cookie.go	2026-05-23 15:55:26
-@@ -9,11 +9,12 @@
- 	"fmt"
+--- a/cookie.go	2026-05-23 16:14:41
++++ b/cookie.go	2026-05-23 16:16:51
+@@ -10,11 +10,12 @@
+ 	"internal/godebug"
  	"log"
  	"net"
 -	"net/http/internal/ascii"
@@ -361,9 +361,9 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +	"net/http/internal/ascii"
  )
  
- // A Cookie represents an HTTP cookie as sent in the Set-Cookie header of an
+ var httpcookiemaxnum = godebug.New("httpcookiemaxnum")
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/cookiejar/example_test.go b/cookiejar/example_test.go
---- a/cookiejar/example_test.go	2026-05-23 15:34:26
+--- a/cookiejar/example_test.go	2026-05-23 16:14:41
 +++ b/cookiejar/example_test.go	2026-05-23 15:55:26
 @@ -7,10 +7,12 @@
  import (
@@ -380,7 +380,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func ExampleNew() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/cookiejar/jar.go b/cookiejar/jar.go
---- a/cookiejar/jar.go	2026-05-23 15:34:26
+--- a/cookiejar/jar.go	2026-05-23 16:14:41
 +++ b/cookiejar/jar.go	2026-05-23 15:55:26
 @@ -10,13 +10,15 @@
  	"errors"
@@ -401,7 +401,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // PublicSuffixList provides the public suffix of a domain. For example:
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/cookiejar/jar_test.go b/cookiejar/jar_test.go
---- a/cookiejar/jar_test.go	2026-05-23 15:34:26
+--- a/cookiejar/jar_test.go	2026-05-23 16:14:41
 +++ b/cookiejar/jar_test.go	2026-05-23 15:55:26
 @@ -6,12 +6,13 @@
  
@@ -419,7 +419,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // tNow is the synthetic current time used as now during testing.
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/cookiejar/punycode.go b/cookiejar/punycode.go
---- a/cookiejar/punycode.go	2026-05-23 15:34:26
+--- a/cookiejar/punycode.go	2026-05-23 16:14:41
 +++ b/cookiejar/punycode.go	2026-05-23 15:55:26
 @@ -8,9 +8,10 @@
  
@@ -434,7 +434,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // These parameter values are specified in section 5.
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/example_filesystem_test.go b/example_filesystem_test.go
---- a/example_filesystem_test.go	2026-05-23 15:34:26
+--- a/example_filesystem_test.go	2026-05-23 16:14:41
 +++ b/example_filesystem_test.go	2026-05-23 15:55:26
 @@ -8,8 +8,9 @@
  	"io"
@@ -448,7 +448,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // containsDotFile reports whether name contains a path element starting with a period.
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/example_handle_test.go b/example_handle_test.go
---- a/example_handle_test.go	2026-05-23 15:34:26
+--- a/example_handle_test.go	2026-05-23 16:14:41
 +++ b/example_handle_test.go	2026-05-23 15:55:26
 @@ -7,8 +7,9 @@
  import (
@@ -462,7 +462,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  type countHandler struct {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/example_test.go b/example_test.go
---- a/example_test.go	2026-05-23 15:34:26
+--- a/example_test.go	2026-05-23 16:14:41
 +++ b/example_test.go	2026-05-23 15:55:26
 @@ -9,9 +9,10 @@
  	"fmt"
@@ -477,7 +477,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func ExampleHijacker() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/fcgi/child.go b/fcgi/child.go
---- a/fcgi/child.go	2026-05-23 15:34:26
+--- a/fcgi/child.go	2026-05-23 16:14:41
 +++ b/fcgi/child.go	2026-05-23 15:55:26
 @@ -12,11 +12,13 @@
  	"fmt"
@@ -496,7 +496,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // request holds the state for an in-progress request. As soon as it's complete,
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/fcgi/fcgi_test.go b/fcgi/fcgi_test.go
---- a/fcgi/fcgi_test.go	2026-05-23 15:34:26
+--- a/fcgi/fcgi_test.go	2026-05-23 16:14:41
 +++ b/fcgi/fcgi_test.go	2026-05-23 15:55:26
 @@ -8,10 +8,11 @@
  	"bytes"
@@ -512,7 +512,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var sizeTests = []struct {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/fs.go b/fs.go
---- a/fs.go	2026-05-23 15:34:26
+--- a/fs.go	2026-05-23 16:14:41
 +++ b/fs.go	2026-05-23 15:55:26
 @@ -9,7 +9,6 @@
  import (
@@ -532,7 +532,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // A Dir implements [FileSystem] using the native file system restricted to a
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/fs_test.go b/fs_test.go
---- a/fs_test.go	2026-05-23 15:34:26
+--- a/fs_test.go	2026-05-23 16:14:41
 +++ b/fs_test.go	2026-05-23 15:55:26
 @@ -10,15 +10,11 @@
  	"compress/gzip"
@@ -565,8 +565,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  const (
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/h2_bundle.go b/h2_bundle.go
---- a/h2_bundle.go	2026-05-23 15:34:26
-+++ b/h2_bundle.go	2026-05-23 15:55:26
+--- a/h2_bundle.go	2026-05-23 16:14:41
++++ b/h2_bundle.go	2026-05-23 16:19:46
 @@ -28,7 +28,7 @@
  	"compress/gzip"
  	"context"
@@ -576,7 +576,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"encoding/binary"
  	"errors"
  	"fmt"
-@@ -7727,14 +7727,14 @@
+@@ -7735,14 +7735,14 @@
  		return t2
  	}
  	if t1.TLSNextProto == nil {
@@ -595,7 +595,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  		if err != nil {
  			go c.Close()
  			return http2erringRoundTripper{err}
-@@ -8554,7 +8554,7 @@
+@@ -8562,7 +8562,7 @@
  // A tls.Conn.Close can hang for a long time if the peer is unresponsive.
  // Try to shut it down more aggressively.
  func (cc *http2ClientConn) forceCloseConn() {
@@ -604,7 +604,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	if !ok {
  		return
  	}
-@@ -9484,7 +9484,10 @@
+@@ -9492,7 +9492,10 @@
  
  func http2validateHeaders(hdrs Header) string {
  	for k, vv := range hdrs {
@@ -616,7 +616,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  			return fmt.Sprintf("name %q", k)
  		}
  		for _, v := range vv {
-@@ -9549,60 +9552,111 @@
+@@ -9562,63 +9565,131 @@
  		return nil, fmt.Errorf("invalid HTTP trailer %s", err)
  	}
  
@@ -647,7 +647,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  			m = MethodGet
  		}
 -		f(":method", m)
--		if !http2isNormalConnect(req) {
+-		if !isNormalConnect {
 -			f(":path", path)
 -			f(":scheme", req.URL.Scheme)
 +		if ok {
@@ -658,26 +658,49 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +				case ":method":
 +					f(":method", req.Method)
 +				case ":path":
-+					if req.Method != "CONNECT" {
++					if !isNormalConnect {
 +						f(":path", path)
 +					}
 +				case ":scheme":
-+					if req.Method != "CONNECT" {
++					if !isNormalConnect {
 +						f(":scheme", req.URL.Scheme)
++					}
++				case ":protocol":
++					if protocol != "" {
++						f(":protocol", protocol)
 +					}
 +				default:
 +					// Skip unknown pseudo-headers
 +					continue
 +				}
 +			}
++			// :protocol if extended-CONNECT and not already in the order.
++			if protocol != "" {
++				found := false
++				for _, p := range pHeaderOrder {
++					if p == ":protocol" {
++						found = true
++						break
++					}
++				}
++				if !found {
++					f(":protocol", protocol)
++				}
++			}
 +		} else {
 +			f(":authority", host)
 +			f(":method", m)
-+			if req.Method != "CONNECT" {
++			if !isNormalConnect {
 +				f(":path", path)
 +				f(":scheme", req.URL.Scheme)
 +			}
++			if protocol != "" {
++				f(":protocol", protocol)
++			}
  		}
+-		if protocol != "" {
+-			f(":protocol", protocol)
+-		}
  		if trailers != "" {
  			f("trailer", trailers)
  		}
@@ -746,9 +769,13 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  					for {
  						p := strings.IndexByte(v, ';')
  						if p < 0 {
-@@ -9621,21 +9675,19 @@
+@@ -9637,24 +9708,22 @@
  					}
  				}
+ 				continue
+-			} else if k == ":protocol" {
++			} else if k.key == ":protocol" {
+ 				// :protocol pseudo-header was already sent above.
  				continue
 +			} else if k.key == PHeaderOrderKey || k.key == HeaderOrderKey {
 +				// Don't send magic values as headers
@@ -774,7 +801,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	}
  
  	// Do a first pass over the headers counting bytes to ensure
-@@ -10165,16 +10217,44 @@
+@@ -10184,16 +10253,44 @@
  	cs.bytesRemain = res.ContentLength
  	res.Body = http2transportResponseBody{cs}
  
@@ -821,7 +848,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  func (rl *http2clientConnReadLoop) processTrailers(cs *http2clientStream, f *http2MetaHeadersFrame) error {
  	if cs.pastTrailers {
  		// Too many HEADERS frames for this stream.
-@@ -10946,7 +11026,7 @@
+@@ -10965,7 +11062,7 @@
  
  // dialTLSWithContext uses tls.Dialer, added in Go 1.15, to open a TLS
  // connection.
@@ -830,7 +857,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	dialer := &tls.Dialer{
  		Config: cfg,
  	}
-@@ -10954,7 +11034,7 @@
+@@ -10973,7 +11070,7 @@
  	if err != nil {
  		return nil, err
  	}
@@ -839,7 +866,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	return tlsCn, nil
  }
  
-@@ -10970,6 +11050,17 @@
+@@ -10989,6 +11086,17 @@
  // where we want it), the tls.Conn contains a net.Conn with an UnencryptedNetConn method
  // that returns the actual connection we want to use.
  func http2unencryptedNetConnFromTLSConn(tc *tls.Conn) (net.Conn, error) {
@@ -858,7 +885,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  		UnencryptedNetConn() net.Conn
  	})
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/header.go b/header.go
---- a/header.go	2026-05-23 15:34:26
+--- a/header.go	2026-05-23 16:14:41
 +++ b/header.go	2026-05-23 15:55:26
 @@ -6,14 +6,16 @@
  
@@ -1020,7 +1047,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +	return "", false
  }
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/header_test.go b/header_test.go
---- a/header_test.go	2026-05-23 15:34:26
+--- a/header_test.go	2026-05-23 16:14:41
 +++ b/header_test.go	2026-05-23 15:55:26
 @@ -6,12 +6,13 @@
  
@@ -1060,7 +1087,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  }
  
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/http_test.go b/http_test.go
---- a/http_test.go	2026-05-23 15:34:26
+--- a/http_test.go	2026-05-23 16:14:41
 +++ b/http_test.go	2026-05-23 15:55:26
 @@ -8,7 +8,6 @@
  
@@ -1080,7 +1107,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestForeachHeaderElement(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httptest/example_test.go b/httptest/example_test.go
---- a/httptest/example_test.go	2026-05-23 15:34:26
+--- a/httptest/example_test.go	2026-05-23 16:14:41
 +++ b/httptest/example_test.go	2026-05-23 15:55:26
 @@ -8,7 +8,9 @@
  	"fmt"
@@ -1093,7 +1120,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  )
  
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httptest/httptest.go b/httptest/httptest.go
---- a/httptest/httptest.go	2026-05-23 15:34:26
+--- a/httptest/httptest.go	2026-05-23 16:14:41
 +++ b/httptest/httptest.go	2026-05-23 15:55:26
 @@ -9,10 +9,12 @@
  	"bufio"
@@ -1111,7 +1138,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // NewRequest wraps NewRequestWithContext using context.Background.
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httptest/httptest_test.go b/httptest/httptest_test.go
---- a/httptest/httptest_test.go	2026-05-23 15:34:26
+--- a/httptest/httptest_test.go	2026-05-23 16:14:41
 +++ b/httptest/httptest_test.go	2026-05-23 15:55:26
 @@ -6,13 +6,15 @@
  
@@ -1132,7 +1159,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestNewRequest(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httptest/recorder.go b/httptest/recorder.go
---- a/httptest/recorder.go	2026-05-23 15:34:26
+--- a/httptest/recorder.go	2026-05-23 16:14:41
 +++ b/httptest/recorder.go	2026-05-23 15:55:26
 @@ -8,10 +8,11 @@
  	"bytes"
@@ -1148,7 +1175,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"golang.org/x/net/http/httpguts"
  )
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httptest/recorder_test.go b/httptest/recorder_test.go
---- a/httptest/recorder_test.go	2026-05-23 15:34:26
+--- a/httptest/recorder_test.go	2026-05-23 16:14:41
 +++ b/httptest/recorder_test.go	2026-05-23 15:55:26
 @@ -7,8 +7,9 @@
  import (
@@ -1162,7 +1189,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestRecorder(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httptest/server.go b/httptest/server.go
---- a/httptest/server.go	2026-05-23 15:34:26
+--- a/httptest/server.go	2026-05-23 16:14:41
 +++ b/httptest/server.go	2026-05-23 15:55:26
 @@ -7,18 +7,21 @@
  package httptest
@@ -1190,7 +1217,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // A Server is an HTTP server listening on a system-chosen port on the
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httptest/server_test.go b/httptest/server_test.go
---- a/httptest/server_test.go	2026-05-23 15:34:26
+--- a/httptest/server_test.go	2026-05-23 16:14:41
 +++ b/httptest/server_test.go	2026-05-23 15:55:26
 @@ -8,9 +8,10 @@
  	"bufio"
@@ -1205,7 +1232,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  type newServerFunc func(http.Handler) *Server
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httptrace/example_test.go b/httptrace/example_test.go
---- a/httptrace/example_test.go	2026-05-23 15:34:26
+--- a/httptrace/example_test.go	2026-05-23 16:14:41
 +++ b/httptrace/example_test.go	2026-05-23 15:55:26
 @@ -7,7 +7,9 @@
  import (
@@ -1218,7 +1245,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  )
  
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httptrace/trace.go b/httptrace/trace.go
---- a/httptrace/trace.go	2026-05-23 15:34:26
+--- a/httptrace/trace.go	2026-05-23 16:14:41
 +++ b/httptrace/trace.go	2026-05-23 15:55:26
 @@ -8,12 +8,14 @@
  
@@ -1238,7 +1265,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // unique type to prevent assignment.
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httputil/dump.go b/httputil/dump.go
---- a/httputil/dump.go	2026-05-23 15:34:26
+--- a/httputil/dump.go	2026-05-23 16:14:41
 +++ b/httputil/dump.go	2026-05-23 15:55:26
 @@ -11,10 +11,11 @@
  	"fmt"
@@ -1254,7 +1281,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // drainBody reads all of b to memory and then returns two equivalent
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httputil/dump_test.go b/httputil/dump_test.go
---- a/httputil/dump_test.go	2026-05-23 15:34:26
+--- a/httputil/dump_test.go	2026-05-23 16:14:41
 +++ b/httputil/dump_test.go	2026-05-23 15:55:26
 @@ -11,13 +11,14 @@
  	"fmt"
@@ -1273,7 +1300,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  type eofReader struct{}
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httputil/example_test.go b/httputil/example_test.go
---- a/httputil/example_test.go	2026-05-23 15:34:26
+--- a/httputil/example_test.go	2026-05-23 16:14:41
 +++ b/httputil/example_test.go	2026-05-23 15:55:26
 @@ -8,11 +8,13 @@
  	"fmt"
@@ -1292,7 +1319,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func ExampleDumpRequest() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httputil/httputil.go b/httputil/httputil.go
---- a/httputil/httputil.go	2026-05-23 15:34:26
+--- a/httputil/httputil.go	2026-05-23 16:14:41
 +++ b/httputil/httputil.go	2026-05-23 15:55:26
 @@ -8,6 +8,7 @@
  
@@ -1303,7 +1330,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  )
  
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httputil/persist.go b/httputil/persist.go
---- a/httputil/persist.go	2026-05-23 15:34:26
+--- a/httputil/persist.go	2026-05-23 16:14:41
 +++ b/httputil/persist.go	2026-05-23 15:55:26
 @@ -9,9 +9,10 @@
  	"errors"
@@ -1318,7 +1345,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var (
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httputil/reverseproxy.go b/httputil/reverseproxy.go
---- a/httputil/reverseproxy.go	2026-05-23 15:34:26
+--- a/httputil/reverseproxy.go	2026-05-23 16:14:41
 +++ b/httputil/reverseproxy.go	2026-05-23 15:55:26
 @@ -14,14 +14,16 @@
  	"log"
@@ -1341,7 +1368,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"golang.org/x/net/http/httpguts"
  )
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/httputil/reverseproxy_test.go b/httputil/reverseproxy_test.go
---- a/httputil/reverseproxy_test.go	2026-05-23 15:34:26
+--- a/httputil/reverseproxy_test.go	2026-05-23 16:14:41
 +++ b/httputil/reverseproxy_test.go	2026-05-23 15:55:26
 @@ -14,10 +14,6 @@
  	"fmt"
@@ -1368,7 +1395,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  const fakeHopHeader = "X-Fake-Hop-Header-For-Test"
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/internal/diff/diff_test.go b/internal/diff/diff_test.go
---- a/internal/diff/diff_test.go	2026-05-23 15:34:26
+--- a/internal/diff/diff_test.go	2026-05-23 16:14:41
 +++ b/internal/diff/diff_test.go	2026-05-23 15:55:26
 @@ -6,9 +6,10 @@
  
@@ -1383,7 +1410,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func clean(text []byte) []byte {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/internal/godebug/godebug.go b/internal/godebug/godebug.go
---- a/internal/godebug/godebug.go	2026-05-23 15:34:26
+--- a/internal/godebug/godebug.go	2026-05-23 16:14:41
 +++ b/internal/godebug/godebug.go	2026-05-23 15:55:26
 @@ -49,12 +49,13 @@
  // meaning it cannot introduce a GODEBUG setting of its own.
@@ -1447,8 +1474,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func newIncNonDefault(name string) func() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/internal/godebug/godebug_test.go b/internal/godebug/godebug_test.go
---- a/internal/godebug/godebug_test.go	2026-05-23 15:34:26
-+++ b/internal/godebug/godebug_test.go	2026-05-23 15:55:26
+--- a/internal/godebug/godebug_test.go	2026-05-23 16:14:41
++++ b/internal/godebug/godebug_test.go	2026-05-23 16:16:51
 @@ -6,15 +6,16 @@
  
  import (
@@ -1470,8 +1497,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestGet(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/internal/godebugs/godebugs_test.go b/internal/godebugs/godebugs_test.go
---- a/internal/godebugs/godebugs_test.go	2026-05-23 15:34:26
-+++ b/internal/godebugs/godebugs_test.go	2026-05-23 15:55:26
+--- a/internal/godebugs/godebugs_test.go	2026-05-23 16:14:41
++++ b/internal/godebugs/godebugs_test.go	2026-05-23 16:16:51
 @@ -5,8 +5,6 @@
  package godebugs_test
  
@@ -1492,7 +1519,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestAll(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/internal/platform/zosarch_test.go b/internal/platform/zosarch_test.go
---- a/internal/platform/zosarch_test.go	2026-05-23 15:34:26
+--- a/internal/platform/zosarch_test.go	2026-05-23 16:14:41
 +++ b/internal/platform/zosarch_test.go	2026-05-23 15:55:26
 @@ -8,12 +8,13 @@
  	"bytes"
@@ -1511,7 +1538,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var flagFix = flag.Bool("fix", false, "if true, fix out-of-date generated files")
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/internal/race/norace.go b/internal/race/norace.go
---- a/internal/race/norace.go	2026-05-23 15:34:26
+--- a/internal/race/norace.go	2026-05-23 16:14:41
 +++ b/internal/race/norace.go	2024-11-19 15:44:17
 @@ -7,7 +7,6 @@
  package race
@@ -1544,7 +1571,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  func ReadRange(addr unsafe.Pointer, len int) {
  }
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/internal/race/race.go b/internal/race/race.go
---- a/internal/race/race.go	2026-05-23 15:34:26
+--- a/internal/race/race.go	2026-05-23 16:14:41
 +++ b/internal/race/race.go	2024-11-19 15:45:05
 @@ -7,7 +7,6 @@
  package race
@@ -1573,7 +1600,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  //go:linkname ReadRange
  func ReadRange(addr unsafe.Pointer, len int)
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/internal/synctest/synctest.go b/internal/synctest/synctest.go
---- a/internal/synctest/synctest.go	2026-05-23 15:34:26
+--- a/internal/synctest/synctest.go	2026-05-23 16:14:41
 +++ b/internal/synctest/synctest.go	2025-01-30 14:03:54
 @@ -12,19 +12,24 @@
  )
@@ -1606,7 +1633,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  // A Bubble is a synctest bubble.
  //
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/internal/synctest/synctest_test.go b/internal/synctest/synctest_test.go
---- a/internal/synctest/synctest_test.go	2026-05-23 15:34:26
+--- a/internal/synctest/synctest_test.go	2026-05-23 16:14:41
 +++ b/internal/synctest/synctest_test.go	2025-01-30 14:03:54
 @@ -4,441 +4,429 @@
  
@@ -2451,8 +2478,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
 +// 	}
 +// }
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/internal/testenv/testenv.go b/internal/testenv/testenv.go
---- a/internal/testenv/testenv.go	2026-05-23 15:34:26
-+++ b/internal/testenv/testenv.go	2026-05-23 15:55:26
+--- a/internal/testenv/testenv.go	2026-05-23 16:14:41
++++ b/internal/testenv/testenv.go	2026-05-23 16:16:51
 @@ -15,9 +15,6 @@
  	"errors"
  	"flag"
@@ -2475,7 +2502,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // Save the original environment during init for use in checks. A test
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/internal/testenv/testenv_test.go b/internal/testenv/testenv_test.go
---- a/internal/testenv/testenv_test.go	2026-05-23 15:34:26
+--- a/internal/testenv/testenv_test.go	2026-05-23 16:14:41
 +++ b/internal/testenv/testenv_test.go	2026-05-23 15:55:26
 @@ -5,13 +5,14 @@
  package testenv_test
@@ -2495,7 +2522,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestGoToolLocation(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/main_test.go b/main_test.go
---- a/main_test.go	2026-05-23 15:34:26
+--- a/main_test.go	2026-05-23 16:14:41
 +++ b/main_test.go	2026-05-23 15:55:26
 @@ -8,13 +8,14 @@
  	"fmt"
@@ -2514,7 +2541,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var quietLog = log.New(io.Discard, "", 0)
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/netconn_test.go b/netconn_test.go
---- a/netconn_test.go	2026-05-23 15:34:26
+--- a/netconn_test.go	2026-05-23 16:14:41
 +++ b/netconn_test.go	2026-05-23 15:55:26
 @@ -7,7 +7,6 @@
  import (
@@ -2534,7 +2561,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func fakeNetListen() *fakeNetListener {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/pprof/pprof.go b/pprof/pprof.go
---- a/pprof/pprof.go	2026-05-23 15:34:26
+--- a/pprof/pprof.go	2026-05-23 16:14:41
 +++ b/pprof/pprof.go	2026-05-23 15:55:26
 @@ -12,7 +12,7 @@
  //
@@ -2570,7 +2597,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func init() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/pprof/pprof_test.go b/pprof/pprof_test.go
---- a/pprof/pprof_test.go	2026-05-23 15:34:26
+--- a/pprof/pprof_test.go	2026-05-23 16:14:41
 +++ b/pprof/pprof_test.go	2026-05-23 15:55:26
 @@ -8,11 +8,7 @@
  	"bytes"
@@ -2599,7 +2626,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // TestDescriptions checks that the profile names under runtime/pprof package
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/pprof/testdata/delta_mutex.go b/pprof/testdata/delta_mutex.go
---- a/pprof/testdata/delta_mutex.go	2026-05-23 15:34:26
+--- a/pprof/testdata/delta_mutex.go	2026-05-23 16:14:41
 +++ b/pprof/testdata/delta_mutex.go	2026-05-23 15:55:26
 @@ -16,10 +16,12 @@
  	"bytes"
@@ -2617,7 +2644,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func main() {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/request.go b/request.go
---- a/request.go	2026-05-23 15:34:26
+--- a/request.go	2026-05-23 16:14:41
 +++ b/request.go	2026-05-23 15:55:26
 @@ -10,7 +10,6 @@
  	"bufio"
@@ -2780,7 +2807,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  	_, err = io.WriteString(w, "\r\n")
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/request_test.go b/request_test.go
---- a/request_test.go	2026-05-23 15:34:26
+--- a/request_test.go	2026-05-23 16:14:41
 +++ b/request_test.go	2026-05-23 15:55:26
 @@ -16,9 +16,6 @@
  	"io"
@@ -2804,7 +2831,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestQuery(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/response.go b/response.go
---- a/response.go	2026-05-23 15:34:26
+--- a/response.go	2026-05-23 16:14:41
 +++ b/response.go	2024-11-24 10:42:05
 @@ -9,7 +9,6 @@
  import (
@@ -2833,7 +2860,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  // Response represents the response from an HTTP request.
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/response_test.go b/response_test.go
---- a/response_test.go	2026-05-23 15:34:26
+--- a/response_test.go	2026-05-23 16:14:41
 +++ b/response_test.go	2026-05-23 15:55:26
 @@ -12,12 +12,13 @@
  	"fmt"
@@ -2851,7 +2878,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  type respTest struct {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/responsecontroller_test.go b/responsecontroller_test.go
---- a/responsecontroller_test.go	2026-05-23 15:34:26
+--- a/responsecontroller_test.go	2026-05-23 16:14:41
 +++ b/responsecontroller_test.go	2026-05-23 15:55:26
 @@ -8,11 +8,12 @@
  	"errors"
@@ -2868,7 +2895,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestResponseControllerFlush(t *testing.T) { run(t, testResponseControllerFlush) }
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/roundtrip_js.go b/roundtrip_js.go
---- a/roundtrip_js.go	2026-05-23 15:34:26
+--- a/roundtrip_js.go	2026-05-23 16:14:41
 +++ b/roundtrip_js.go	2026-05-23 15:55:26
 @@ -10,10 +10,11 @@
  	"errors"
@@ -2884,13 +2911,14 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var uint8Array = js.Global().Get("Uint8Array")
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/serve_test.go b/serve_test.go
---- a/serve_test.go	2026-05-23 15:34:26
-+++ b/serve_test.go	2026-05-23 15:55:26
-@@ -12,23 +12,14 @@
+--- a/serve_test.go	2026-05-23 16:14:41
++++ b/serve_test.go	2026-05-23 16:17:26
+@@ -12,24 +12,15 @@
  	"compress/gzip"
  	"compress/zlib"
  	"context"
 -	"crypto/tls"
+ 	"crypto/x509"
  	"encoding/json"
  	"errors"
  	"fmt"
@@ -2910,7 +2938,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"net/url"
  	"os"
  	"path/filepath"
-@@ -43,6 +34,17 @@
+@@ -44,6 +35,17 @@
  	"syscall"
  	"testing"
  	"time"
@@ -2928,7 +2956,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  )
  
  type dummyAddr string
-@@ -5806,61 +5808,62 @@
+@@ -5807,61 +5809,62 @@
  	}
  }
  
@@ -3040,7 +3068,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  // Issue 17878: tests that we can call Close twice.
  func TestServerCloseDeadlock(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/servemux121.go b/servemux121.go
---- a/servemux121.go	2026-05-23 15:34:26
+--- a/servemux121.go	2026-05-23 16:14:41
 +++ b/servemux121.go	2026-05-23 15:55:26
 @@ -15,11 +15,12 @@
  // Do not modify this file, it should remain frozen.
@@ -3057,8 +3085,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var httpmuxgo121 = godebug.New("httpmuxgo121")
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/server.go b/server.go
---- a/server.go	2026-05-23 15:34:26
-+++ b/server.go	2026-05-23 15:55:26
+--- a/server.go	2026-05-23 16:14:41
++++ b/server.go	2026-05-23 16:16:51
 @@ -10,10 +10,8 @@
  	"bufio"
  	"bytes"
@@ -3082,7 +3110,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"golang.org/x/net/http/httpguts"
  )
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/sniff_test.go b/sniff_test.go
---- a/sniff_test.go	2026-05-23 15:34:26
+--- a/sniff_test.go	2026-05-23 16:14:41
 +++ b/sniff_test.go	2026-05-23 15:55:26
 @@ -9,11 +9,12 @@
  	"fmt"
@@ -3099,7 +3127,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  var sniffTests = []struct {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/transfer.go b/transfer.go
---- a/transfer.go	2026-05-23 15:34:26
+--- a/transfer.go	2026-05-23 16:14:41
 +++ b/transfer.go	2026-05-23 15:55:26
 @@ -9,12 +9,8 @@
  	"bytes"
@@ -3128,8 +3156,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	"golang.org/x/net/http/httpguts"
  )
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/transport.go b/transport.go
---- a/transport.go	2026-05-23 15:34:26
-+++ b/transport.go	2026-05-23 15:55:26
+--- a/transport.go	2026-05-23 16:14:41
++++ b/transport.go	2026-05-23 16:16:51
 @@ -11,19 +11,18 @@
  
  import (
@@ -3208,7 +3236,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  		if !httpguts.ValidHeaderFieldName(k) {
  			return fmt.Sprintf("field name %q", k)
  		}
-@@ -1684,11 +1699,36 @@
+@@ -1687,11 +1702,36 @@
  	if cfg.ServerName == "" {
  		cfg.ServerName = name
  	}
@@ -3246,7 +3274,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	errc := make(chan error, 2)
  	var timer *time.Timer // for canceling TLS handshake
  	if d := pconn.t.TLSHandshakeTimeout; d != 0 {
-@@ -1727,6 +1767,25 @@
+@@ -1730,6 +1770,25 @@
  	return nil
  }
  
@@ -3272,7 +3300,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  type erringRoundTripper interface {
  	RoundTripErr() error
  }
-@@ -1735,13 +1794,14 @@
+@@ -1738,13 +1797,14 @@
  
  func (t *Transport) dialConn(ctx context.Context, cm connectMethod) (pconn *persistConn, err error) {
  	pconn = &persistConn{
@@ -3294,7 +3322,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	}
  	trace := httptrace.ContextClientTrace(ctx)
  	wrapErr := func(err error) error {
-@@ -1757,7 +1817,7 @@
+@@ -1760,7 +1820,7 @@
  		if err != nil {
  			return nil, wrapErr(err)
  		}
@@ -3303,7 +3331,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  			// Handshake here, in case DialTLS didn't. TLSNextProto below
  			// depends on it for knowing the connection state.
  			if trace != nil && trace.TLSHandshakeStart != nil {
-@@ -1919,7 +1979,7 @@
+@@ -1922,7 +1982,7 @@
  		if !ok {
  			return nil, errors.New("http: Transport does not support unencrypted HTTP/2")
  		}
@@ -3312,7 +3340,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  		if e, ok := alt.(erringRoundTripper); ok {
  			// pconn.conn was closed by next (http2configureTransports.upgradeFn).
  			return nil, e.RoundTripErr()
-@@ -1929,7 +1989,7 @@
+@@ -1932,7 +1992,7 @@
  
  	if s := pconn.tlsState; s != nil && s.NegotiatedProtocolIsMutual && s.NegotiatedProtocol != "" {
  		if next, ok := t.TLSNextProto[s.NegotiatedProtocol]; ok {
@@ -3321,7 +3349,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  			if e, ok := alt.(erringRoundTripper); ok {
  				// pconn.conn was closed by next (http2configureTransports.upgradeFn).
  				return nil, e.RoundTripErr()
-@@ -2103,8 +2163,18 @@
+@@ -2106,8 +2166,18 @@
  	// headers on each outbound request before it's written. (the
  	// original Request given to RoundTrip is not modified)
  	mutateHeaderFunc func(Header)
@@ -3340,7 +3368,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  func (pc *persistConn) maxHeaderResponseSize() int64 {
  	if v := pc.t.MaxResponseHeaderBytes; v != 0 {
  		return v
-@@ -2375,8 +2445,8 @@
+@@ -2378,8 +2448,8 @@
  		}
  
  		resp.Body = body
@@ -3351,7 +3379,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  			resp.Header.Del("Content-Encoding")
  			resp.Header.Del("Content-Length")
  			resp.ContentLength = -1
-@@ -2414,6 +2484,31 @@
+@@ -2417,6 +2487,31 @@
  	}
  }
  
@@ -3383,7 +3411,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  func (pc *persistConn) readLoopPeekFailLocked(peekErr error) {
  	if pc.closed != nil {
  		return
-@@ -2770,7 +2865,7 @@
+@@ -2773,7 +2868,7 @@
  		// auto-decoding a portion of a gzipped document will just fail
  		// anyway. See https://golang.org/issue/8923
  		requestedGzip = true
@@ -3392,7 +3420,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  	}
  
  	var continueCh chan struct{}
-@@ -3050,6 +3145,148 @@
+@@ -3053,6 +3148,148 @@
  
  func (gz *gzipReader) Close() error {
  	return gz.body.Close()
@@ -3542,7 +3570,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  type tlsHandshakeTimeoutError struct{}
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/transport_dial_test.go b/transport_dial_test.go
---- a/transport_dial_test.go	2026-05-23 15:34:26
+--- a/transport_dial_test.go	2026-05-23 16:14:41
 +++ b/transport_dial_test.go	2026-05-23 15:55:26
 @@ -8,9 +8,11 @@
  	"context"
@@ -3558,7 +3586,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  
  func TestTransportPoolConnReusePriorConnection(t *testing.T) {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/transport_internal_test.go b/transport_internal_test.go
---- a/transport_internal_test.go	2026-05-23 15:34:26
+--- a/transport_internal_test.go	2026-05-23 16:14:41
 +++ b/transport_internal_test.go	2026-05-23 15:55:26
 @@ -9,13 +9,15 @@
  import (
@@ -3607,8 +3635,8 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  					n, _ := io.Copy(io.Discard, r.Body)
  					if n == 0 {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/transport_test.go b/transport_test.go
---- a/transport_test.go	2026-05-23 15:34:26
-+++ b/transport_test.go	2026-05-23 15:55:26
+--- a/transport_test.go	2026-05-23 16:14:41
++++ b/transport_test.go	2026-05-23 16:16:51
 @@ -15,23 +15,19 @@
  	"compress/gzip"
  	"context"
@@ -3700,7 +3728,7 @@ diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.s
  		want: "HTTP/2.0",
  	}, {
 diff -Naur --exclude=.claude --exclude=README.md --exclude=go.mod --exclude=go.sum --exclude=CLAUDE.md a/triv.go b/triv.go
---- a/triv.go	2026-05-23 15:34:26
+--- a/triv.go	2026-05-23 16:14:41
 +++ b/triv.go	2026-05-23 15:55:26
 @@ -12,12 +12,13 @@
  	"fmt"

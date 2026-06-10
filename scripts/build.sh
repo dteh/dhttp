@@ -90,21 +90,26 @@ rsync -a "$SCRATCH/dhttp/" "$ROOT/"
 echo "==> Applying overlay"
 rsync -a "$ROOT/_overlay/" "$ROOT/" 2>/dev/null || true
 
-# --- Step 7: Stamp generated header on .go files (skip overlay-named ones) ---
+# --- Step 7: Stamp generated header on .go files (skip overlay-origin ones) ---
+# Compare RELATIVE paths under _overlay (e.g. "racing/race.go") against the
+# destination's relative path (e.g. "racing/race.go") — not basenames — so
+# overlay files don't accidentally suppress banners on unrelated generated
+# files that happen to share a basename (e.g. internal/race/race.go vs
+# _overlay/racing/race.go).
 echo "==> Stamping generated header"
-OVERLAY_BASENAMES=()
+OVERLAY_RELPATHS=()
 while IFS= read -r line; do
-  OVERLAY_BASENAMES+=("$line")
-done < <(find "$ROOT/_overlay" -name '*.go' -exec basename {} \;)
+  OVERLAY_RELPATHS+=("$line")
+done < <(cd "$ROOT/_overlay" && find . -name '*.go' | sed 's|^\./||')
 BANNER="// Code generated from patches/. DO NOT EDIT."
 find "$ROOT" -maxdepth 4 -name '*.go' \
   -not -path "$ROOT/_overlay/*" \
   -not -path "$ROOT/scripts/*" \
   -not -path "$ROOT/upstream/*" \
   -not -path "$ROOT/.git/*" | while read -r f; do
-  base=$(basename "$f")
+  rel=${f#$ROOT/}
   skip=0
-  for ob in "${OVERLAY_BASENAMES[@]}"; do [[ "$base" == "$ob" ]] && { skip=1; break; }; done
+  for ob in "${OVERLAY_RELPATHS[@]}"; do [[ "$rel" == "$ob" ]] && { skip=1; break; }; done
   (( skip )) && continue
   # Only stamp if not already stamped.
   head -1 "$f" | grep -qF "$BANNER" || {
@@ -119,4 +124,4 @@ done
 echo "==> go mod tidy"
 (cd "$ROOT" && go mod tidy) || echo "(go mod tidy reported issues; review)" >&2
 
-echo "==> Done. Upstream: $TAG. Patches: $(wc -l < patches/series). Overlay: ${#OVERLAY_BASENAMES[@]} files."
+echo "==> Done. Upstream: $TAG. Patches: $(wc -l < patches/series). Overlay: ${#OVERLAY_RELPATHS[@]} files."
